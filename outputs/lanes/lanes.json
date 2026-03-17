@@ -1,0 +1,62 @@
+[
+  {
+    "lane_id": "right_carriageway_lane1",
+    "carriageway": "right_carriageway",
+    "lane_index": 1,
+    "direction": "toward_camera",
+    "left_boundary": {
+      "x_bottom": 759,
+      "y_bottom": 580,
+      "x_top": 662,
+      "y_top": 286
+    },
+    "right_boundary": {
+      "x_bottom": 908,
+      "y_bottom": 579,
+      "x_top": 709,
+      "y_top": 288
+    },
+    "width_px": 149,
+    "width_m": 3.67
+  },
+  {
+    "lane_id": "right_carriageway_lane2",
+    "carriageway": "right_carriageway",
+    "lane_index": 2,
+    "direction": "toward_camera",
+    "left_boundary": {
+      "x_bottom": 908,
+      "y_bottom": 579,
+      "x_top": 709,
+      "y_top": 288
+    },
+    "right_boundary": {
+      "x_bottom": 1049,
+      "y_bottom": 577,
+      "x_top": 755,
+      "y_top": 290
+    },
+    "width_px": 141,
+    "width_m": 3.67
+  },
+  {
+    "lane_id": "right_carriageway_lane3",
+    "carriageway": "right_carriageway",
+    "lane_index": 3,
+    "direction": "toward_camera",
+    "left_boundary": {
+      "x_bottom": 1049,
+      "y_bottom": 577,
+      "x_top": 755,
+      "y_top": 290
+    },
+    "right_boundary": {
+      "x_bottom": 1183,
+      "y_bottom": 576,
+      "x_top": 801,
+      "y_top": 292
+    },
+    "width_px": 134,
+    "width_m": 3.67
+  }
+]

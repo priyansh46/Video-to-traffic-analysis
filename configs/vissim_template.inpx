@@ -1,0 +1,2395 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<network version="1403" vissimVersion="2026.00-05 [304088]">
+	<anmDefaults colorDistr="1" crosswalkDisplayType="1" hgvPowerDistr="2" hgvWeightDistr="2" level="1" linkDisplayType="1" panmFilename="" panmRoutesFilename="" pedestrianVehicleType="510" zoneConnectorDisplayType="1">
+		<anmDefaultDrivingBehavior>
+			<anmDefaultDrivingBehavior anmDrivBehavDefType="NONE" drivBehav="1"/>
+			<anmDefaultDrivingBehavior anmDrivBehavDefType="URBAN" drivBehav="1"/>
+			<anmDefaultDrivingBehavior anmDrivBehavDefType="RIGHTLEFTSIDE" drivBehav="2"/>
+			<anmDefaultDrivingBehavior anmDrivBehavDefType="HIGHWAY" drivBehav="3"/>
+			<anmDefaultDrivingBehavior anmDrivBehavDefType="PEDESTRIANS" drivBehav="4"/>
+			<anmDefaultDrivingBehavior anmDrivBehavDefType="BICYCLELANE" drivBehav="5"/>
+		</anmDefaultDrivingBehavior>
+		<vehicleCategoryANMDefaults>
+			<vehicleCategoryANMDefaults desAccelFunc="1" desCurvSpeedFunc="1" desDecelFunc="1" maxAccelFunc="1" maxDecelFunc="1" modelDistr="10" occupDistr="1" vehCat="CAR"/>
+			<vehicleCategoryANMDefaults desAccelFunc="2" desCurvSpeedFunc="11" desDecelFunc="2" maxAccelFunc="2" maxDecelFunc="2" modelDistr="20" occupDistr="1" vehCat="HGV"/>
+			<vehicleCategoryANMDefaults desAccelFunc="3" desCurvSpeedFunc="11" desDecelFunc="3" maxAccelFunc="3" maxDecelFunc="3" modelDistr="30" occupDistr="1" vehCat="BUS"/>
+			<vehicleCategoryANMDefaults desAccelFunc="4" desCurvSpeedFunc="31" desDecelFunc="4" maxAccelFunc="4" maxDecelFunc="4" modelDistr="40" occupDistr="1" vehCat="TRAM"/>
+			<vehicleCategoryANMDefaults desAccelFunc="5" desDecelFunc="5" maxAccelFunc="5" maxDecelFunc="5" modelDistr="100" occupDistr="1" vehCat="PEDESTRIAN"/>
+			<vehicleCategoryANMDefaults desAccelFunc="6" desCurvSpeedFunc="21" desDecelFunc="6" maxAccelFunc="6" maxDecelFunc="6" modelDistr="61" occupDistr="1" vehCat="BIKE"/>
+		</vehicleCategoryANMDefaults>
+	</anmDefaults>
+	<aliases>
+		<alias attr="COUNT:SIMULATIONRUNS" name="# runs" no="1" objType="NETPARA"/>
+		<alias attr="VEHICLENETWORKPERFORMANCEMEASUREMENT\DELAYAVG(AVG,AVG,ALL)" name="Veh delay Avg" no="2" objType="NETPARA"/>
+		<alias attr="VEHICLENETWORKPERFORMANCEMEASUREMENT\DELAYTOT(AVG,TOTAL,ALL)" name="Veh delay total (Avg per run)" no="3" objType="NETPARA"/>
+		<alias attr="VEHICLENETWORKPERFORMANCEMEASUREMENT\DELAYSTOPAVG(AVG,AVG,ALL)" name="Veh delay stopped Avg " no="4" objType="NETPARA"/>
+		<alias attr="VEHICLENETWORKPERFORMANCEMEASUREMENT\DISTTOT(AVG,TOTAL,ALL)" name="Veh distance total (Avg per run)" no="5" objType="NETPARA"/>
+		<alias attr="VEHICLENETWORKPERFORMANCEMEASUREMENT\TRAVTMTOT(AVG,TOTAL,ALL)" name="Veh travel time total (Avg per run)" no="6" objType="NETPARA"/>
+		<alias attr="VEHICLENETWORKPERFORMANCEMEASUREMENT\SPEEDAVG(AVG,AVG,ALL)" name="Veh speed Avg" no="7" objType="NETPARA"/>
+		<alias attr="VEHICLENETWORKPERFORMANCEMEASUREMENT\STOPSAVG(AVG,AVG,ALL)" name="Veh stops Avg" no="8" objType="NETPARA"/>
+		<alias attr="VEHICLENETWORKPERFORMANCEMEASUREMENT\STOPSTOT(AVG,TOTAL,ALL)" name="Veh stops total (Avg per run)" no="9" objType="NETPARA"/>
+		<alias attr="VEHICLENETWORKPERFORMANCEMEASUREMENT\VEHARR(AVG,TOTAL,ALL)" name="Veh arrived total (Avg per run)" no="10" objType="NETPARA"/>
+		<alias attr="VEHICLENETWORKPERFORMANCEMEASUREMENT\DEMANDLATENT(AVG,LAST)" name="Veh demand latent (Avg per run, last interval)" no="11" objType="NETPARA"/>
+		<alias attr="VEHICLENETWORKPERFORMANCEMEASUREMENT\VEHACT(AVG,LAST,ALL)" name="Veh active (Avg per run, last interval)" no="12" objType="NETPARA"/>
+		<alias attr="PEDESTRIANNETWORKPERFORMANCEMEASUREMENT\SPEEDAVG(AVG,AVG,ALL)" name="Ped speed Avg" no="13" objType="NETPARA"/>
+		<alias attr="PEDESTRIANNETWORKPERFORMANCEMEASUREMENT\STOPTMAVG(AVG,AVG,ALL)" name="Ped standstill time Avg" no="14" objType="NETPARA"/>
+		<alias attr="PEDESTRIANNETWORKPERFORMANCEMEASUREMENT\TRAVTMAVG(AVG,AVG,ALL)" name="Ped travel time Avg" no="15" objType="NETPARA"/>
+		<alias attr="PEDESTRIANNETWORKPERFORMANCEMEASUREMENT\PEDENT(AVG,TOTAL,ALL)" name="Ped inserted (Avg per run)" no="16" objType="NETPARA"/>
+		<alias attr="PEDESTRIANNETWORKPERFORMANCEMEASUREMENT\PEDARR(AVG,TOTAL,ALL)" name="Ped arrived (Avg per run)" no="17" objType="NETPARA"/>
+	</aliases>
+	<areaBehaviorTypes>
+		<areaBehaviorType name="Elevator (In Cab)" no="1">
+			<areaBehavTypeElements>
+				<areaBehaviorTypeElement pedClass="10" timeInt="8 0" walkBehav="2"/>
+				<areaBehaviorTypeElement pedClass="30" timeInt="8 0" walkBehav="2"/>
+			</areaBehavTypeElements>
+		</areaBehaviorType>
+		<areaBehaviorType name="Elevator (Alighting)" no="2">
+			<areaBehavTypeElements>
+				<areaBehaviorTypeElement pedClass="10" timeInt="8 0" walkBehav="3"/>
+				<areaBehaviorTypeElement pedClass="30" timeInt="8 0" walkBehav="3"/>
+			</areaBehavTypeElements>
+		</areaBehaviorType>
+	</areaBehaviorTypes>
+	<colorDistributions>
+		<colorDistribution name="Default" no="1">
+			<colorDistrEl>
+				<colorDistributionElement color="ff363636" share="1"/>
+				<colorDistributionElement color="ffc72323" share="0.5"/>
+				<colorDistributionElement color="ffffffff" share="1"/>
+				<colorDistributionElement color="ff295989" share="1"/>
+				<colorDistributionElement color="ffd1d1d1" share="1"/>
+				<colorDistributionElement color="ff5f5f5f" share="0.5"/>
+				<colorDistributionElement color="ff328655" share="0.1"/>
+				<colorDistributionElement color="ff4f81b0" share="0.25"/>
+				<colorDistributionElement color="ffffff5c" share="0.1"/>
+				<colorDistributionElement color="fff09c47" share="0.1"/>
+				<colorDistributionElement color="ff6b6b6b" share="1"/>
+				<colorDistributionElement color="ff673232" share="1"/>
+				<colorDistributionElement color="ffb0b0b0" share="1"/>
+				<colorDistributionElement color="ff283658" share="1"/>
+				<colorDistributionElement color="ffa1a1a1" share="1"/>
+				<colorDistributionElement color="ff75ae8c" share="0.25"/>
+				<colorDistributionElement color="ff335371" share="0.25"/>
+				<colorDistributionElement color="ffffffcc" share="0.1"/>
+				<colorDistributionElement color="ffffcc7f" share="0.1"/>
+			</colorDistrEl>
+		</colorDistribution>
+		<colorDistribution name="Black" no="2">
+			<colorDistrEl>
+				<colorDistributionElement color="ff0f0f0f" share="1"/>
+			</colorDistrEl>
+		</colorDistribution>
+		<colorDistribution name="Bike" no="60">
+			<colorDistrEl>
+				<colorDistributionElement color="ff000000" share="0.1"/>
+				<colorDistributionElement color="ff1a6141" share="0.8"/>
+				<colorDistributionElement color="ffe00000" share="0.3"/>
+				<colorDistributionElement color="ffdbdbdb" share="0.4"/>
+				<colorDistributionElement color="ffffffff" share="0.1"/>
+				<colorDistributionElement color="ff004080" share="0.5"/>
+				<colorDistributionElement color="ff730c0c" share="0.4"/>
+			</colorDistrEl>
+		</colorDistribution>
+		<colorDistribution name="Shirt Man" no="101">
+			<colorDistrEl>
+				<colorDistributionElement color="ff74a0aa" share="0.5"/>
+				<colorDistributionElement color="ffc8e4ea" share="0.5"/>
+				<colorDistributionElement color="ffffffff" share="2"/>
+				<colorDistributionElement color="ff1f1f1f" share="1"/>
+				<colorDistributionElement color="ffc4c7d4" share="0.3"/>
+				<colorDistributionElement color="fff7e482" share="0.2"/>
+				<colorDistributionElement color="ffe61919" share="0.2"/>
+				<colorDistributionElement color="ffffffc4" share="0.1"/>
+				<colorDistributionElement color="ff4286bd" share="1"/>
+				<colorDistributionElement color="ff184362" share="0.5"/>
+			</colorDistrEl>
+		</colorDistribution>
+		<colorDistribution name="Hair Man" no="102">
+			<colorDistrEl>
+				<colorDistributionElement color="ff0d0d0d" share="1"/>
+				<colorDistributionElement color="ff64401b" share="1"/>
+				<colorDistributionElement color="ff5b3e1a" share="1"/>
+				<colorDistributionElement color="ffd4c8a5" share="1"/>
+				<colorDistributionElement color="ffd9d8d3" share="0.3"/>
+			</colorDistrEl>
+		</colorDistribution>
+		<colorDistribution name="Trousers Man" no="103">
+			<colorDistrEl>
+				<colorDistributionElement color="ff1c2454" share="2"/>
+				<colorDistributionElement color="ffffffff" share="0.5"/>
+				<colorDistributionElement color="ff2d3949" share="2"/>
+				<colorDistributionElement color="ff90aec6" share="1"/>
+				<colorDistributionElement color="ff141414" share="1"/>
+				<colorDistributionElement color="ffbf4040" share="0.3"/>
+				<colorDistributionElement color="ffcccccc" share="0.5"/>
+				<colorDistributionElement color="ff3b3b3b" share="0.5"/>
+			</colorDistrEl>
+		</colorDistribution>
+		<colorDistribution name="Shoes Man" no="104">
+			<colorDistrEl>
+				<colorDistributionElement color="ff000000" share="1"/>
+				<colorDistributionElement color="ff804000" share="1"/>
+				<colorDistributionElement color="ff808080" share="1"/>
+				<colorDistributionElement color="ffffffff" share="1"/>
+				<colorDistributionElement color="ff203455" share="1"/>
+				<colorDistributionElement color="ff400000" share="1"/>
+			</colorDistrEl>
+		</colorDistribution>
+		<colorDistribution name="Shirt Woman" no="201">
+			<colorDistrEl>
+				<colorDistributionElement color="ffdcf4f4" share="0.5"/>
+				<colorDistributionElement color="ffffee99" share="0.5"/>
+				<colorDistributionElement color="ffffffff" share="2"/>
+				<colorDistributionElement color="ffac5385" share="0.5"/>
+				<colorDistributionElement color="ff242424" share="0.5"/>
+				<colorDistributionElement color="ff1f3389" share="0.5"/>
+				<colorDistributionElement color="ff905ca3" share="0.5"/>
+				<colorDistributionElement color="fff1cbdf" share="0.5"/>
+				<colorDistributionElement color="ffa67d7d" share="0.3"/>
+				<colorDistributionElement color="ff4286bd" share="0.5"/>
+				<colorDistributionElement color="ffc2e6ff" share="0.5"/>
+				<colorDistributionElement color="ffc9ccd4" share="0.3"/>
+			</colorDistrEl>
+		</colorDistribution>
+		<colorDistribution name="Hair Woman" no="202">
+			<colorDistrEl>
+				<colorDistributionElement color="ff0d0d0d" share="1"/>
+				<colorDistributionElement color="ff64401b" share="1"/>
+				<colorDistributionElement color="ff5b3e1a" share="1"/>
+				<colorDistributionElement color="ffd4c8a5" share="1"/>
+				<colorDistributionElement color="ffd9d8d3" share="0.2"/>
+			</colorDistrEl>
+		</colorDistribution>
+		<colorDistribution name="Trousers Woman" no="203">
+			<colorDistrEl>
+				<colorDistributionElement color="ff171717" share="1"/>
+				<colorDistributionElement color="ffffffff" share="2"/>
+				<colorDistributionElement color="ff243144" share="1"/>
+				<colorDistributionElement color="ff4178a4" share="1"/>
+				<colorDistributionElement color="fff6f6da" share="0.5"/>
+				<colorDistributionElement color="ffc33c3c" share="0.3"/>
+				<colorDistributionElement color="ff886e91" share="0.2"/>
+				<colorDistributionElement color="ff4b3d34" share="0.5"/>
+				<colorDistributionElement color="ff4fa1be" share="0.5"/>
+				<colorDistributionElement color="ffaac0cb" share="0.1"/>
+			</colorDistrEl>
+		</colorDistribution>
+		<colorDistribution name="Shoes Woman" no="204">
+			<colorDistrEl>
+				<colorDistributionElement color="ff4b6891" share="0.5"/>
+				<colorDistributionElement color="ff804000" share="1"/>
+				<colorDistributionElement color="ffb64d49" share="1"/>
+				<colorDistributionElement color="ffffffff" share="2"/>
+				<colorDistributionElement color="ff111f37" share="1"/>
+				<colorDistributionElement color="ffdabe96" share="1"/>
+				<colorDistributionElement color="ff8989b8" share="0.3"/>
+				<colorDistributionElement color="fffffdce" share="1"/>
+				<colorDistributionElement color="ff86b4cb" share="0.5"/>
+				<colorDistributionElement color="ff000000" share="1"/>
+			</colorDistrEl>
+		</colorDistribution>
+	</colorDistributions>
+	<curvSpeedFuncs>
+		<curvSpeedFunc name="Road. Car. Based on Schimmelpfennig &amp; Nackenhorst (1985), Lindenmann &amp; Ranft (1978), and German road design guidelines FGSV RASt, RAL &amp; RAA" no="1">
+			<curvSpeedFuncDataPts>
+				<curvSpeedFuncDataPt x="5" y="8.603621" yMax="9.7827" yMin="6.643041"/>
+				<curvSpeedFuncDataPt x="10" y="16.407384" yMax="18.450547" yMin="12.883856"/>
+				<curvSpeedFuncDataPt x="30" y="38.099541" yMax="41.322955" yMin="31.94514"/>
+				<curvSpeedFuncDataPt x="60" y="56.796123" yMax="60.002031" yMin="50.510204"/>
+				<curvSpeedFuncDataPt x="100" y="70.836488" yMax="73.867618" yMin="64.8379"/>
+				<curvSpeedFuncDataPt x="150" y="82.291103" yMax="85.119673" yMin="76.694153"/>
+				<curvSpeedFuncDataPt x="200" y="89.967679" yMax="92.669511" yMin="84.602588"/>
+				<curvSpeedFuncDataPt x="275" y="98.035935" yMax="100.623351" yMin="92.89602"/>
+				<curvSpeedFuncDataPt x="350" y="104.151354" yMax="106.64827" yMin="99.196834"/>
+				<curvSpeedFuncDataPt x="450" y="110.328812" yMax="112.740138" yMin="105.550202"/>
+				<curvSpeedFuncDataPt x="550" y="115.08469" yMax="117.430115" yMin="110.427376"/>
+				<curvSpeedFuncDataPt x="750" y="123.152003" yMax="125.361344" yMin="118.780741"/>
+				<curvSpeedFuncDataPt x="1000" y="129.915386" yMax="132.036441" yMin="125.726192"/>
+			</curvSpeedFuncDataPts>
+		</curvSpeedFunc>
+		<curvSpeedFunc name="Road. HGV (deduced from function for cars with plausibility considerations)" no="11">
+			<curvSpeedFuncDataPts>
+				<curvSpeedFuncDataPt x="5" y="3.682528" yMax="4.296593" yMin="2.706815"/>
+				<curvSpeedFuncDataPt x="10" y="8.124199" yMax="9.436205" yMin="6.008113"/>
+				<curvSpeedFuncDataPt x="30" y="25.44318" yMax="28.632541" yMin="19.768906"/>
+				<curvSpeedFuncDataPt x="60" y="43.703646" yMax="47.566086" yMin="36.241469"/>
+				<curvSpeedFuncDataPt x="100" y="58.573614" yMax="62.476177" yMin="50.780699"/>
+				<curvSpeedFuncDataPt x="150" y="70.298336" yMax="74.095854" yMin="62.623065"/>
+				<curvSpeedFuncDataPt x="200" y="78.397611" yMax="82.090613" yMin="70.902413"/>
+				<curvSpeedFuncDataPt x="275" y="87.093219" yMax="90.660763" yMin="79.836819"/>
+				<curvSpeedFuncDataPt x="350" y="93.478865" yMax="96.950685" yMin="86.412738"/>
+				<curvSpeedFuncDataPt x="450" y="99.950701" yMax="103.325072" yMin="93.08233"/>
+				<curvSpeedFuncDataPt x="550" y="104.987834" yMax="108.287083" yMin="98.27371"/>
+				<curvSpeedFuncDataPt x="750" y="112.55463" yMax="115.743416" yMin="106.069116"/>
+				<curvSpeedFuncDataPt x="1000" y="119.348373" yMax="122.441219" yMin="113.06248"/>
+			</curvSpeedFuncDataPts>
+		</curvSpeedFunc>
+		<curvSpeedFunc name="Road. Bike. Richard; Stamminger in Meschik, following Brezina et al, adjusted for 1 m additional lateral movement in 90deg turn (inside), on a 3.5 m wide single lane road" no="21">
+			<curvSpeedFuncDataPts>
+				<curvSpeedFuncDataPt x="0.88902" y="10" yMax="15" yMin="7.5"/>
+				<curvSpeedFuncDataPt x="2.947843" y="14.891304" yMax="22.336957" yMin="11.168478"/>
+				<curvSpeedFuncDataPt x="6.379216" y="19.891304" yMax="29.836957" yMin="14.918478"/>
+				<curvSpeedFuncDataPt x="12.359608" y="24.891304" yMax="37.336957" yMin="18.668478"/>
+				<curvSpeedFuncDataPt x="20.398824" y="29.891304" yMax="44.836957" yMin="22.418478"/>
+				<curvSpeedFuncDataPt x="28.536078" y="34.891304" yMax="52.336957" yMin="26.168478"/>
+				<curvSpeedFuncDataPt x="38.536078" y="39.673913" yMax="59.51087" yMin="29.755435"/>
+			</curvSpeedFuncDataPts>
+		</curvSpeedFunc>
+		<curvSpeedFunc name="Road. Bike. Richard; Stamminger in Meschik, following Brezina et al" no="22">
+			<curvSpeedFuncDataPts>
+				<curvSpeedFuncDataPt x="1.568627451" y="5.108696" yMax="7.663043" yMin="3.831522"/>
+				<curvSpeedFuncDataPt x="2.549019608" y="10" yMax="15" yMin="7.5"/>
+				<curvSpeedFuncDataPt x="4.6078431369999997" y="14.891304" yMax="22.336957" yMin="11.168478"/>
+				<curvSpeedFuncDataPt x="8.0392156860000004" y="19.891304" yMax="29.836957" yMin="14.918478"/>
+				<curvSpeedFuncDataPt x="14.01960784" y="24.891304" yMax="37.336957" yMin="18.668478"/>
+				<curvSpeedFuncDataPt x="22.05882353" y="29.891304" yMax="44.836957" yMin="22.418478"/>
+				<curvSpeedFuncDataPt x="30.19607843" y="34.891304" yMax="52.336957" yMin="26.168478"/>
+				<curvSpeedFuncDataPt x="40.19607843" y="39.673913" yMax="59.51087" yMin="29.755435"/>
+			</curvSpeedFuncDataPts>
+		</curvSpeedFunc>
+		<curvSpeedFunc name="Light Rail. Design. TRStrab Trassierung" no="31">
+			<curvSpeedFuncDataPts>
+				<curvSpeedFuncDataPt x="9" y="8.707238" yMax="10.691455" yMin="4.829907"/>
+				<curvSpeedFuncDataPt x="12" y="10.054253" yMax="12.345428" yMin="5.577096"/>
+				<curvSpeedFuncDataPt x="20" y="12.979985" yMax="15.937879" yMin="7.2"/>
+				<curvSpeedFuncDataPt x="30" y="15.89717" yMax="19.519836" yMin="8.818163"/>
+				<curvSpeedFuncDataPt x="50" y="20.523158" yMax="25.2" yMin="11.3842"/>
+				<curvSpeedFuncDataPt x="100" y="29.024128" yMax="35.638182" yMin="16.099689"/>
+				<curvSpeedFuncDataPt x="200" y="41.046315" yMax="50.4" yMin="22.768399"/>
+				<curvSpeedFuncDataPt x="300" y="50.271264" yMax="61.727142" yMin="27.88548"/>
+				<curvSpeedFuncDataPt x="500" y="64.899923" yMax="79.689397" yMin="36"/>
+				<curvSpeedFuncDataPt x="700" y="76.790624" yMax="94.289766" yMin="42.595774"/>
+				<curvSpeedFuncDataPt x="1000" y="91.782351" yMax="112.697826" yMin="50.911688"/>
+			</curvSpeedFuncDataPts>
+		</curvSpeedFunc>
+		<curvSpeedFunc name="Rail. Design. EBO" no="41">
+			<curvSpeedFuncDataPts>
+				<curvSpeedFuncDataPt x="50" y="20.584674" yMax="25.210974" yMin="14.555563"/>
+				<curvSpeedFuncDataPt x="300" y="81.302949" yMax="88.777001" yMin="73.068345"/>
+				<curvSpeedFuncDataPt x="500" y="104.961656" yMax="114.610616" yMin="94.330828"/>
+				<curvSpeedFuncDataPt x="700" y="124.192306" yMax="135.609109" yMin="111.613741"/>
+				<curvSpeedFuncDataPt x="1000" y="148.438197" yMax="162.083887" yMin="133.403936"/>
+			</curvSpeedFuncDataPts>
+		</curvSpeedFunc>
+	</curvSpeedFuncs>
+	<desAccelerationFunctions>
+		<desAccelerationFunction name="Car" no="1">
+			<accelFuncDataPts>
+				<accelerationFunctionDataPoint x="0" y="3" yMax="3.5" yMin="1.96"/>
+				<accelerationFunctionDataPoint x="10" y="2.7" yMax="3.5" yMin="1.493"/>
+				<accelerationFunctionDataPoint x="20" y="2.286" yMax="3.5" yMin="1.3"/>
+				<accelerationFunctionDataPoint x="30" y="1.968" yMax="3.5" yMin="1.152"/>
+				<accelerationFunctionDataPoint x="40" y="1.7" yMax="3.5" yMin="1.027"/>
+				<accelerationFunctionDataPoint x="50" y="1.464" yMax="3.273" yMin="0.917"/>
+				<accelerationFunctionDataPoint x="60" y="1.314" yMax="2.918" yMin="0.817"/>
+				<accelerationFunctionDataPoint x="70" y="1.245" yMax="2.59" yMin="0.725"/>
+				<accelerationFunctionDataPoint x="80" y="1.176" yMax="2.286" yMin="0.64"/>
+				<accelerationFunctionDataPoint x="90" y="1.107" yMax="2" yMin="0.56"/>
+				<accelerationFunctionDataPoint x="100" y="1.038" yMax="1.73" yMin="0.484"/>
+				<accelerationFunctionDataPoint x="110" y="0.969" yMax="1.614" yMin="0.452"/>
+				<accelerationFunctionDataPoint x="120" y="0.899" yMax="1.499" yMin="0.42"/>
+				<accelerationFunctionDataPoint x="130" y="0.83" yMax="1.384" yMin="0.387"/>
+				<accelerationFunctionDataPoint x="140" y="0.761" yMax="1.268" yMin="0.355"/>
+				<accelerationFunctionDataPoint x="150" y="0.692" yMax="1.153" yMin="0.323"/>
+				<accelerationFunctionDataPoint x="160" y="0.623" yMax="1.038" yMin="0.291"/>
+				<accelerationFunctionDataPoint x="170" y="0.553" yMax="0.922" yMin="0.258"/>
+				<accelerationFunctionDataPoint x="180" y="0.484" yMax="0.807" yMin="0.226"/>
+				<accelerationFunctionDataPoint x="190" y="0.415" yMax="0.692" yMin="0.194"/>
+				<accelerationFunctionDataPoint x="200" y="0.346" yMax="0.577" yMin="0.161"/>
+				<accelerationFunctionDataPoint x="210" y="0.277" yMax="0.461" yMin="0.129"/>
+				<accelerationFunctionDataPoint x="220" y="0.208" yMax="0.346" yMin="0.097"/>
+				<accelerationFunctionDataPoint x="230" y="0.138" yMax="0.231" yMin="0.065"/>
+				<accelerationFunctionDataPoint x="240" y="0.069" yMax="0.115" yMin="0.032"/>
+				<accelerationFunctionDataPoint x="250" y="0" yMax="0" yMin="0"/>
+			</accelFuncDataPts>
+		</desAccelerationFunction>
+		<desAccelerationFunction name="HGV" no="2">
+			<accelFuncDataPts>
+				<accelerationFunctionDataPoint x="0" y="2.5" yMax="2.5" yMin="2.5"/>
+				<accelerationFunctionDataPoint x="10" y="2.5" yMax="2.5" yMin="2.4"/>
+				<accelerationFunctionDataPoint x="20" y="2.5" yMax="2.5" yMin="1.12"/>
+				<accelerationFunctionDataPoint x="30" y="2" yMax="2.5" yMin="0.73"/>
+				<accelerationFunctionDataPoint x="40" y="1.52" yMax="2.35" yMin="0.53"/>
+				<accelerationFunctionDataPoint x="50" y="0.95" yMax="1.55" yMin="0.32"/>
+				<accelerationFunctionDataPoint x="60" y="0.79" yMax="1.31" yMin="0.25"/>
+				<accelerationFunctionDataPoint x="70" y="0.64" yMax="1.1" yMin="0.19"/>
+				<accelerationFunctionDataPoint x="80" y="0.52" yMax="0.9" yMin="0.15"/>
+				<accelerationFunctionDataPoint x="90" y="0.41" yMax="0.75" yMin="0.11"/>
+				<accelerationFunctionDataPoint x="100" y="0.35" yMax="0.65" yMin="0.08"/>
+				<accelerationFunctionDataPoint x="110" y="0.2" yMax="0.55" yMin="0"/>
+				<accelerationFunctionDataPoint x="120" y="0" yMax="0.1" yMin="0"/>
+				<accelerationFunctionDataPoint x="130" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="140" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="150" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="160" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="170" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="180" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="190" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="200" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="210" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="220" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="230" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="240" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="250" y="0" yMax="0" yMin="0"/>
+			</accelFuncDataPts>
+		</desAccelerationFunction>
+		<desAccelerationFunction name="Bus" no="3">
+			<accelFuncDataPts>
+				<accelerationFunctionDataPoint x="0" y="1.24" yMax="1.488" yMin="1.042"/>
+				<accelerationFunctionDataPoint x="10" y="1.24" yMax="1.488" yMin="1.042"/>
+				<accelerationFunctionDataPoint x="20" y="1.24" yMax="1.488" yMin="1.042"/>
+				<accelerationFunctionDataPoint x="30" y="1.24" yMax="1.488" yMin="1.042"/>
+				<accelerationFunctionDataPoint x="40" y="1.1" yMax="1.32" yMin="0.924"/>
+				<accelerationFunctionDataPoint x="50" y="1" yMax="1.2" yMin="0.84"/>
+				<accelerationFunctionDataPoint x="60" y="0.9" yMax="1.08" yMin="0.756"/>
+				<accelerationFunctionDataPoint x="70" y="0.8" yMax="0.96" yMin="0.672"/>
+				<accelerationFunctionDataPoint x="80" y="0.6" yMax="0.72" yMin="0.504"/>
+				<accelerationFunctionDataPoint x="90" y="0.4" yMax="0.48" yMin="0.336"/>
+				<accelerationFunctionDataPoint x="100" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="110" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="120" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="130" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="140" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="150" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="160" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="170" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="180" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="190" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="200" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="210" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="220" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="230" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="240" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="250" y="0" yMax="0" yMin="0"/>
+			</accelFuncDataPts>
+		</desAccelerationFunction>
+		<desAccelerationFunction name="Tram" no="4">
+			<accelFuncDataPts>
+				<accelerationFunctionDataPoint x="0" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="10" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="20" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="30" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="40" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="50" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="60" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="70" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="80" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="90" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="100" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="110" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="120" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="130" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="140" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="150" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="160" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="170" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="180" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="190" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="200" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="210" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="220" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="230" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="240" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="250" y="0" yMax="0" yMin="0"/>
+			</accelFuncDataPts>
+		</desAccelerationFunction>
+		<desAccelerationFunction name="Pedestrian" no="5">
+			<accelFuncDataPts>
+				<accelerationFunctionDataPoint x="0" y="3" yMax="3" yMin="3"/>
+				<accelerationFunctionDataPoint x="10" y="3" yMax="3" yMin="3"/>
+				<accelerationFunctionDataPoint x="20" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="30" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="40" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="50" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="60" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="70" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="80" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="90" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="100" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="110" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="120" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="130" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="140" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="150" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="160" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="170" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="180" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="190" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="200" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="210" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="220" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="230" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="240" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="250" y="0" yMax="0" yMin="0"/>
+			</accelFuncDataPts>
+		</desAccelerationFunction>
+		<desAccelerationFunction name="Bike" no="6">
+			<accelFuncDataPts>
+				<accelerationFunctionDataPoint x="0" y="1.602034266" yMax="2.2020342660000001" yMin="1.0020342659999999"/>
+				<accelerationFunctionDataPoint x="1" y="1.6016396820000001" yMax="2.2016392040000001" yMin="1.00163969"/>
+				<accelerationFunctionDataPoint x="2" y="1.6002888980000001" yMax="2.1991195659999998" yMin="1.0004551150000001"/>
+				<accelerationFunctionDataPoint x="3" y="1.593953583" yMax="2.179755916" yMin="0.99834451300000004"/>
+				<accelerationFunctionDataPoint x="4" y="1.572136059" yMax="2.1256173870000001" yMin="0.99394643599999999"/>
+				<accelerationFunctionDataPoint x="5" y="1.5286971359999999" yMax="2.0373944690000001" yMin="0.98397441600000002"/>
+				<accelerationFunctionDataPoint x="6" y="1.4650229859999999" yMax="1.925401991" yMin="0.96510197099999995"/>
+				<accelerationFunctionDataPoint x="7" y="1.38592939" yMax="1.800051144" yMin="0.93560586499999998"/>
+				<accelerationFunctionDataPoint x="8" y="1.2965515219999999" yMax="1.6690386150000001" yMin="0.895446293"/>
+				<accelerationFunctionDataPoint x="9" y="1.201142379" yMax="1.5373871370000001" yMin="0.84566421700000005"/>
+				<accelerationFunctionDataPoint x="10" y="1.102860044" yMax="1.408137234" yMin="0.78778799700000002"/>
+				<accelerationFunctionDataPoint x="11" y="1.0039098470000001" yMax="1.283000455" yMin="0.72344258400000006"/>
+				<accelerationFunctionDataPoint x="12" y="0.90576415" yMax="1.162838456" yMin="0.65414130500000001"/>
+				<accelerationFunctionDataPoint x="13" y="0.80936302199999999" yMax="1.0479849880000001" yMin="0.58119707200000004"/>
+				<accelerationFunctionDataPoint x="14" y="0.71527201100000004" yMax="0.93845436900000001" yMin="0.50570056900000004"/>
+				<accelerationFunctionDataPoint x="15" y="0.62379844900000003" yMax="0.83407402500000005" yMin="0.42853167800000003"/>
+				<accelerationFunctionDataPoint x="16" y="0.53507453100000002" yMax="0.73456786299999999" yMin="0.35038483"/>
+				<accelerationFunctionDataPoint x="17" y="0.44911564300000001" yMax="0.639608234" yMin="0.27179811300000001"/>
+				<accelerationFunctionDataPoint x="18" y="0.36586091900000001" yMax="0.54884792500000001" yMin="0.193181242"/>
+				<accelerationFunctionDataPoint x="19" y="0.28520125800000001" yMax="0.4619395" yMin="0.114840337"/>
+				<accelerationFunctionDataPoint x="20" y="0.206998561" yMax="0.378546616" yMin="0.036998925000000002"/>
+				<accelerationFunctionDataPoint x="21" y="0.13109886400000001" yMax="0.29835028800000002" yMin="0"/>
+				<accelerationFunctionDataPoint x="22" y="0.057341224000000003" yMax="0.22105198200000001" yMin="0"/>
+				<accelerationFunctionDataPoint x="23" y="0" yMax="0.14637473200000001" yMin="0"/>
+				<accelerationFunctionDataPoint x="24" y="0" yMax="0.074063067999999996" yMin="0"/>
+				<accelerationFunctionDataPoint x="25" y="0" yMax="0.0038822420000000002" yMin="0"/>
+				<accelerationFunctionDataPoint x="30" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="40" y="0" yMax="0" yMin="0"/>
+			</accelFuncDataPts>
+		</desAccelerationFunction>
+		<desAccelerationFunction name="Pedelec (max 25 km/h)" no="7">
+			<accelFuncDataPts>
+				<accelerationFunctionDataPoint x="0" y="1.8" yMax="1.9" yMin="1.5"/>
+				<accelerationFunctionDataPoint x="1.5" y="2.75" yMax="3" yMin="2.5"/>
+				<accelerationFunctionDataPoint x="4" y="2.75" yMax="3" yMin="2.5"/>
+				<accelerationFunctionDataPoint x="25" y="0" yMax="0" yMin="0"/>
+			</accelFuncDataPts>
+		</desAccelerationFunction>
+		<desAccelerationFunction name="Pedelec (max 20 mph)" no="8">
+			<accelFuncDataPts>
+				<accelerationFunctionDataPoint x="0" y="1.8" yMax="1.9" yMin="1.5"/>
+				<accelerationFunctionDataPoint x="1.5" y="2.75" yMax="3" yMin="2.5"/>
+				<accelerationFunctionDataPoint x="4" y="2.75" yMax="3" yMin="2.5"/>
+				<accelerationFunctionDataPoint x="32.19" y="0" yMax="0" yMin="0"/>
+			</accelFuncDataPts>
+		</desAccelerationFunction>
+	</desAccelerationFunctions>
+	<desDecelerationFunctions>
+		<desDecelerationFunction name="Car" no="1">
+			<decelFuncDataPts>
+				<decelerationFunctionDataPoint x="0" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="10" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="20" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="30" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="40" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="50" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="60" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="70" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="80" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="90" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="100" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="110" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="120" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="130" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="140" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="150" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="160" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="170" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="180" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="190" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="200" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="210" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="220" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="230" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="240" y="-2.75" yMax="-2.55" yMin="-3"/>
+			</decelFuncDataPts>
+		</desDecelerationFunction>
+		<desDecelerationFunction name="HGV" no="2">
+			<decelFuncDataPts>
+				<decelerationFunctionDataPoint x="0" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="10" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="20" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="30" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="40" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="50" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="60" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="70" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="80" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="90" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="100" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="110" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="120" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="130" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="140" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="150" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="160" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="170" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="180" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="190" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="200" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="210" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="220" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="230" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+				<decelerationFunctionDataPoint x="240" y="-1.25" yMax="-1.05" yMin="-1.5"/>
+			</decelFuncDataPts>
+		</desDecelerationFunction>
+		<desDecelerationFunction name="Bus" no="3">
+			<decelFuncDataPts>
+				<decelerationFunctionDataPoint x="0" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="10" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="20" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="30" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="40" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="50" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="60" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="70" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="80" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="90" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="100" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="110" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="120" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="130" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="140" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="150" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="160" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="170" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="180" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="190" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="200" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="210" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="220" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="230" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="240" y="-0.85" yMax="-0.73" yMin="-1"/>
+			</decelFuncDataPts>
+		</desDecelerationFunction>
+		<desDecelerationFunction name="Tram" no="4">
+			<decelFuncDataPts>
+				<decelerationFunctionDataPoint x="0" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="10" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="20" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="30" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="40" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="50" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="60" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="70" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="80" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="90" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="100" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="110" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="120" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="130" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="140" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="150" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="160" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="170" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="180" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="190" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="200" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="210" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="220" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="230" y="-0.85" yMax="-0.73" yMin="-1"/>
+				<decelerationFunctionDataPoint x="240" y="-0.85" yMax="-0.73" yMin="-1"/>
+			</decelFuncDataPts>
+		</desDecelerationFunction>
+		<desDecelerationFunction name="Pedestrian" no="5">
+			<decelFuncDataPts>
+				<decelerationFunctionDataPoint x="0" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="10" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="20" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="30" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="40" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="50" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="60" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="70" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="80" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="90" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="100" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="110" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="120" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="130" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="140" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="150" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="160" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="170" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="180" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="190" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="200" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="210" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="220" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="230" y="-9" yMax="-8.6" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="240" y="-9" yMax="-8.6" yMin="-9.5"/>
+			</decelFuncDataPts>
+		</desDecelerationFunction>
+		<desDecelerationFunction name="Bike" no="6">
+			<decelFuncDataPts>
+				<decelerationFunctionDataPoint x="0" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="10" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="20" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="30" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="40" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="50" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="60" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="70" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="80" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="90" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="100" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="110" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="120" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="130" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="140" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="150" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="160" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="170" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="180" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="190" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="200" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="210" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="220" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="230" y="-2.75" yMax="-2.55" yMin="-3"/>
+				<decelerationFunctionDataPoint x="240" y="-2.75" yMax="-2.55" yMin="-3"/>
+			</decelFuncDataPts>
+		</desDecelerationFunction>
+	</desDecelerationFunctions>
+	<displayTypes>
+		<displayType allSidesSame="false" anisoFilt="true" borderColor="ff808080" borderLineStyle="SOLIDLINE" curved="false" drawOrder3D="MID" fillColor="ff808080" fillStyle="SOLIDFILL" invisible="false" name="Road gray" no="1" noMipmap="false" rail="false" railFlangeHgt="0.013" railFlangeWid="0.15" railGauge="1.435" railHeadHgt="0.043" railHeadWid="0.073" railHgt="0.172" railType="STANDARD" railWebWid="0.016" texHorizLen="1" textureFilename="" tiesHgt="0.02" tiesLen="2.6" tiesSpac="0.6" tiesTexFilename="" tiesTexHorizLen="1" tiesType="STANDARD" tiesWid="0.26"/>
+		<displayType allSidesSame="false" anisoFilt="true" borderColor="ff655c4b" borderLineStyle="SOLIDLINE" curved="true" drawOrder3D="MID" fillColor="ff655c4b" fillStyle="SOLIDFILL" invisible="false" name="Rail (stones)" no="11" noMipmap="false" rail="true" railFlangeHgt="0.01" railFlangeWid="0.15" railGauge="1.435" railHeadHgt="0.038" railHeadWid="0.065" railHgt="0.13" railType="STANDARD" railWebWid="0.013" texHorizLen="3.333333" textureFilename="#3dmodels#Textures\Material\Stones02.bmp" tiesHgt="0.02" tiesLen="2.2" tiesSpac="0.6" tiesTexFilename="" tiesTexHorizLen="1" tiesType="STANDARD" tiesWid="0.22"/>
+		<displayType allSidesSame="false" anisoFilt="true" borderColor="ff808080" borderLineStyle="SOLIDLINE" curved="false" drawOrder3D="MID" fillColor="ff808080" fillStyle="SOLIDFILL" invisible="false" name="Rail (road)" no="12" noMipmap="false" rail="true" railFlangeHgt="0.007" railFlangeWid="0.2" railGauge="1.435" railHeadHgt="0.003" railHeadWid="0.065" railHgt="0.01" railType="STANDARD" railWebWid="0" texHorizLen="1" textureFilename="" tiesHgt="0.02" tiesLen="2.6" tiesSpac="0.6" tiesTexFilename="" tiesTexHorizLen="1" tiesType="NONE" tiesWid="0.26"/>
+		<displayType allSidesSame="false" anisoFilt="true" borderColor="ff808080" borderLineStyle="SOLIDLINE" curved="false" drawOrder3D="MID" fillColor="ff808080" fillStyle="SOLIDFILL" invisible="false" name="Pedestrian area gray" no="21" noMipmap="false" rail="false" railFlangeHgt="0.013" railFlangeWid="0.15" railGauge="1.435" railHeadHgt="0.043" railHeadWid="0.073" railHgt="0.172" railType="STANDARD" railWebWid="0.016" texHorizLen="1" textureFilename="" tiesHgt="0.02" tiesLen="2.6" tiesSpac="0.6" tiesTexFilename="" tiesTexHorizLen="1" tiesType="STANDARD" tiesWid="0.26"/>
+		<displayType allSidesSame="false" anisoFilt="true" borderColor="ff6c6c6c" borderLineStyle="SOLIDLINE" curved="true" drawOrder3D="MID" fillColor="ff6c6c6c" fillStyle="SOLIDFILL" invisible="false" name="Escalator steps" no="31" noMipmap="true" rail="false" railFlangeHgt="0.013" railFlangeWid="0.15" railGauge="1.435" railHeadHgt="0.043" railHeadWid="0.073" railHgt="0.172" railType="STANDARD" railWebWid="0.016" texHorizLen="0.5" textureFilename="#3dmodels#Textures\Material\Metal01.jpg" tiesHgt="0.02" tiesLen="2.6" tiesSpac="0.6" tiesTexFilename="" tiesTexHorizLen="1" tiesType="STANDARD" tiesWid="0.26"/>
+		<displayType allSidesSame="false" anisoFilt="true" borderColor="ff808080" borderLineStyle="SOLIDLINE" curved="true" drawOrder3D="MID" fillColor="ff808080" fillStyle="SOLIDFILL" invisible="false" name="Escalator landing" no="32" noMipmap="false" rail="false" railFlangeHgt="0.013" railFlangeWid="0.15" railGauge="1.435" railHeadHgt="0.043" railHeadWid="0.073" railHgt="0.172" railType="STANDARD" railWebWid="0.016" texHorizLen="0.166667" textureFilename="#3dmodels#Textures\Material\Metal02.jpg" tiesHgt="0.02" tiesLen="2.6" tiesSpac="0.6" tiesTexFilename="" tiesTexHorizLen="1" tiesType="STANDARD" tiesWid="0.26"/>
+		<displayType allSidesSame="true" anisoFilt="true" borderColor="ff000000" borderLineStyle="SOLIDLINE" curved="false" drawOrder3D="MID" fillColor="ff000000" fillStyle="SOLIDFILL" invisible="false" name="Escalator handrail" no="33" noMipmap="false" rail="false" railFlangeHgt="0.013" railFlangeWid="0.15" railGauge="1.435" railHeadHgt="0.043" railHeadWid="0.073" railHgt="0.172" railType="STANDARD" railWebWid="0.016" texHorizLen="1" textureFilename="" tiesHgt="0.02" tiesLen="2.6" tiesSpac="0.6" tiesTexFilename="" tiesTexHorizLen="1" tiesType="STANDARD" tiesWid="0.26"/>
+		<displayType allSidesSame="true" anisoFilt="true" borderColor="ffa0a0a0" borderLineStyle="SOLIDLINE" curved="false" drawOrder3D="MID" fillColor="ffa0a0a0" fillStyle="SOLIDFILL" invisible="false" name="Escalator balustrade" no="34" noMipmap="false" rail="false" railFlangeHgt="0.013" railFlangeWid="0.15" railGauge="1.435" railHeadHgt="0.043" railHeadWid="0.073" railHgt="0.172" railType="STANDARD" railWebWid="0.016" texHorizLen="1" textureFilename="" tiesHgt="0.02" tiesLen="2.6" tiesSpac="0.6" tiesTexFilename="" tiesTexHorizLen="1" tiesType="STANDARD" tiesWid="0.26"/>
+		<displayType allSidesSame="true" anisoFilt="true" borderColor="ff808080" borderLineStyle="SOLIDLINE" curved="false" drawOrder3D="MID" fillColor="ff808080" fillStyle="SOLIDFILL" invisible="false" name="Escalator socket" no="35" noMipmap="false" rail="false" railFlangeHgt="0.013" railFlangeWid="0.15" railGauge="1.435" railHeadHgt="0.043" railHeadWid="0.073" railHgt="0.172" railType="STANDARD" railWebWid="0.016" texHorizLen="1" textureFilename="" tiesHgt="0.02" tiesLen="2.6" tiesSpac="0.6" tiesTexFilename="" tiesTexHorizLen="1" tiesType="STANDARD" tiesWid="0.26"/>
+		<displayType allSidesSame="true" anisoFilt="true" borderColor="ff566176" borderLineStyle="SOLIDLINE" curved="false" drawOrder3D="MID" fillColor="ff566176" fillStyle="SOLIDFILL" invisible="false" name="Elevator shaft" no="41" noMipmap="false" rail="false" railFlangeHgt="0.013" railFlangeWid="0.15" railGauge="1.435" railHeadHgt="0.043" railHeadWid="0.073" railHgt="0.172" railType="STANDARD" railWebWid="0.016" texHorizLen="1" textureFilename="" tiesHgt="0.02" tiesLen="2.6" tiesSpac="0.6" tiesTexFilename="" tiesTexHorizLen="1" tiesType="STANDARD" tiesWid="0.26"/>
+		<displayType allSidesSame="true" anisoFilt="true" borderColor="ffc0c0c0" borderLineStyle="SOLIDLINE" curved="true" drawOrder3D="MID" fillColor="ffc0c0c0" fillStyle="SOLIDFILL" invisible="false" name="Elevator door" no="42" noMipmap="false" rail="false" railFlangeHgt="0.013" railFlangeWid="0.15" railGauge="1.435" railHeadHgt="0.043" railHeadWid="0.073" railHgt="0.172" railType="STANDARD" railWebWid="0.016" texHorizLen="0.5" textureFilename="#3dmodels#Textures\Material\Structure 01 Gray Medium.png" tiesHgt="0.02" tiesLen="2.6" tiesSpac="0.6" tiesTexFilename="" tiesTexHorizLen="1" tiesType="STANDARD" tiesWid="0.26"/>
+		<displayType allSidesSame="true" anisoFilt="true" borderColor="fffff4c2" borderLineStyle="SOLIDLINE" curved="false" drawOrder3D="MID" fillColor="fffff4c2" fillStyle="SOLIDFILL" invisible="false" name="Elevator wall" no="43" noMipmap="false" rail="false" railFlangeHgt="0.013" railFlangeWid="0.15" railGauge="1.435" railHeadHgt="0.043" railHeadWid="0.073" railHgt="0.172" railType="STANDARD" railWebWid="0.016" texHorizLen="0.5" textureFilename="#3dmodels#Textures\Material\Structure 02 Cream Light.png" tiesHgt="0.02" tiesLen="2.6" tiesSpac="0.6" tiesTexFilename="" tiesTexHorizLen="1" tiesType="STANDARD" tiesWid="0.26"/>
+		<displayType allSidesSame="true" anisoFilt="true" borderColor="ff404040" borderLineStyle="SOLIDLINE" curved="true" drawOrder3D="MID" fillColor="ff404040" fillStyle="SOLIDFILL" invisible="false" name="Elevator floor" no="44" noMipmap="false" rail="false" railFlangeHgt="0.013" railFlangeWid="0.15" railGauge="1.435" railHeadHgt="0.043" railHeadWid="0.073" railHgt="0.172" railType="STANDARD" railWebWid="0.016" texHorizLen="0.6" textureFilename="#3dmodels#Textures\Material\Structure 03 Gray Dark.png" tiesHgt="0.02" tiesLen="2.6" tiesSpac="0.6" tiesTexFilename="" tiesTexHorizLen="1" tiesType="STANDARD" tiesWid="0.26"/>
+		<displayType allSidesSame="true" anisoFilt="true" borderColor="fff0f0f0" borderLineStyle="SOLIDLINE" curved="false" drawOrder3D="MID" fillColor="fff0f0f0" fillStyle="SOLIDFILL" invisible="false" name="Elevator ceiling" no="45" noMipmap="false" rail="false" railFlangeHgt="0.013" railFlangeWid="0.15" railGauge="1.435" railHeadHgt="0.043" railHeadWid="0.073" railHgt="0.172" railType="STANDARD" railWebWid="0.016" texHorizLen="1" textureFilename="#3dmodels#Textures\Material\Structure 01 White Dark.png" tiesHgt="0.02" tiesLen="2.6" tiesSpac="0.6" tiesTexFilename="" tiesTexHorizLen="1" tiesType="STANDARD" tiesWid="0.26"/>
+		<displayType allSidesSame="false" anisoFilt="true" borderColor="ff800000" borderLineStyle="SOLIDLINE" curved="false" drawOrder3D="MID" fillColor="ff800000" fillStyle="SOLIDFILL" invisible="false" name="Obstacle" no="51" noMipmap="false" rail="false" railFlangeHgt="0.013" railFlangeWid="0.15" railGauge="1.435" railHeadHgt="0.043" railHeadWid="0.073" railHgt="0.172" railType="STANDARD" railWebWid="0.016" texHorizLen="1" textureFilename="" tiesHgt="0.02" tiesLen="2.6" tiesSpac="0.6" tiesTexFilename="" tiesTexHorizLen="1" tiesType="STANDARD" tiesWid="0.26"/>
+		<displayType allSidesSame="false" anisoFilt="true" borderColor="fffff1b2" borderLineStyle="SOLIDLINE" curved="false" drawOrder3D="MID" fillColor="fffff1b2" fillStyle="NOFILL" invisible="false" name="Section" no="61" noMipmap="false" rail="false" railFlangeHgt="0.013" railFlangeWid="0.15" railGauge="1.435" railHeadHgt="0.043" railHeadWid="0.073" railHgt="0.172" railType="STANDARD" railWebWid="0.016" texHorizLen="1" textureFilename="" tiesHgt="0.02" tiesLen="2.6" tiesSpac="0.6" tiesTexFilename="" tiesTexHorizLen="1" tiesType="STANDARD" tiesWid="0.26"/>
+	</displayTypes>
+	<drivingBehaviors>
+		<drivingBehavior accDecelOwn="-1" accDecelTrail="-1" accDecelTrailFrLnChgMax="-3" accDecelTrailFrLnChgMin="-2" accDecelTrailFrLnChgRiseTm="10" acc_J="1" acc_MinGapTime="1" acc_StandSafDist="5" acc_a_cc_max="1.5" acc_a_cc_min="-2" acc_a_s="-3" acc_a_start="0.5" acc_d_s="2.5" acc_delta_res="0.5" acc_t_s_brake="10" acc_t_s_max="3" acc_t_s_min="1" acc_tau_J_minus="0.3" acc_tau_J_plus="1" acc_tau_cc="5" acc_tau_d="5" acc_tau_v="1" acc_v_res="10.8" alc_T_overtake="11" alc_T_r="1.4" alc_T_r_cancel="0.4" alc_a_d_r_acc="-3" alc_a_d_r_cancel="-3.7" alc_a_ego_d_f_acc="-4" alc_beta="0.66666666666666663" alc_delta_v_limit="30" alc_delta_v_min="5.4" alc_gamma="2" alc_lambda_LC_cancel="0.5" alc_tau_d_f_faster="0.4" alc_tau_d_f_slower="0.4" alc_tau_d_r_faster="1" alc_tau_d_r_slower="1" alc_tau_dot_ramp="0.5" alc_tau_ego_faster_direct="1" alc_v_limit_max="160" amberA="1.588581" amberB1="-0.261981" amberB2="0.269453" amberBehav="CONTINUOUSCHECK" autLnChg="false" carFollowModType="WIEDEMANN74" conflArAsInteractObj="false" consNextTurn="false" coopDecel="-3" coopLnChg="false" coopLnChgCollTm="10" coopLnChgSpeedDiff="10.8" decelRedDistOwn="100" decelRedDistTrail="100" desLatPos="MIDDLE" diamQueu="false" diffusTm="60" distractProb="0" enforcAbsBrakDist="false" freeDrivTm="11" incrsAccel="1" jerkLimit="true" latDirChgMinTm="0" latDistDrivDef="1" latDistStandDef="0.2" lnChgRule="FREELANESELECTION" lookAheadDistMax="250" lookAheadDistMin="0" lookBackDistMax="150" lookBackDistMin="0" maxDecelOwn="-4" maxDecelTrail="-3" maxNumPlatoonVeh="7" maxPlatoonApprDist="250" maxPlatoonDesSpeed="80" mesoMaxWaitTm="120" mesoReactTm="1.2" mesoStandDist="2" minCollTmGain="2" minFrontRearClear="0.5" minSpeedForLat="1" name="Urban (motorized)" no="1" numInteractObj="4" numInteractVeh="99" obsrvAdjLn="false" ovtLDef="false" ovtRDef="false" ovtRedSpeedAreas="false" platoonFollowUpGapTm="0.6" platoonMinClear="2" platoonPoss="false" rearCorr="false" rearCorrEnd="10" rearCorrMaxSpeed="3" rearCorrStart="1" recovAcc="0.4" recovDist="2000" recovSafDist="1.1" recovSlow="false" recovSpeed="0.6" redAmberBehav="GO" safDistFactLnChg="0.6" safDistFactSig="0.6" safDistFactSigEnd="100" safDistFactSigStart="100" sleepDur="0" sleepProb="0" slowLnOvt_MaxSpeed="60" slowLnOvt_MaxSpeedDiff="20" standDist="0.5" standDistIsFix="false" useImplicStoch="true" vehRoutDecLookAhead="true" w74ax="2" w74bxAdd="2" w74bxMult="3" w99cc0="1.5" w99cc1Distr="3" w99cc2="4" w99cc3="-8" w99cc4="-0.35" w99cc5="0.35" w99cc6="11.44" w99cc7="0.25" w99cc8="3.5" w99cc9="1.5" zipper="true" zipperMinSpeed="20" zipperOvtTmDistr="7"/>
+		<drivingBehavior accDecelOwn="-1" accDecelTrail="-0.5" accDecelTrailFrLnChgMax="-1" accDecelTrailFrLnChgMin="-0.9" accDecelTrailFrLnChgRiseTm="6" acc_J="1" acc_MinGapTime="1" acc_StandSafDist="5" acc_a_cc_max="1.5" acc_a_cc_min="-2" acc_a_s="-3" acc_a_start="0.5" acc_d_s="2.5" acc_delta_res="0.5" acc_t_s_brake="10" acc_t_s_max="3" acc_t_s_min="1" acc_tau_J_minus="0.3" acc_tau_J_plus="1" acc_tau_cc="5" acc_tau_d="5" acc_tau_v="1" acc_v_res="10.8" alc_T_overtake="11" alc_T_r="1.4" alc_T_r_cancel="0.4" alc_a_d_r_acc="-3" alc_a_d_r_cancel="-3.7" alc_a_ego_d_f_acc="-4" alc_beta="0.66666666666666663" alc_delta_v_limit="30" alc_delta_v_min="5.4" alc_gamma="2" alc_lambda_LC_cancel="0.5" alc_tau_d_f_faster="0.4" alc_tau_d_f_slower="0.4" alc_tau_d_r_faster="1" alc_tau_d_r_slower="1" alc_tau_dot_ramp="0.5" alc_tau_ego_faster_direct="1" alc_v_limit_max="160" amberA="1.588581" amberB1="-0.261981" amberB2="0.269453" amberBehav="CONTINUOUSCHECK" autLnChg="false" carFollowModType="WIEDEMANN99" conflArAsInteractObj="false" consNextTurn="false" coopDecel="-3" coopLnChg="false" coopLnChgCollTm="10" coopLnChgSpeedDiff="10.8" decelRedDistOwn="200" decelRedDistTrail="200" desLatPos="MIDDLE" diamQueu="false" diffusTm="60" distractProb="0" enforcAbsBrakDist="false" freeDrivTm="11" incrsAccel="1" jerkLimit="true" latDirChgMinTm="0" latDistDrivDef="1" latDistStandDef="0.2" lnChgRule="OUTSIDERULE" lookAheadDistMax="250" lookAheadDistMin="0" lookBackDistMax="150" lookBackDistMin="0" maxDecelOwn="-4" maxDecelTrail="-3" maxNumPlatoonVeh="7" maxPlatoonApprDist="250" maxPlatoonDesSpeed="80" mesoMaxWaitTm="120" mesoReactTm="1.2" mesoStandDist="2" minCollTmGain="2" minFrontRearClear="0.5" minSpeedForLat="1" name="Right-side rule (motorized)" no="2" numInteractObj="2" numInteractVeh="99" obsrvAdjLn="false" ovtLDef="false" ovtRDef="false" ovtRedSpeedAreas="false" platoonFollowUpGapTm="0.6" platoonMinClear="2" platoonPoss="false" rearCorr="false" rearCorrEnd="10" rearCorrMaxSpeed="3" rearCorrStart="1" recovAcc="0.4" recovDist="2000" recovSafDist="1.1" recovSlow="false" recovSpeed="0.6" redAmberBehav="GO" safDistFactLnChg="0.6" safDistFactSig="0.6" safDistFactSigEnd="100" safDistFactSigStart="100" sleepDur="0" sleepProb="0" slowLnOvt_MaxSpeed="60" slowLnOvt_MaxSpeedDiff="20" standDist="0.5" standDistIsFix="false" useImplicStoch="true" vehRoutDecLookAhead="true" w74ax="2" w74bxAdd="2" w74bxMult="3" w99cc0="1.5" w99cc1Distr="3" w99cc2="4" w99cc3="-8" w99cc4="-0.35" w99cc5="0.35" w99cc6="11.44" w99cc7="0.25" w99cc8="3.5" w99cc9="1.5" zipper="true" zipperMinSpeed="20" zipperOvtTmDistr="7"/>
+		<drivingBehavior accDecelOwn="-1" accDecelTrail="-0.5" accDecelTrailFrLnChgMax="-1.5" accDecelTrailFrLnChgMin="-1" accDecelTrailFrLnChgRiseTm="6" acc_J="1" acc_MinGapTime="1" acc_StandSafDist="5" acc_a_cc_max="1.5" acc_a_cc_min="-2" acc_a_s="-3" acc_a_start="0.5" acc_d_s="2.5" acc_delta_res="0.5" acc_t_s_brake="10" acc_t_s_max="3" acc_t_s_min="1" acc_tau_J_minus="0.3" acc_tau_J_plus="1" acc_tau_cc="5" acc_tau_d="5" acc_tau_v="1" acc_v_res="10.8" alc_T_overtake="11" alc_T_r="1.4" alc_T_r_cancel="0.4" alc_a_d_r_acc="-3" alc_a_d_r_cancel="-3.7" alc_a_ego_d_f_acc="-4" alc_beta="0.66666666666666663" alc_delta_v_limit="30" alc_delta_v_min="5.4" alc_gamma="2" alc_lambda_LC_cancel="0.5" alc_tau_d_f_faster="0.4" alc_tau_d_f_slower="0.4" alc_tau_d_r_faster="1" alc_tau_d_r_slower="1" alc_tau_dot_ramp="0.5" alc_tau_ego_faster_direct="1" alc_v_limit_max="160" amberA="1.588581" amberB1="-0.261981" amberB2="0.269453" amberBehav="CONTINUOUSCHECK" autLnChg="false" carFollowModType="WIEDEMANN99" conflArAsInteractObj="false" consNextTurn="false" coopDecel="-3" coopLnChg="false" coopLnChgCollTm="10" coopLnChgSpeedDiff="10.8" decelRedDistOwn="200" decelRedDistTrail="200" desLatPos="MIDDLE" diamQueu="false" diffusTm="60" distractProb="0" enforcAbsBrakDist="false" freeDrivTm="11" incrsAccel="1" jerkLimit="true" latDirChgMinTm="0" latDistDrivDef="1" latDistStandDef="0.2" lnChgRule="FREELANESELECTION" lookAheadDistMax="250" lookAheadDistMin="0" lookBackDistMax="150" lookBackDistMin="0" maxDecelOwn="-4" maxDecelTrail="-3" maxNumPlatoonVeh="7" maxPlatoonApprDist="250" maxPlatoonDesSpeed="80" mesoMaxWaitTm="120" mesoReactTm="1.2" mesoStandDist="2" minCollTmGain="2" minFrontRearClear="0.5" minSpeedForLat="1" name="Freeway (free lane selection)" no="3" numInteractObj="2" numInteractVeh="99" obsrvAdjLn="false" ovtLDef="false" ovtRDef="false" ovtRedSpeedAreas="false" platoonFollowUpGapTm="0.6" platoonMinClear="2" platoonPoss="false" rearCorr="false" rearCorrEnd="10" rearCorrMaxSpeed="3" rearCorrStart="1" recovAcc="0.4" recovDist="2000" recovSafDist="1.1" recovSlow="false" recovSpeed="0.6" redAmberBehav="GO" safDistFactLnChg="0.6" safDistFactSig="0.6" safDistFactSigEnd="100" safDistFactSigStart="100" sleepDur="0" sleepProb="0" slowLnOvt_MaxSpeed="60" slowLnOvt_MaxSpeedDiff="20" standDist="0.5" standDistIsFix="false" useImplicStoch="true" vehRoutDecLookAhead="true" w74ax="2" w74bxAdd="2" w74bxMult="3" w99cc0="1.5" w99cc1Distr="3" w99cc2="4" w99cc3="-8" w99cc4="-0.35" w99cc5="0.35" w99cc6="11.44" w99cc7="0.25" w99cc8="3.5" w99cc9="1.5" zipper="true" zipperMinSpeed="20" zipperOvtTmDistr="7"/>
+		<drivingBehavior accDecelOwn="-1" accDecelTrail="-1" accDecelTrailFrLnChgMax="-3" accDecelTrailFrLnChgMin="-2" accDecelTrailFrLnChgRiseTm="10" acc_J="1" acc_MinGapTime="1" acc_StandSafDist="5" acc_a_cc_max="1.5" acc_a_cc_min="-2" acc_a_s="-3" acc_a_start="0.5" acc_d_s="2.5" acc_delta_res="0.5" acc_t_s_brake="10" acc_t_s_max="3" acc_t_s_min="1" acc_tau_J_minus="0.3" acc_tau_J_plus="1" acc_tau_cc="5" acc_tau_d="5" acc_tau_v="1" acc_v_res="10.8" alc_T_overtake="11" alc_T_r="1.4" alc_T_r_cancel="0.4" alc_a_d_r_acc="-3" alc_a_d_r_cancel="-3.7" alc_a_ego_d_f_acc="-4" alc_beta="0.66666666666666663" alc_delta_v_limit="30" alc_delta_v_min="5.4" alc_gamma="2" alc_lambda_LC_cancel="0.5" alc_tau_d_f_faster="0.4" alc_tau_d_f_slower="0.4" alc_tau_d_r_faster="1" alc_tau_d_r_slower="1" alc_tau_dot_ramp="0.5" alc_tau_ego_faster_direct="1" alc_v_limit_max="160" amberA="1.588581" amberB1="-0.261981" amberB2="0.269453" amberBehav="CONTINUOUSCHECK" autLnChg="false" carFollowModType="NOINTERACTION" conflArAsInteractObj="false" consNextTurn="false" coopDecel="-3" coopLnChg="false" coopLnChgCollTm="10" coopLnChgSpeedDiff="10.8" decelRedDistOwn="100" decelRedDistTrail="100" desLatPos="ANY" diamQueu="false" diffusTm="60" distractProb="0" enforcAbsBrakDist="false" freeDrivTm="11" incrsAccel="1" jerkLimit="true" latDirChgMinTm="0" latDistDrivDef="1" latDistStandDef="0.2" lnChgRule="FREELANESELECTION" lookAheadDistMax="250" lookAheadDistMin="0" lookBackDistMax="150" lookBackDistMin="0" maxDecelOwn="-4" maxDecelTrail="-3" maxNumPlatoonVeh="7" maxPlatoonApprDist="250" maxPlatoonDesSpeed="80" mesoMaxWaitTm="120" mesoReactTm="1.2" mesoStandDist="2" minCollTmGain="2" minFrontRearClear="0.5" minSpeedForLat="1" name="Footpath (no interaction)" no="4" numInteractObj="2" numInteractVeh="99" obsrvAdjLn="false" ovtLDef="false" ovtRDef="false" ovtRedSpeedAreas="false" platoonFollowUpGapTm="0.6" platoonMinClear="2" platoonPoss="false" rearCorr="false" rearCorrEnd="10" rearCorrMaxSpeed="3" rearCorrStart="1" recovAcc="0.4" recovDist="2000" recovSafDist="1.1" recovSlow="false" recovSpeed="0.6" redAmberBehav="GO" safDistFactLnChg="0.6" safDistFactSig="0.6" safDistFactSigEnd="100" safDistFactSigStart="100" sleepDur="0" sleepProb="0" slowLnOvt_MaxSpeed="60" slowLnOvt_MaxSpeedDiff="20" standDist="0.5" standDistIsFix="false" useImplicStoch="true" vehRoutDecLookAhead="true" w74ax="2" w74bxAdd="2" w74bxMult="3" w99cc0="1.5" w99cc1Distr="3" w99cc2="4" w99cc3="-8" w99cc4="-0.35" w99cc5="0.35" w99cc6="11.44" w99cc7="0.25" w99cc8="3.5" w99cc9="1.5" zipper="false" zipperMinSpeed="20" zipperOvtTmDistr="7"/>
+		<drivingBehavior accDecelOwn="-1" accDecelTrail="-1" accDecelTrailFrLnChgMax="-1" accDecelTrailFrLnChgMin="-0.5" accDecelTrailFrLnChgRiseTm="3" acc_J="1" acc_MinGapTime="1" acc_StandSafDist="5" acc_a_cc_max="1.5" acc_a_cc_min="-2" acc_a_s="-3" acc_a_start="0.5" acc_d_s="2.5" acc_delta_res="0.5" acc_t_s_brake="10" acc_t_s_max="3" acc_t_s_min="1" acc_tau_J_minus="0.3" acc_tau_J_plus="1" acc_tau_cc="5" acc_tau_d="5" acc_tau_v="1" acc_v_res="10.8" alc_T_overtake="11" alc_T_r="1.4" alc_T_r_cancel="0.4" alc_a_d_r_acc="-3" alc_a_d_r_cancel="-3.7" alc_a_ego_d_f_acc="-4" alc_beta="0.66666666666666663" alc_delta_v_limit="30" alc_delta_v_min="5.4" alc_gamma="2" alc_lambda_LC_cancel="0.5" alc_tau_d_f_faster="0.4" alc_tau_d_f_slower="0.4" alc_tau_d_r_faster="1" alc_tau_d_r_slower="1" alc_tau_dot_ramp="0.5" alc_tau_ego_faster_direct="1" alc_v_limit_max="160" amberA="1.588581" amberB1="-0.261981" amberB2="0.269453" amberBehav="CONTINUOUSCHECK" autLnChg="false" carFollowModType="WIEDEMANN99" conflArAsInteractObj="false" consNextTurn="false" coopDecel="-3" coopLnChg="false" coopLnChgCollTm="10" coopLnChgSpeedDiff="10.8" decelRedDistOwn="100" decelRedDistTrail="100" desLatPos="ANY" diamQueu="true" diffusTm="60" distractProb="0" enforcAbsBrakDist="false" freeDrivTm="11" incrsAccel="1" jerkLimit="true" latDirChgMinTm="3" latDistDrivDef="0.4" latDistStandDef="0.15" lnChgRule="FREELANESELECTION" lookAheadDistMax="250" lookAheadDistMin="50" lookBackDistMax="150" lookBackDistMin="30" maxDecelOwn="-4" maxDecelTrail="-3" maxNumPlatoonVeh="7" maxPlatoonApprDist="250" maxPlatoonDesSpeed="80" mesoMaxWaitTm="120" mesoReactTm="1.2" mesoStandDist="2" minCollTmGain="2" minFrontRearClear="0.5" minSpeedForLat="4" name="Cycle-Track (free overtaking)" no="5" numInteractObj="10" numInteractVeh="99" obsrvAdjLn="false" ovtLDef="true" ovtRDef="true" ovtRedSpeedAreas="false" platoonFollowUpGapTm="0.6" platoonMinClear="2" platoonPoss="false" reactTmDistr="3" rearCorr="false" rearCorrEnd="10" rearCorrMaxSpeed="3" rearCorrStart="1" recovAcc="0.4" recovDist="200" recovSafDist="1.1" recovSlow="false" recovSpeed="0.6" redAmberBehav="GO" safDistFactLnChg="0.6" safDistFactSig="0.6" safDistFactSigEnd="0.1" safDistFactSigStart="3" sleepDur="0" sleepProb="0" slowLnOvt_MaxSpeed="60" slowLnOvt_MaxSpeedDiff="20" standDist="0.5" standDistIsFix="false" useImplicStoch="true" vehRoutDecLookAhead="true" w74ax="2" w74bxAdd="2" w74bxMult="3" w99cc0="0.6" w99cc1Distr="1" w99cc2="0" w99cc3="-8" w99cc4="-0.35" w99cc5="0.35" w99cc6="11.44" w99cc7="0.25" w99cc8="9" w99cc9="0" zipper="false" zipperMinSpeed="20" zipperOvtTmDistr="7"/>
+		<drivingBehavior accDecelOwn="-1" accDecelTrail="-1" accDecelTrailFrLnChgMax="-3" accDecelTrailFrLnChgMin="-2" accDecelTrailFrLnChgRiseTm="10" acc_J="1" acc_MinGapTime="1" acc_StandSafDist="5" acc_a_cc_max="1.5" acc_a_cc_min="-2" acc_a_s="-3" acc_a_start="0.5" acc_d_s="2.5" acc_delta_res="0.5" acc_t_s_brake="10" acc_t_s_max="3" acc_t_s_min="1" acc_tau_J_minus="0.3" acc_tau_J_plus="1" acc_tau_cc="5" acc_tau_d="5" acc_tau_v="1" acc_v_res="10.8" alc_T_overtake="11" alc_T_r="1.4" alc_T_r_cancel="0.4" alc_a_d_r_acc="-3" alc_a_d_r_cancel="-3.7" alc_a_ego_d_f_acc="-4" alc_beta="0.66666666666666663" alc_delta_v_limit="30" alc_delta_v_min="5.4" alc_gamma="2" alc_lambda_LC_cancel="0.5" alc_tau_d_f_faster="0.4" alc_tau_d_f_slower="0.4" alc_tau_d_r_faster="1" alc_tau_d_r_slower="1" alc_tau_dot_ramp="0.5" alc_tau_ego_faster_direct="1" alc_v_limit_max="160" amberA="1.588581" amberB1="-0.261981" amberB2="0.269453" amberBehav="CONTINUOUSCHECK" autLnChg="false" carFollowModType="ACC" conflArAsInteractObj="false" consNextTurn="false" coopDecel="-3" coopLnChg="false" coopLnChgCollTm="10" coopLnChgSpeedDiff="10.8" decelRedDistOwn="100" decelRedDistTrail="100" desLatPos="MIDDLE" diamQueu="false" diffusTm="60" distractProb="0" enforcAbsBrakDist="false" freeDrivTm="11" incrsAccel="1" jerkLimit="true" latDirChgMinTm="0" latDistDrivDef="1" latDistStandDef="0.2" lnChgRule="FREELANESELECTION" lookAheadDistMax="250" lookAheadDistMin="0" lookBackDistMax="150" lookBackDistMin="0" maxDecelOwn="-4" maxDecelTrail="-3" maxNumPlatoonVeh="7" maxPlatoonApprDist="250" maxPlatoonDesSpeed="80" mesoMaxWaitTm="120" mesoReactTm="1.2" mesoStandDist="2" minCollTmGain="2" minFrontRearClear="0.5" minSpeedForLat="1" name="ACC free lane selection" no="6" numInteractObj="4" numInteractVeh="2" obsrvAdjLn="false" ovtLDef="false" ovtRDef="false" ovtRedSpeedAreas="false" platoonFollowUpGapTm="0.6" platoonMinClear="2" platoonPoss="false" rearCorr="false" rearCorrEnd="10" rearCorrMaxSpeed="3" rearCorrStart="1" recovAcc="0.4" recovDist="2000" recovSafDist="1.1" recovSlow="false" recovSpeed="0.6" redAmberBehav="GO" safDistFactLnChg="0.6" safDistFactSig="0.6" safDistFactSigEnd="100" safDistFactSigStart="100" sleepDur="0" sleepProb="0" slowLnOvt_MaxSpeed="60" slowLnOvt_MaxSpeedDiff="20" standDist="0.5" standDistIsFix="false" useImplicStoch="false" vehRoutDecLookAhead="true" w74ax="2" w74bxAdd="2" w74bxMult="3" w99cc0="1.5" w99cc1Distr="3" w99cc2="4" w99cc3="-8" w99cc4="-0.35" w99cc5="0.35" w99cc6="11.44" w99cc7="0.25" w99cc8="3.5" w99cc9="1.5" zipper="true" zipperMinSpeed="20" zipperOvtTmDistr="7"/>
+		<drivingBehavior accDecelOwn="-1" accDecelTrail="-0.5" accDecelTrailFrLnChgMax="-1" accDecelTrailFrLnChgMin="-0.9" accDecelTrailFrLnChgRiseTm="6" acc_J="1" acc_MinGapTime="1" acc_StandSafDist="5" acc_a_cc_max="1.5" acc_a_cc_min="-2" acc_a_s="-3" acc_a_start="0.5" acc_d_s="2.5" acc_delta_res="0.5" acc_t_s_brake="10" acc_t_s_max="3" acc_t_s_min="1" acc_tau_J_minus="0.3" acc_tau_J_plus="1" acc_tau_cc="5" acc_tau_d="5" acc_tau_v="1" acc_v_res="10.8" alc_T_overtake="11" alc_T_r="1.4" alc_T_r_cancel="0.4" alc_a_d_r_acc="-3" alc_a_d_r_cancel="-3.7" alc_a_ego_d_f_acc="-4" alc_beta="0.66666666666666663" alc_delta_v_limit="30" alc_delta_v_min="5.4" alc_gamma="2" alc_lambda_LC_cancel="0.5" alc_tau_d_f_faster="0.4" alc_tau_d_f_slower="0.4" alc_tau_d_r_faster="1" alc_tau_d_r_slower="1" alc_tau_dot_ramp="0.5" alc_tau_ego_faster_direct="1" alc_v_limit_max="160" amberA="1.588581" amberB1="-0.261981" amberB2="0.269453" amberBehav="CONTINUOUSCHECK" autLnChg="false" carFollowModType="ACC" conflArAsInteractObj="false" consNextTurn="false" coopDecel="-3" coopLnChg="false" coopLnChgCollTm="10" coopLnChgSpeedDiff="10.8" decelRedDistOwn="200" decelRedDistTrail="200" desLatPos="MIDDLE" diamQueu="false" diffusTm="60" distractProb="0" enforcAbsBrakDist="false" freeDrivTm="11" incrsAccel="1" jerkLimit="true" latDirChgMinTm="0" latDistDrivDef="1" latDistStandDef="0.2" lnChgRule="OUTSIDERULE" lookAheadDistMax="250" lookAheadDistMin="0" lookBackDistMax="150" lookBackDistMin="0" maxDecelOwn="-4" maxDecelTrail="-3" maxNumPlatoonVeh="7" maxPlatoonApprDist="250" maxPlatoonDesSpeed="80" mesoMaxWaitTm="120" mesoReactTm="1.2" mesoStandDist="2" minCollTmGain="2" minFrontRearClear="0.5" minSpeedForLat="1" name="ACC right-side rule" no="7" numInteractObj="4" numInteractVeh="2" obsrvAdjLn="false" ovtLDef="false" ovtRDef="false" ovtRedSpeedAreas="false" platoonFollowUpGapTm="0.6" platoonMinClear="2" platoonPoss="false" rearCorr="false" rearCorrEnd="10" rearCorrMaxSpeed="3" rearCorrStart="1" recovAcc="0.4" recovDist="2000" recovSafDist="1.1" recovSlow="false" recovSpeed="0.6" redAmberBehav="GO" safDistFactLnChg="0.6" safDistFactSig="0.6" safDistFactSigEnd="100" safDistFactSigStart="100" sleepDur="0" sleepProb="0" slowLnOvt_MaxSpeed="60" slowLnOvt_MaxSpeedDiff="20" standDist="0.5" standDistIsFix="false" useImplicStoch="false" vehRoutDecLookAhead="true" w74ax="2" w74bxAdd="2" w74bxMult="3" w99cc0="1.5" w99cc1Distr="3" w99cc2="4" w99cc3="-8" w99cc4="-0.35" w99cc5="0.35" w99cc6="11.44" w99cc7="0.25" w99cc8="3.5" w99cc9="1.5" zipper="true" zipperMinSpeed="20" zipperOvtTmDistr="7"/>
+		<drivingBehavior accDecelOwn="-1" accDecelTrail="-0.5" accDecelTrailFrLnChgMax="-1" accDecelTrailFrLnChgMin="-0.9" accDecelTrailFrLnChgRiseTm="6" acc_J="1" acc_MinGapTime="1" acc_StandSafDist="5" acc_a_cc_max="1.5" acc_a_cc_min="-2" acc_a_s="-3" acc_a_start="0.5" acc_d_s="2.5" acc_delta_res="0.5" acc_t_s_brake="10" acc_t_s_max="3" acc_t_s_min="1" acc_tau_J_minus="0.3" acc_tau_J_plus="1" acc_tau_cc="5" acc_tau_d="5" acc_tau_v="1" acc_v_res="10.8" alc_T_overtake="11" alc_T_r="1.4" alc_T_r_cancel="0.4" alc_a_d_r_acc="-3" alc_a_d_r_cancel="-3.7" alc_a_ego_d_f_acc="-4" alc_beta="0.66666666666666663" alc_delta_v_limit="30" alc_delta_v_min="5.4" alc_gamma="2" alc_lambda_LC_cancel="0.5" alc_tau_d_f_faster="0.4" alc_tau_d_f_slower="0.4" alc_tau_d_r_faster="1" alc_tau_d_r_slower="1" alc_tau_dot_ramp="0.5" alc_tau_ego_faster_direct="1" alc_v_limit_max="160" amberA="1.588581" amberB1="-0.261981" amberB2="0.269453" amberBehav="CONTINUOUSCHECK" autLnChg="true" carFollowModType="ACC" conflArAsInteractObj="false" consNextTurn="false" coopDecel="-3" coopLnChg="false" coopLnChgCollTm="10" coopLnChgSpeedDiff="10.8" decelRedDistOwn="200" decelRedDistTrail="200" desLatPos="MIDDLE" diamQueu="false" diffusTm="60" distractProb="0" enforcAbsBrakDist="false" freeDrivTm="11" incrsAccel="1" jerkLimit="true" latDirChgMinTm="0" latDistDrivDef="1" latDistStandDef="0.2" lnChgDurDistr="8" lnChgRule="OUTSIDERULE" lookAheadDistMax="250" lookAheadDistMin="0" lookBackDistMax="150" lookBackDistMin="0" maxDecelOwn="-4" maxDecelTrail="-3" maxNumPlatoonVeh="7" maxPlatoonApprDist="250" maxPlatoonDesSpeed="80" mesoMaxWaitTm="120" mesoReactTm="1.2" mesoStandDist="2" minCollTmGain="2" minFrontRearClear="0.5" minSpeedForLat="1" name="ACC right-side rule (automatic)" no="8" numInteractObj="4" numInteractVeh="2" obsrvAdjLn="false" ovtLDef="false" ovtRDef="false" ovtRedSpeedAreas="false" platoonFollowUpGapTm="0.6" platoonMinClear="2" platoonPoss="false" rearCorr="false" rearCorrEnd="10" rearCorrMaxSpeed="3" rearCorrStart="1" recovAcc="0.4" recovDist="2000" recovSafDist="1.1" recovSlow="false" recovSpeed="0.6" redAmberBehav="GO" safDistFactLnChg="0.6" safDistFactSig="0.6" safDistFactSigEnd="100" safDistFactSigStart="100" sleepDur="0" sleepProb="0" slowLnOvt_MaxSpeed="60" slowLnOvt_MaxSpeedDiff="20" standDist="0.5" standDistIsFix="false" useImplicStoch="false" vehRoutDecLookAhead="true" w74ax="2" w74bxAdd="2" w74bxMult="3" w99cc0="1.5" w99cc1Distr="3" w99cc2="4" w99cc3="-8" w99cc4="-0.35" w99cc5="0.35" w99cc6="11.44" w99cc7="0.25" w99cc8="3.5" w99cc9="1.5" zipper="false" zipperMinSpeed="20" zipperOvtTmDistr="7"/>
+	</drivingBehaviors>
+	<dynamicAssignment altPathSearchEdgPenSpread="0.5" altPathSearchNumPasses="5" avoidDetours="false" avoidDetoursFact="2.5" chkConvgTravTmEdg="false" chkConvgTravTmPaths="false" chkConvgVolEdg="false" chkEdgOnReadingCostFile="true" chkEdgOnReadingPathFile="true" convgBehav="ASKMULTIRUN" convgEdgLenMin="20" convgTravTmEdgPerc="0.15" convgTravTmPathsPerc="0.15" convgVolEdg="15" correctOverlappingPaths="false" costCalcInt="PREVIOUSSIMRUN" costFile="" createArchiveFiles="true" evalInt="600" expSmoothingFact="0.2" kirchExp="3.5" logitLowerLimit="0.001" logitScalingFact="1.5" msaPreviousIterations="0" pathFile="" pathSelMethod="STOCHASTICKIRCHHOFF" pathSelType="DECIDEATSTARTONLY" pathsForZeroVols="false" pathsLimitMaxNumPaths="999" pathsLimitNumPaths="false" pathsRejectCostPerc="0.75" pathsRejectHighCost="false" reqNumConvSimRuns="1" reqShareConvEdgTravTm="0.95" reqShareConvEdgVol="0.95" reqShareConvPathTravTm="0.95" scaleTotVol="false" scaleTotVolPerc="1" searchAltPaths="false" searchNewPaths="true" smoothing="EXPSMOOTHING" storeCosts="true" storePathsAndVols="true" travTmCalcMethod="EDGETRAVELTIMES" tripChainFile="" useAltPathSearchForAllRels="false" useMatrices="false" useTripChains="false">
+		<matrixCorrectionParameters/>
+		<routGuid1 interval="999999" offset="0" strategy="NEWROUTETODESTINATIONPARKINGLOT"/>
+		<routGuid2 interval="999999" offset="0" strategy="NEWROUTETODESTINATIONPARKINGLOT"/>
+	</dynamicAssignment>
+	<evaluation autoCreateResultColumns="true" boschEmiCalcAct="false" databaseConnection="" evalOutDir="#data#" harshDecel="-4" keepPrevResults="KEEPALL" listAutoExportType="FILE" nodesDelaySegmentStart="100" pet="5" queueBeginSpeed="5" queueConsiderAdjacentLanes="true" queueEndSpeed="10" queueMaxClear="20" queueMaxLength="500" ttc="1.5">
+		<areaMeasRawData fromTime="0" toTime="99999" writeFile="false"/>
+		<areaMeasResults collectData="false" fromTime="0" interval="99999" toTime="99999"/>
+		<areaResults collectData="false" fromTime="0" interval="99999" toTime="99999"/>
+		<convergence writeFile="false"/>
+		<dataColl collectData="false" fromTime="0" interval="99999" toTime="99999"/>
+		<dataCollRawData fromTime="0" toTime="99999" writeFile="false"/>
+		<delays collectData="false" fromTime="0" interval="99999" toTime="99999"/>
+		<dischRec fromTime="0" toTime="99999" writeFile="false"/>
+		<greenTimeDistribution fromTime="0" toTime="99999" writeFile="false"/>
+		<incidents fromTime="0" oscExportActive="false" oscExportIncTypes="" oscExportRad="100" oscExportTmWin="15" toTime="99999" writeFile="false"/>
+		<linkResults collectData="false" fromTime="0" interval="99999" perLane="false" toTime="99999"/>
+		<lnChgs filterType="ALL" fromTime="0" toTime="99999" writeFile="false"/>
+		<mesoEvaluationConfig collectData="false" fromTime="0" interval="99999" toTime="99999"/>
+		<nodeRawData fromTime="0" toTime="99999" writeDatabase="false" writeFile="false"/>
+		<nodeResults collectData="false" fromTime="0" interval="99999" toTime="99999"/>
+		<odPairs collectData="false" fromTime="0" interval="99999" toTime="99999"/>
+		<ptWaitingTimes writeFile="false"/>
+		<parkLotGrps collectData="false" fromTime="0" interval="99999" toTime="99999"/>
+		<parkLots collectData="false" fromTime="0" interval="99999" toTime="99999"/>
+		<parkRoutDecs collectData="false" fromTime="0" interval="99999" toTime="99999"/>
+		<parkSpcs collectData="false" fromTime="0" interval="99999" toTime="99999"/>
+		<pedGridCell cellSize="1" collectData="false" collectOnlyLastInterval="false" fromTime="0" interval="99999" rangeOfInfluence="1" toTime="99999"/>
+		<pedNetPerf collectData="false" fromTime="0" interval="99999" toTime="99999"/>
+		<pedRec filterType="ALL" fromTime="0" resolution="1" toTime="99999" writeDatabase="false" writeFile="false">
+			<selectedAttributes>
+				<attributeSelection attributeID="SIMSEC" decimals="2" format="SECONDS" showUnits="false"/>
+				<attributeSelection attributeID="NO" decimals="0" format="DEFAULT" showUnits="false"/>
+				<attributeSelection attributeID="CONSTRELTYPE" decimals="0" format="DEFAULT" showUnits="false"/>
+				<attributeSelection attributeID="CONSTRELNO" decimals="0" format="DEFAULT" showUnits="false"/>
+			</selectedAttributes>
+		</pedRec>
+		<pedTravTmODData fromTime="0" interval="99999" toTime="99999" writeFile="false"/>
+		<pedTravTmRawData fromTime="0" toTime="99999" writeFile="false"/>
+		<pedTravTms collectData="false" fromTime="0" interval="99999" toTime="99999"/>
+		<queues collectData="false" fromTime="0" interval="99999" toTime="99999"/>
+		<scDetRec writeFile="false"/>
+		<ssam fromTime="0" toTime="99999" writeFile="false"/>
+		<sigChgs writeDatabase="false" writeFile="false"/>
+		<vehInpData writeFile="false"/>
+		<vehInps collectData="false" fromTime="0" interval="99999" toTime="99999"/>
+		<vehNetPerf collectData="false" fromTime="0" incidDetAct="false" interval="99999" toTime="99999"/>
+		<vehRec filterType="ALL" fromTime="0" inclParkVehs="false" resolution="1" toTime="99999" writeDatabase="false" writeFile="false">
+			<selectedAttributes>
+				<attributeSelection attributeID="SIMSEC" decimals="2" format="SECONDS" showUnits="false"/>
+				<attributeSelection attributeID="NO" decimals="0" format="DEFAULT" showUnits="false"/>
+				<attributeSelection attributeID="LANE\LINK\NO" decimals="0" format="DEFAULT" showUnits="false"/>
+				<attributeSelection attributeID="LANE\INDEX" decimals="0" format="DEFAULT" showUnits="false"/>
+				<attributeSelection attributeID="POS" decimals="2" format="DEFAULT" showUnits="false"/>
+				<attributeSelection attributeID="POSLAT" decimals="2" format="DEFAULT" showUnits="false"/>
+			</selectedAttributes>
+		</vehRec>
+		<vehTravTmRawData fromTime="0" toTime="99999" writeDatabase="false" writeFile="false"/>
+		<vehTravTms aggrBySect="DESTINATION" collectData="false" fromTime="0" interval="99999" toTime="99999"/>
+	</evaluation>
+	<laneMarkingTypes>
+		<laneMarkingType name="Dashed 300/300" no="1">
+			<lineStyle color="fff0f0f0" gapLen="3" lineLen="3" lineWid="0.12"/>
+		</laneMarkingType>
+		<laneMarkingType name="Dashed 150/150" no="2">
+			<lineStyle color="fff0f0f0" gapLen="1.5" lineLen="1.5" lineWid="0.12"/>
+		</laneMarkingType>
+		<laneMarkingType name="Dashed 400/800" no="3">
+			<lineStyle color="fff0f0f0" gapLen="8" lineLen="4" lineWid="0.12"/>
+		</laneMarkingType>
+		<laneMarkingType name="Dashed 600/900" no="4">
+			<lineStyle color="fff0f0f0" gapLen="9" lineLen="6" lineWid="0.15"/>
+		</laneMarkingType>
+		<laneMarkingType name="Dashed 300/300 (bold)" no="11">
+			<lineStyle color="fff0f0f0" gapLen="3" lineLen="3" lineWid="0.25"/>
+		</laneMarkingType>
+		<laneMarkingType name="Dashed 600/600 (bold)" no="12">
+			<lineStyle color="fff0f0f0" gapLen="6" lineLen="6" lineWid="0.3"/>
+		</laneMarkingType>
+		<laneMarkingType name="Dashed 50/20" no="21">
+			<lineStyle color="fff0f0f0" gapLen="0.2" lineLen="0.5" lineWid="0.12"/>
+		</laneMarkingType>
+		<laneMarkingType name="Dashed 50/20 (bold)" no="22">
+			<lineStyle color="fff0f0f0" gapLen="0.2" lineLen="0.5" lineWid="0.25"/>
+		</laneMarkingType>
+		<laneMarkingType name="Solid 12" no="31">
+			<lineStyle color="fff0f0f0" gapLen="0" lineLen="10" lineWid="0.12"/>
+		</laneMarkingType>
+		<laneMarkingType name="Solid 15" no="32">
+			<lineStyle color="fff0f0f0" gapLen="0" lineLen="10" lineWid="0.15"/>
+		</laneMarkingType>
+		<laneMarkingType name="Solid 25" no="33">
+			<lineStyle color="fff0f0f0" gapLen="0" lineLen="10" lineWid="0.25"/>
+		</laneMarkingType>
+		<laneMarkingType name="Solid 30" no="34">
+			<lineStyle color="fff0f0f0" gapLen="0" lineLen="10" lineWid="0.3"/>
+		</laneMarkingType>
+	</laneMarkingTypes>
+	<levels>
+		<level name="Base" no="1" zCoord="0"/>
+	</levels>
+	<linkBehaviorTypes>
+		<linkBehaviorType anmFlag="false" drivBehavDef="1" name="Urban (motorized)" no="1"/>
+		<linkBehaviorType anmFlag="false" drivBehavDef="2" name="Right-side rule (motorized)" no="2"/>
+		<linkBehaviorType anmFlag="false" drivBehavDef="3" name="Freeway (free lane selection)" no="3"/>
+		<linkBehaviorType anmFlag="false" drivBehavDef="4" name="Footpath (no interaction)" no="4"/>
+		<linkBehaviorType anmFlag="false" drivBehavDef="5" name="Cycle-Track (free overtaking)" no="5"/>
+	</linkBehaviorTypes>
+	<locationDistributions>
+		<locationDistribution name="Uniform" no="1">
+			<distrDataPts>
+				<distributionDataPoint fx="0" x="0"/>
+				<distributionDataPoint fx="1" x="1"/>
+			</distrDataPts>
+		</locationDistribution>
+		<locationDistribution name="Center" no="2">
+			<distrDataPts>
+				<distributionDataPoint fx="0" x="0"/>
+				<distributionDataPoint fx="0.2" x="0.3"/>
+				<distributionDataPoint fx="0.8" x="0.7"/>
+				<distributionDataPoint fx="1" x="1"/>
+			</distrDataPts>
+		</locationDistribution>
+		<locationDistribution name="Front" no="3">
+			<distrDataPts>
+				<distributionDataPoint fx="0" x="0"/>
+				<distributionDataPoint fx="0.8" x="0.3"/>
+				<distributionDataPoint fx="1" x="1"/>
+			</distrDataPts>
+		</locationDistribution>
+		<locationDistribution name="Rear" no="4">
+			<distrDataPts>
+				<distributionDataPoint fx="0" x="0"/>
+				<distributionDataPoint fx="0.2" x="0.7"/>
+				<distributionDataPoint fx="1" x="1"/>
+			</distrDataPts>
+		</locationDistribution>
+		<locationDistribution name="Front and Rear" no="5">
+			<distrDataPts>
+				<distributionDataPoint fx="0" x="0"/>
+				<distributionDataPoint fx="0.4" x="0.3"/>
+				<distributionDataPoint fx="0.6" x="0.7"/>
+				<distributionDataPoint fx="1" x="1"/>
+			</distrDataPts>
+		</locationDistribution>
+	</locationDistributions>
+	<maxAccelerationFunctions>
+		<maxAccelerationFunction name="Car" no="1">
+			<accelFuncDataPts>
+				<accelerationFunctionDataPoint x="0" y="3.5" yMax="3.5" yMin="1.96"/>
+				<accelerationFunctionDataPoint x="10" y="3.2" yMax="3.5" yMin="1.493"/>
+				<accelerationFunctionDataPoint x="20" y="2.786" yMax="3.5" yMin="1.3"/>
+				<accelerationFunctionDataPoint x="30" y="2.468" yMax="3.5" yMin="1.152"/>
+				<accelerationFunctionDataPoint x="40" y="2.2" yMax="3.5" yMin="1.027"/>
+				<accelerationFunctionDataPoint x="50" y="1.964" yMax="3.273" yMin="0.917"/>
+				<accelerationFunctionDataPoint x="60" y="1.751" yMax="2.918" yMin="0.817"/>
+				<accelerationFunctionDataPoint x="70" y="1.554" yMax="2.59" yMin="0.725"/>
+				<accelerationFunctionDataPoint x="80" y="1.372" yMax="2.286" yMin="0.64"/>
+				<accelerationFunctionDataPoint x="90" y="1.2" yMax="2" yMin="0.56"/>
+				<accelerationFunctionDataPoint x="100" y="1.038" yMax="1.73" yMin="0.484"/>
+				<accelerationFunctionDataPoint x="110" y="0.969" yMax="1.614" yMin="0.452"/>
+				<accelerationFunctionDataPoint x="120" y="0.899" yMax="1.499" yMin="0.42"/>
+				<accelerationFunctionDataPoint x="130" y="0.83" yMax="1.384" yMin="0.387"/>
+				<accelerationFunctionDataPoint x="140" y="0.761" yMax="1.268" yMin="0.355"/>
+				<accelerationFunctionDataPoint x="150" y="0.692" yMax="1.153" yMin="0.323"/>
+				<accelerationFunctionDataPoint x="160" y="0.623" yMax="1.038" yMin="0.291"/>
+				<accelerationFunctionDataPoint x="170" y="0.553" yMax="0.922" yMin="0.258"/>
+				<accelerationFunctionDataPoint x="180" y="0.484" yMax="0.807" yMin="0.226"/>
+				<accelerationFunctionDataPoint x="190" y="0.415" yMax="0.692" yMin="0.194"/>
+				<accelerationFunctionDataPoint x="200" y="0.346" yMax="0.577" yMin="0.161"/>
+				<accelerationFunctionDataPoint x="210" y="0.277" yMax="0.461" yMin="0.129"/>
+				<accelerationFunctionDataPoint x="220" y="0.208" yMax="0.346" yMin="0.097"/>
+				<accelerationFunctionDataPoint x="230" y="0.138" yMax="0.231" yMin="0.065"/>
+				<accelerationFunctionDataPoint x="240" y="0.069" yMax="0.115" yMin="0.032"/>
+				<accelerationFunctionDataPoint x="250" y="0" yMax="0" yMin="0"/>
+			</accelFuncDataPts>
+		</maxAccelerationFunction>
+		<maxAccelerationFunction name="HGV" no="2">
+			<accelFuncDataPts>
+				<accelerationFunctionDataPoint x="0" y="7.3" yMax="9.3" yMin="2.5"/>
+				<accelerationFunctionDataPoint x="10" y="6.9" yMax="9.3" yMin="2.4"/>
+				<accelerationFunctionDataPoint x="20" y="3.1" yMax="5.2" yMin="1.12"/>
+				<accelerationFunctionDataPoint x="30" y="2" yMax="3.2" yMin="0.73"/>
+				<accelerationFunctionDataPoint x="40" y="1.52" yMax="2.35" yMin="0.53"/>
+				<accelerationFunctionDataPoint x="50" y="0.95" yMax="1.55" yMin="0.32"/>
+				<accelerationFunctionDataPoint x="60" y="0.79" yMax="1.31" yMin="0.25"/>
+				<accelerationFunctionDataPoint x="70" y="0.64" yMax="1.1" yMin="0.19"/>
+				<accelerationFunctionDataPoint x="80" y="0.52" yMax="0.9" yMin="0.15"/>
+				<accelerationFunctionDataPoint x="90" y="0.41" yMax="0.75" yMin="0.11"/>
+				<accelerationFunctionDataPoint x="100" y="0.35" yMax="0.65" yMin="0.08"/>
+				<accelerationFunctionDataPoint x="110" y="0.2" yMax="0.55" yMin="0"/>
+				<accelerationFunctionDataPoint x="120" y="0" yMax="0.1" yMin="0"/>
+				<accelerationFunctionDataPoint x="130" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="140" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="150" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="160" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="170" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="180" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="190" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="200" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="210" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="220" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="230" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="240" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="250" y="0" yMax="0" yMin="0"/>
+			</accelFuncDataPts>
+		</maxAccelerationFunction>
+		<maxAccelerationFunction name="Bus" no="3">
+			<accelFuncDataPts>
+				<accelerationFunctionDataPoint x="0" y="1.24" yMax="1.488" yMin="1.042"/>
+				<accelerationFunctionDataPoint x="10" y="1.24" yMax="1.488" yMin="1.042"/>
+				<accelerationFunctionDataPoint x="20" y="1.24" yMax="1.488" yMin="1.042"/>
+				<accelerationFunctionDataPoint x="30" y="1.24" yMax="1.488" yMin="1.042"/>
+				<accelerationFunctionDataPoint x="40" y="1.1" yMax="1.32" yMin="0.924"/>
+				<accelerationFunctionDataPoint x="50" y="1" yMax="1.2" yMin="0.84"/>
+				<accelerationFunctionDataPoint x="60" y="0.9" yMax="1.08" yMin="0.756"/>
+				<accelerationFunctionDataPoint x="70" y="0.8" yMax="0.96" yMin="0.672"/>
+				<accelerationFunctionDataPoint x="80" y="0.6" yMax="0.72" yMin="0.504"/>
+				<accelerationFunctionDataPoint x="90" y="0.4" yMax="0.48" yMin="0.336"/>
+				<accelerationFunctionDataPoint x="100" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="110" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="120" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="130" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="140" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="150" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="160" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="170" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="180" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="190" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="200" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="210" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="220" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="230" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="240" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="250" y="0" yMax="0" yMin="0"/>
+			</accelFuncDataPts>
+		</maxAccelerationFunction>
+		<maxAccelerationFunction name="Tram" no="4">
+			<accelFuncDataPts>
+				<accelerationFunctionDataPoint x="0" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="10" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="20" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="30" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="40" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="50" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="60" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="70" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="80" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="90" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="100" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="110" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="120" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="130" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="140" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="150" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="160" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="170" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="180" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="190" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="200" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="210" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="220" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="230" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="240" y="1" yMax="1" yMin="1"/>
+				<accelerationFunctionDataPoint x="250" y="0" yMax="0" yMin="0"/>
+			</accelFuncDataPts>
+		</maxAccelerationFunction>
+		<maxAccelerationFunction name="Pedestrian" no="5">
+			<accelFuncDataPts>
+				<accelerationFunctionDataPoint x="0" y="3" yMax="3" yMin="3"/>
+				<accelerationFunctionDataPoint x="10" y="3" yMax="3" yMin="3"/>
+				<accelerationFunctionDataPoint x="20" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="30" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="40" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="50" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="60" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="70" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="80" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="90" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="100" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="110" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="120" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="130" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="140" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="150" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="160" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="170" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="180" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="190" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="200" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="210" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="220" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="230" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="240" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="250" y="0" yMax="0" yMin="0"/>
+			</accelFuncDataPts>
+		</maxAccelerationFunction>
+		<maxAccelerationFunction name="Bike (short-term maximum acceleration)" no="6">
+			<accelFuncDataPts>
+				<accelerationFunctionDataPoint x="0" y="1.602034266" yMax="2.2020342660000001" yMin="1.0020342659999999"/>
+				<accelerationFunctionDataPoint x="1" y="1.602034266" yMax="2.2020342660000001" yMin="1.0020342659999999"/>
+				<accelerationFunctionDataPoint x="2" y="1.602034266" yMax="2.2020342660000001" yMin="1.0020342659999999"/>
+				<accelerationFunctionDataPoint x="3" y="1.602034266" yMax="2.2020342660000001" yMin="1.0020342659999999"/>
+				<accelerationFunctionDataPoint x="4" y="1.602034266" yMax="2.2020342660000001" yMin="1.0020342659999999"/>
+				<accelerationFunctionDataPoint x="5" y="1.602034266" yMax="2.2020342660000001" yMin="1.0020342659999999"/>
+				<accelerationFunctionDataPoint x="6" y="1.602034266" yMax="2.2020342660000001" yMin="1.0020342659999999"/>
+				<accelerationFunctionDataPoint x="7" y="1.602034266" yMax="2.0998160160000001" yMin="1.0020342659999999"/>
+				<accelerationFunctionDataPoint x="8" y="1.438438074" yMax="1.8240495329999999" yMin="1.0020342659999999"/>
+				<accelerationFunctionDataPoint x="9" y="1.26469434" yMax="1.6074600809999999" yMin="0.92919721399999999"/>
+				<accelerationFunctionDataPoint x="10" y="1.1235686389999999" yMax="1.432057806" yMin="0.82162122599999998"/>
+				<accelerationFunctionDataPoint x="11" y="1.00594992" yMax="1.2863946180000001" yMin="0.73145227199999996"/>
+				<accelerationFunctionDataPoint x="12" y="0.90576415" yMax="1.162838456" yMin="0.65414130500000001"/>
+				<accelerationFunctionDataPoint x="13" y="0.81880622700000005" yMax="1.0561055859999999" yMin="0.58653898599999998"/>
+				<accelerationFunctionDataPoint x="14" y="0.74207250899999999" yMax="0.96242191399999999" yMin="0.52639578499999995"/>
+				<accelerationFunctionDataPoint x="15" y="0.67336032400000001" yMax="0.87901976900000001" yMin="0.47206204899999998"/>
+				<accelerationFunctionDataPoint x="16" y="0.61101766899999999" yMax="0.80382339899999999" yMin="0.422300536"/>
+				<accelerationFunctionDataPoint x="17" y="0.55378124699999998" yMax="0.73524546300000004" yMin="0.37616512099999999"/>
+				<accelerationFunctionDataPoint x="18" y="0.50066849199999997" yMax="0.67205136300000001" yMin="0.332919929"/>
+				<accelerationFunctionDataPoint x="19" y="0.45090369699999999" yMax="0.61326641699999995" yMin="0.29198400600000002"/>
+				<accelerationFunctionDataPoint x="20" y="0.40386629499999999" yMax="0.558110879" yMin="0.25289258799999997"/>
+				<accelerationFunctionDataPoint x="21" y="0.35905392200000003" yMax="0.50595352500000002" yMin="0.21526943900000001"/>
+				<accelerationFunctionDataPoint x="22" y="0.31605555200000002" yMax="0.45627790099999999" yMin="0.178806728"/>
+				<accelerationFunctionDataPoint x="23" y="0.27453164499999999" yMax="0.40865737" yMin="0.14325016099999999"/>
+				<accelerationFunctionDataPoint x="24" y="0.234199248" yMax="0.36273640099999999" yMin="0.10838782499999999"/>
+				<accelerationFunctionDataPoint x="25" y="0.19482068" yMax="0.31821634700000001" yMin="0.074041714999999994"/>
+				<accelerationFunctionDataPoint x="26" y="0.15619483" yMax="0.27484451" yMin="0.04006121"/>
+				<accelerationFunctionDataPoint x="27" y="0.118150378" yMax="0.232405625" yMin="0.006318003"/>
+				<accelerationFunctionDataPoint x="28" y="0.080540478999999998" yMax="0.19071518100000001" yMin="0"/>
+				<accelerationFunctionDataPoint x="29" y="0.043238541999999998" yMax="0.14961411699999999" yMin="0"/>
+				<accelerationFunctionDataPoint x="30" y="0.0061348569999999996" yMax="0.10896458" yMin="0"/>
+				<accelerationFunctionDataPoint x="31" y="0" yMax="0.068646502999999998" yMin="0"/>
+				<accelerationFunctionDataPoint x="32" y="0" yMax="0.028554829" yMin="0"/>
+				<accelerationFunctionDataPoint x="33" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="34" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="35" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="40" y="0" yMax="0" yMin="0"/>
+			</accelFuncDataPts>
+		</maxAccelerationFunction>
+		<maxAccelerationFunction name="Bike (permanent maximum acceleration)" no="7">
+			<accelFuncDataPts>
+				<accelerationFunctionDataPoint x="0" y="1.602034266" yMax="2.2020342660000001" yMin="1.0020342659999999"/>
+				<accelerationFunctionDataPoint x="1" y="1.602034266" yMax="2.2020342660000001" yMin="1.0020342659999999"/>
+				<accelerationFunctionDataPoint x="2" y="1.602034266" yMax="2.2020342660000001" yMin="1.0020342659999999"/>
+				<accelerationFunctionDataPoint x="3" y="1.602034266" yMax="2.2020342660000001" yMin="1.0020342659999999"/>
+				<accelerationFunctionDataPoint x="4" y="1.347554374" yMax="1.7675543739999999" yMin="0.99805437399999997"/>
+				<accelerationFunctionDataPoint x="5" y="1.065303184" yMax="1.4013031840000001" yMin="0.78570318400000005"/>
+				<accelerationFunctionDataPoint x="6" y="0.87516284099999997" yMax="1.1551628410000001" yMin="0.64216284099999998"/>
+				<accelerationFunctionDataPoint x="7" y="0.73731905900000005" yMax="0.97731905900000005" yMin="0.53760477299999998"/>
+				<accelerationFunctionDataPoint x="8" y="0.63186469499999998" yMax="0.84186469500000005" yMin="0.45711469500000002"/>
+				<accelerationFunctionDataPoint x="9" y="0.54774022499999997" yMax="0.73440689199999998" yMin="0.39240689200000001"/>
+				<accelerationFunctionDataPoint x="10" y="0.47830993599999999" yMax="0.64630993599999997" yMin="0.33850993600000001"/>
+				<accelerationFunctionDataPoint x="11" y="0.419351099" yMax="0.572078372" yMin="0.29226019"/>
+				<accelerationFunctionDataPoint x="12" y="0.36804856400000002" yMax="0.50804856399999998" yMin="0.25154856399999997"/>
+				<accelerationFunctionDataPoint x="13" y="0.32245337800000001" yMax="0.45168414800000001" yMin="0.21491491700000001"/>
+				<accelerationFunctionDataPoint x="14" y="0.28117343500000003" yMax="0.40117343500000002" yMin="0.18131629299999999"/>
+				<accelerationFunctionDataPoint x="15" y="0.24318785600000001" yMax="0.35518785600000002" yMin="0.149987856"/>
+				<accelerationFunctionDataPoint x="16" y="0.20773098" yMax="0.31273098" yMin="0.12035598"/>
+				<accelerationFunctionDataPoint x="17" y="0.17421730399999999" yMax="0.27304083299999998" yMin="0.09198201"/>
+				<accelerationFunctionDataPoint x="18" y="0.142191435" yMax="0.235524768" yMin="0.064524767999999996"/>
+				<accelerationFunctionDataPoint x="19" y="0.111293854" yMax="0.199714906" yMin="0.037714905999999999"/>
+				<accelerationFunctionDataPoint x="20" y="0.081236944000000005" yMax="0.165236944" yMin="0.011336944"/>
+				<accelerationFunctionDataPoint x="21" y="0.051787872999999998" yMax="0.131787873" yMin="0"/>
+				<accelerationFunctionDataPoint x="22" y="0.022756142" yMax="0.099119778000000006" yMin="0"/>
+				<accelerationFunctionDataPoint x="23" y="0" yMax="0.067027860999999994" yMin="0"/>
+				<accelerationFunctionDataPoint x="24" y="0" yMax="0.035341455000000001" yMin="0"/>
+				<accelerationFunctionDataPoint x="25" y="0" yMax="0.0039171989999999997" yMin="0"/>
+				<accelerationFunctionDataPoint x="30" y="0" yMax="0" yMin="0"/>
+				<accelerationFunctionDataPoint x="40" y="0" yMax="0" yMin="0"/>
+			</accelFuncDataPts>
+		</maxAccelerationFunction>
+		<maxAccelerationFunction name="Pedelecs (max 25 km/h)" no="8">
+			<accelFuncDataPts>
+				<accelerationFunctionDataPoint x="0" y="1.8" yMax="1.9" yMin="1.5"/>
+				<accelerationFunctionDataPoint x="1.5" y="2.75" yMax="3" yMin="2.5"/>
+				<accelerationFunctionDataPoint x="4" y="2.75" yMax="3" yMin="2.5"/>
+				<accelerationFunctionDataPoint x="25" y="0" yMax="0" yMin="0"/>
+			</accelFuncDataPts>
+		</maxAccelerationFunction>
+		<maxAccelerationFunction name="Pedelecs (max 20 mph)" no="9">
+			<accelFuncDataPts>
+				<accelerationFunctionDataPoint x="0" y="1.8" yMax="1.9" yMin="1.5"/>
+				<accelerationFunctionDataPoint x="1.5" y="2.75" yMax="3" yMin="2.5"/>
+				<accelerationFunctionDataPoint x="4" y="2.75" yMax="3" yMin="2.5"/>
+				<accelerationFunctionDataPoint x="32.19" y="0" yMax="0" yMin="0"/>
+			</accelFuncDataPts>
+		</maxAccelerationFunction>
+	</maxAccelerationFunctions>
+	<maxDecelerationFunctions>
+		<maxDecelerationFunction name="Car" no="1">
+			<decelFuncDataPts>
+				<decelerationFunctionDataPoint x="0" y="-7.5" yMax="-6.5" yMin="-8.5"/>
+				<decelerationFunctionDataPoint x="10" y="-7.4" yMax="-6.4" yMin="-8.4"/>
+				<decelerationFunctionDataPoint x="20" y="-7.3" yMax="-6.3" yMin="-8.3"/>
+				<decelerationFunctionDataPoint x="30" y="-7.2" yMax="-6.2" yMin="-8.2"/>
+				<decelerationFunctionDataPoint x="40" y="-7.1" yMax="-6.1" yMin="-8.1"/>
+				<decelerationFunctionDataPoint x="50" y="-7" yMax="-6" yMin="-8"/>
+				<decelerationFunctionDataPoint x="60" y="-6.9" yMax="-5.9" yMin="-7.9"/>
+				<decelerationFunctionDataPoint x="70" y="-6.8" yMax="-5.8" yMin="-7.8"/>
+				<decelerationFunctionDataPoint x="80" y="-6.7" yMax="-5.7" yMin="-7.7"/>
+				<decelerationFunctionDataPoint x="90" y="-6.6" yMax="-5.6" yMin="-7.6"/>
+				<decelerationFunctionDataPoint x="100" y="-6.5" yMax="-5.5" yMin="-7.5"/>
+				<decelerationFunctionDataPoint x="110" y="-6.4" yMax="-5.4" yMin="-7.4"/>
+				<decelerationFunctionDataPoint x="120" y="-6.3" yMax="-5.3" yMin="-7.3"/>
+				<decelerationFunctionDataPoint x="130" y="-6.2" yMax="-5.2" yMin="-7.2"/>
+				<decelerationFunctionDataPoint x="140" y="-6.1" yMax="-5.1" yMin="-7.1"/>
+				<decelerationFunctionDataPoint x="150" y="-6" yMax="-5" yMin="-7"/>
+				<decelerationFunctionDataPoint x="160" y="-5.9" yMax="-4.9" yMin="-6.9"/>
+				<decelerationFunctionDataPoint x="170" y="-5.8" yMax="-4.8" yMin="-6.8"/>
+				<decelerationFunctionDataPoint x="180" y="-5.7" yMax="-4.7" yMin="-6.7"/>
+				<decelerationFunctionDataPoint x="190" y="-5.6" yMax="-4.6" yMin="-6.6"/>
+				<decelerationFunctionDataPoint x="200" y="-5.5" yMax="-4.5" yMin="-6.5"/>
+				<decelerationFunctionDataPoint x="210" y="-5.4" yMax="-4.4" yMin="-6.4"/>
+				<decelerationFunctionDataPoint x="220" y="-5.3" yMax="-4.3" yMin="-6.3"/>
+				<decelerationFunctionDataPoint x="230" y="-5.2" yMax="-4.2" yMin="-6.2"/>
+				<decelerationFunctionDataPoint x="240" y="-5.1" yMax="-4.1" yMin="-6.1"/>
+			</decelFuncDataPts>
+		</maxDecelerationFunction>
+		<maxDecelerationFunction name="HGV" no="2">
+			<decelFuncDataPts>
+				<decelerationFunctionDataPoint x="0" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="10" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="20" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="30" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="40" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="50" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="60" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="70" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="80" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="90" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="100" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="110" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="120" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="130" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="140" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="150" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="160" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="170" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="180" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="190" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="200" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="210" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="220" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="230" y="-5.5" yMax="-5" yMin="-6"/>
+				<decelerationFunctionDataPoint x="240" y="-5.5" yMax="-5" yMin="-6"/>
+			</decelFuncDataPts>
+		</maxDecelerationFunction>
+		<maxDecelerationFunction name="Bus" no="3">
+			<decelFuncDataPts>
+				<decelerationFunctionDataPoint x="0" y="-7.5" yMax="-6.5" yMin="-8.5"/>
+				<decelerationFunctionDataPoint x="10" y="-7.4" yMax="-6.4" yMin="-8.4"/>
+				<decelerationFunctionDataPoint x="20" y="-7.3" yMax="-6.3" yMin="-8.3"/>
+				<decelerationFunctionDataPoint x="30" y="-7.2" yMax="-6.2" yMin="-8.2"/>
+				<decelerationFunctionDataPoint x="40" y="-7.1" yMax="-6.1" yMin="-8.1"/>
+				<decelerationFunctionDataPoint x="50" y="-7" yMax="-6" yMin="-8"/>
+				<decelerationFunctionDataPoint x="60" y="-6.9" yMax="-5.9" yMin="-7.9"/>
+				<decelerationFunctionDataPoint x="70" y="-6.8" yMax="-5.8" yMin="-7.8"/>
+				<decelerationFunctionDataPoint x="80" y="-6.7" yMax="-5.7" yMin="-7.7"/>
+				<decelerationFunctionDataPoint x="90" y="-6.6" yMax="-5.6" yMin="-7.6"/>
+				<decelerationFunctionDataPoint x="100" y="-6.5" yMax="-5.5" yMin="-7.5"/>
+				<decelerationFunctionDataPoint x="110" y="-6.4" yMax="-5.4" yMin="-7.4"/>
+				<decelerationFunctionDataPoint x="120" y="-6.3" yMax="-5.3" yMin="-7.3"/>
+				<decelerationFunctionDataPoint x="130" y="-6.2" yMax="-5.2" yMin="-7.2"/>
+				<decelerationFunctionDataPoint x="140" y="-6.1" yMax="-5.1" yMin="-7.1"/>
+				<decelerationFunctionDataPoint x="150" y="-6" yMax="-5" yMin="-7"/>
+				<decelerationFunctionDataPoint x="160" y="-5.9" yMax="-4.9" yMin="-6.9"/>
+				<decelerationFunctionDataPoint x="170" y="-5.8" yMax="-4.8" yMin="-6.8"/>
+				<decelerationFunctionDataPoint x="180" y="-5.7" yMax="-4.7" yMin="-6.7"/>
+				<decelerationFunctionDataPoint x="190" y="-5.6" yMax="-4.6" yMin="-6.6"/>
+				<decelerationFunctionDataPoint x="200" y="-5.5" yMax="-4.5" yMin="-6.5"/>
+				<decelerationFunctionDataPoint x="210" y="-5.4" yMax="-4.4" yMin="-6.4"/>
+				<decelerationFunctionDataPoint x="220" y="-5.3" yMax="-4.3" yMin="-6.3"/>
+				<decelerationFunctionDataPoint x="230" y="-5.2" yMax="-4.2" yMin="-6.2"/>
+				<decelerationFunctionDataPoint x="240" y="-5.1" yMax="-4.1" yMin="-6.1"/>
+			</decelFuncDataPts>
+		</maxDecelerationFunction>
+		<maxDecelerationFunction name="Tram" no="4">
+			<decelFuncDataPts>
+				<decelerationFunctionDataPoint x="0" y="-5" yMax="-4" yMin="-6"/>
+				<decelerationFunctionDataPoint x="10" y="-4.9" yMax="-3.9" yMin="-5.9"/>
+				<decelerationFunctionDataPoint x="20" y="-4.8" yMax="-3.8" yMin="-5.8"/>
+				<decelerationFunctionDataPoint x="30" y="-4.7" yMax="-3.7" yMin="-5.7"/>
+				<decelerationFunctionDataPoint x="40" y="-4.6" yMax="-3.6" yMin="-5.6"/>
+				<decelerationFunctionDataPoint x="50" y="-4.5" yMax="-3.5" yMin="-5.5"/>
+				<decelerationFunctionDataPoint x="60" y="-4.4" yMax="-3.4" yMin="-5.4"/>
+				<decelerationFunctionDataPoint x="70" y="-4.3" yMax="-3.3" yMin="-5.3"/>
+				<decelerationFunctionDataPoint x="80" y="-4.2" yMax="-3.2" yMin="-5.2"/>
+				<decelerationFunctionDataPoint x="90" y="-4.1" yMax="-3.1" yMin="-5.1"/>
+				<decelerationFunctionDataPoint x="100" y="-4" yMax="-3" yMin="-5"/>
+				<decelerationFunctionDataPoint x="110" y="-3.9" yMax="-2.9" yMin="-4.9"/>
+				<decelerationFunctionDataPoint x="120" y="-3.8" yMax="-2.8" yMin="-4.8"/>
+				<decelerationFunctionDataPoint x="130" y="-3.7" yMax="-2.7" yMin="-4.7"/>
+				<decelerationFunctionDataPoint x="140" y="-3.6" yMax="-2.6" yMin="-4.6"/>
+				<decelerationFunctionDataPoint x="150" y="-3.5" yMax="-2.5" yMin="-4.5"/>
+				<decelerationFunctionDataPoint x="160" y="-3.4" yMax="-2.4" yMin="-4.4"/>
+				<decelerationFunctionDataPoint x="170" y="-3.3" yMax="-2.3" yMin="-4.3"/>
+				<decelerationFunctionDataPoint x="180" y="-3.2" yMax="-2.2" yMin="-4.2"/>
+				<decelerationFunctionDataPoint x="190" y="-3.1" yMax="-2.1" yMin="-4.1"/>
+				<decelerationFunctionDataPoint x="200" y="-3" yMax="-2" yMin="-4"/>
+				<decelerationFunctionDataPoint x="210" y="-2.9" yMax="-1.9" yMin="-3.9"/>
+				<decelerationFunctionDataPoint x="220" y="-2.8" yMax="-1.8" yMin="-3.8"/>
+				<decelerationFunctionDataPoint x="230" y="-2.7" yMax="-1.7" yMin="-3.7"/>
+				<decelerationFunctionDataPoint x="240" y="-2.6" yMax="-1.6" yMin="-3.6"/>
+			</decelFuncDataPts>
+		</maxDecelerationFunction>
+		<maxDecelerationFunction name="Pedestrian" no="5">
+			<decelFuncDataPts>
+				<decelerationFunctionDataPoint x="0" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="10" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="20" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="30" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="40" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="50" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="60" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="70" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="80" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="90" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="100" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="110" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="120" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="130" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="140" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="150" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="160" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="170" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="180" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="190" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="200" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="210" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="220" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="230" y="-9" yMax="-8.5" yMin="-9.5"/>
+				<decelerationFunctionDataPoint x="240" y="-9" yMax="-8.5" yMin="-9.5"/>
+			</decelFuncDataPts>
+		</maxDecelerationFunction>
+		<maxDecelerationFunction name="Bike" no="6">
+			<decelFuncDataPts>
+				<decelerationFunctionDataPoint x="0" y="-7.5" yMax="-6.5" yMin="-8.5"/>
+				<decelerationFunctionDataPoint x="10" y="-7.4" yMax="-6.4" yMin="-8.4"/>
+				<decelerationFunctionDataPoint x="20" y="-7.3" yMax="-6.3" yMin="-8.3"/>
+				<decelerationFunctionDataPoint x="30" y="-7.2" yMax="-6.2" yMin="-8.2"/>
+				<decelerationFunctionDataPoint x="40" y="-7.1" yMax="-6.1" yMin="-8.1"/>
+				<decelerationFunctionDataPoint x="50" y="-7" yMax="-6" yMin="-8"/>
+				<decelerationFunctionDataPoint x="60" y="-6.9" yMax="-5.9" yMin="-7.9"/>
+				<decelerationFunctionDataPoint x="70" y="-6.8" yMax="-5.8" yMin="-7.8"/>
+				<decelerationFunctionDataPoint x="80" y="-6.7" yMax="-5.7" yMin="-7.7"/>
+				<decelerationFunctionDataPoint x="90" y="-6.6" yMax="-5.6" yMin="-7.6"/>
+				<decelerationFunctionDataPoint x="100" y="-6.5" yMax="-5.5" yMin="-7.5"/>
+				<decelerationFunctionDataPoint x="110" y="-6.4" yMax="-5.4" yMin="-7.4"/>
+				<decelerationFunctionDataPoint x="120" y="-6.3" yMax="-5.3" yMin="-7.3"/>
+				<decelerationFunctionDataPoint x="130" y="-6.2" yMax="-5.2" yMin="-7.2"/>
+				<decelerationFunctionDataPoint x="140" y="-6.1" yMax="-5.1" yMin="-7.1"/>
+				<decelerationFunctionDataPoint x="150" y="-6" yMax="-5" yMin="-7"/>
+				<decelerationFunctionDataPoint x="160" y="-5.9" yMax="-4.9" yMin="-6.9"/>
+				<decelerationFunctionDataPoint x="170" y="-5.8" yMax="-4.8" yMin="-6.8"/>
+				<decelerationFunctionDataPoint x="180" y="-5.7" yMax="-4.7" yMin="-6.7"/>
+				<decelerationFunctionDataPoint x="190" y="-5.6" yMax="-4.6" yMin="-6.6"/>
+				<decelerationFunctionDataPoint x="200" y="-5.5" yMax="-4.5" yMin="-6.5"/>
+				<decelerationFunctionDataPoint x="210" y="-5.4" yMax="-4.4" yMin="-6.4"/>
+				<decelerationFunctionDataPoint x="220" y="-5.3" yMax="-4.3" yMin="-6.3"/>
+				<decelerationFunctionDataPoint x="230" y="-5.2" yMax="-4.2" yMin="-6.2"/>
+				<decelerationFunctionDataPoint x="240" y="-5.1" yMax="-4.1" yMin="-6.1"/>
+			</decelFuncDataPts>
+		</maxDecelerationFunction>
+	</maxDecelerationFunctions>
+	<model2D3DDistributions>
+		<model2D3DDistribution name="Car" no="10">
+			<model2D3DDistrEl>
+				<model2D3DDistributionElement model2D3D="1" share="0.06"/>
+				<model2D3DDistributionElement model2D3D="2" share="0.05"/>
+				<model2D3DDistributionElement model2D3D="3" share="0.18"/>
+				<model2D3DDistributionElement model2D3D="4" share="0.11"/>
+				<model2D3DDistributionElement model2D3D="5" share="0.14"/>
+				<model2D3DDistributionElement model2D3D="6" share="0.05"/>
+				<model2D3DDistributionElement model2D3D="7" share="0.11"/>
+				<model2D3DDistributionElement model2D3D="8" share="0.07"/>
+				<model2D3DDistributionElement model2D3D="9" share="0.18"/>
+				<model2D3DDistributionElement model2D3D="10" share="0.05"/>
+			</model2D3DDistrEl>
+		</model2D3DDistribution>
+		<model2D3DDistribution name="LGV" no="19">
+			<model2D3DDistrEl>
+				<model2D3DDistributionElement model2D3D="19" share="1"/>
+			</model2D3DDistrEl>
+		</model2D3DDistribution>
+		<model2D3DDistribution name="HGV" no="20">
+			<model2D3DDistrEl>
+				<model2D3DDistributionElement model2D3D="21" share="0.5"/>
+				<model2D3DDistributionElement model2D3D="22" share="0.5"/>
+			</model2D3DDistrEl>
+		</model2D3DDistribution>
+		<model2D3DDistribution name="Bus" no="30">
+			<model2D3DDistrEl>
+				<model2D3DDistributionElement model2D3D="31" share="1"/>
+			</model2D3DDistrEl>
+		</model2D3DDistribution>
+		<model2D3DDistribution name="Tram" no="40">
+			<model2D3DDistrEl>
+				<model2D3DDistributionElement model2D3D="41" share="1"/>
+			</model2D3DDistrEl>
+		</model2D3DDistribution>
+		<model2D3DDistribution name="Bike Man" no="61">
+			<model2D3DDistrEl>
+				<model2D3DDistributionElement model2D3D="61" share="1"/>
+			</model2D3DDistrEl>
+		</model2D3DDistribution>
+		<model2D3DDistribution name="Bike Woman" no="62">
+			<model2D3DDistrEl>
+				<model2D3DDistributionElement model2D3D="62" share="1"/>
+			</model2D3DDistrEl>
+		</model2D3DDistribution>
+		<model2D3DDistribution name="Pedelec Man" no="63">
+			<model2D3DDistrEl>
+				<model2D3DDistributionElement model2D3D="63" share="1"/>
+			</model2D3DDistrEl>
+		</model2D3DDistribution>
+		<model2D3DDistribution name="Pedelec Woman" no="64">
+			<model2D3DDistrEl>
+				<model2D3DDistributionElement model2D3D="64" share="1"/>
+			</model2D3DDistrEl>
+		</model2D3DDistribution>
+		<model2D3DDistribution name="Man" no="100">
+			<model2D3DDistrEl>
+				<model2D3DDistributionElement model2D3D="111" share="0.4"/>
+				<model2D3DDistributionElement model2D3D="121" share="0.3"/>
+				<model2D3DDistributionElement model2D3D="131" share="0.3"/>
+			</model2D3DDistrEl>
+		</model2D3DDistribution>
+		<model2D3DDistribution name="Woman" no="200">
+			<model2D3DDistrEl>
+				<model2D3DDistributionElement model2D3D="211" share="0.4"/>
+				<model2D3DDistributionElement model2D3D="212" share="0.3"/>
+				<model2D3DDistributionElement model2D3D="221" share="0.3"/>
+				<model2D3DDistributionElement model2D3D="222" share="0.2"/>
+				<model2D3DDistributionElement model2D3D="231" share="0.3"/>
+				<model2D3DDistributionElement model2D3D="232" share="0.2"/>
+			</model2D3DDistrEl>
+		</model2D3DDistribution>
+		<model2D3DDistribution name="Wheelchair" no="300">
+			<model2D3DDistrEl>
+				<model2D3DDistributionElement model2D3D="301" share="1"/>
+			</model2D3DDistrEl>
+		</model2D3DDistribution>
+	</model2D3DDistributions>
+	<models2D3D>
+		<model2D3D name="Car - Fiat 500" no="1">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="0.71" axleRear="3.01" file3D="#3dmodels#Vehicles\Road\Car - Fiat 500 (2018).u3dm" height="1.6729680758395749" jointFront="0" jointRear="3.561" length="3.5608121156692505" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="1.8827282245047858" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="Car - Tesla Model Y" no="2">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="0.79" axleRear="3.34" file3D="#3dmodels#Vehicles\Road\Car - Tesla Model Y (2022).u3dm" height="1.4741223670628361" jointFront="0" jointRear="4.201" length="4.2010042667388916" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="1.9104951302009736" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="Car - Volkswagen Golf" no="3">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="0.89" axleRear="3.54" file3D="#3dmodels#Vehicles\Road\Car - Volkswagen Golf VIII (2022).u3dm" height="1.475281" jointFront="0" jointRear="4.32" length="4.3200036287307739" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="2.0573429920148305" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="Car - Mercedes B Class" no="4">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="0.91" axleRear="3.64" file3D="#3dmodels#Vehicles\Road\Car - Mercedes B Class (2021).u3dm" height="1.5499691337815062" jointFront="0" jointRear="4.414" length="4.4144524782896042" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="2.0474159338725721" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="Car - Mercedes C Class" no="5">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="0.83" axleRear="3.69" file3D="#3dmodels#Vehicles\Road\Car - Mercedes C Class (2021).u3dm" height="1.437" jointFront="0" jointRear="4.751" length="4.751" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="2.032" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="Car - Skoda Superb Combi" no="6">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="0.89" axleRear="3.67" file3D="#3dmodels#Vehicles\Road\Car - Skoda Superb Combi (2022).u3dm" height="1.4726253945572623" jointFront="0" jointRear="4.781" length="4.7814098596572876" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="2.0215875710359166" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="Car - Audi A6" no="7">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="0.945" axleRear="3.88" file3D="#3dmodels#Vehicles\Road\Car - Audi A6 Avant (2021).u3dm" height="1.4774334394371307" jointFront="0" jointRear="4.992" length="4.9914444983005524" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="2.1180915611587761" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="SUV - Nissan Qashqai" no="8">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="0.92" axleRear="3.52" file3D="#3dmodels#Vehicles\Road\SUV - Nissan Qashqai (2022).u3dm" height="1.6342316340958551" jointFront="0" jointRear="4.328" length="4.3279078006744385" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="1.9924809505154313" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="SUV - Volkswagen Tiguan" no="9">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="0.92" axleRear="3.58" file3D="#3dmodels#Vehicles\Road\SUV - Volkswagen Tiguan eHybrid (2022).u3dm" height="1.6681506553892882" jointFront="0" jointRear="4.5" length="4.5003083944320679" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="2.107412715805407" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="SUV - Volkswagen ID 4" no="10">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="0.84" axleRear="3.61" file3D="#3dmodels#Vehicles\Road\SUV - Volkswagen ID 4 (2022).u3dm" height="1.6646752606028086" jointFront="0" jointRear="4.591" length="4.5911588668823242" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="2.0374618346728113" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="Van - Mercedes Sprinter Panel Van" no="19">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="1.02" axleRear="4.68" file3D="#3dmodels#Vehicles\Road\Van - Mercedes Sprinter Panel Van L2H2 (2019).u3dm" height="2.7327241876902226" jointFront="0" jointRear="6.041" length="6.041460394859314" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="2.3961222977591081" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="HGV - Tractor Box Volvo" no="21">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="1.52" axleRear="6.84" file3D="#3dmodels#Vehicles\Road\HGV - Tractor Box Volvo FM 370.u3dm" height="4.01" jointFront="0" jointRear="9.23" length="10.26" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="2.3" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="HGV - Semi-Tractor Volvo E + Semi-Trailer Box 3-axles" no="22">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="1.44" axleRear="5.21" file3D="#3dmodels#Vehicles\Road\HGV - Semi-Tractor Volvo E (2019).u3dm" height="3.6" jointFront="1.44" jointRear="4.41" length="5.96" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="1.44" width="2.55" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+				<model2D3DSegment axleFront="2.05" axleRear="9.6" file3D="#3dmodels#Vehicles\Road\HGV - Semi-Trailer Box 3-axles.u3dm" height="4.01" jointFront="2.05" jointRear="13.8" length="14.138" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="2.3" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="Bus - C2 Standard" no="31">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="2.825" axleRear="8.77" file3D="#3dmodels#Vehicles\Road\Bus - C2 Standard 2-doors.fbx" height="3.12" jointFront="0.07" jointRear="12.135" length="12.135" motionAnim="" partWOutPassFront="2" partWOutPassRear="0.6" scale="1" shaftLen="0" width="2.55" yawAngle="0">
+					<doors>
+						<door pos="0.44340571761131287" side="RIGHT" usage="BOARDING" width="0.75893500447273254" yOffset="1.2446038722991943" zOffset="0.29556810855865479"/>
+						<door pos="1.2023407220840454" side="RIGHT" usage="BOTH" width="0.75893497467041016" yOffset="1.2446038722991943" zOffset="0.29556810855865479"/>
+						<door pos="6.3879051208496094" side="RIGHT" usage="BOTH" width="0.75893497467041016" yOffset="1.2446038722991943" zOffset="0.29556810855865479"/>
+						<door pos="7.1468410491943359" side="RIGHT" usage="BOTH" width="0.75893497467041016" yOffset="1.2446038722991943" zOffset="0.29556810855865479"/>
+					</doors>
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="Bus - C2 G Articulated" no="35">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="2.875" axleRear="8.82" file3D="#3dmodels#Vehicles\Road\Bus - C2 G 3-doors - front.fbx" height="3.12" jointFront="0.135" jointRear="10.54" length="11" motionAnim="" partWOutPassFront="2" partWOutPassRear="0" scale="1" shaftLen="0" width="2.55" yawAngle="0">
+					<doors>
+						<door pos="0.46513783931732178" side="RIGHT" usage="BOARDING" width="0.75893497467041016" yOffset="1.2446038722991943" zOffset="0.29556810855865479"/>
+						<door pos="1.2240728139877319" side="RIGHT" usage="BOTH" width="0.75893521308898926" yOffset="1.2446038722991943" zOffset="0.29556810855865479"/>
+						<door pos="6.4096379280090332" side="RIGHT" usage="BOTH" width="0.75893497467041016" yOffset="1.2446038722991943" zOffset="0.29556810855865479"/>
+						<door pos="7.1685729026794434" side="RIGHT" usage="BOTH" width="0.75893497467041016" yOffset="1.2446038722991943" zOffset="0.29556810855865479"/>
+					</doors>
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+				<model2D3DSegment axleFront="4.658" axleRear="4.693" file3D="#3dmodels#Vehicles\Road\Bus - C2 G 3-doors - rear.fbx" height="3.12" jointFront="0.459" jointRear="8.038" length="8.044" motionAnim="" partWOutPassFront="0" partWOutPassRear="0.6" scale="1" shaftLen="0" width="2.55" yawAngle="0">
+					<doors>
+						<door pos="1.8668909072875977" side="RIGHT" usage="BOTH" width="0.75893592834472656" yOffset="1.2446038722991943" zOffset="0.29556810855865479"/>
+						<door pos="2.6258268356323242" side="RIGHT" usage="BOTH" width="0.75893497467041016" yOffset="1.2446038722991943" zOffset="0.29556810855865479"/>
+					</doors>
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="TramTrain - Stadler Citylink DS" no="41">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="3.935" axleRear="3.935" file3D="#3dmodels#Vehicles\Rail\TramTrain - Stadler Citylink DS\TramTrain - Stadler Citylink DS fixColor front.u3dm" height="3.9" jointFront="1.34" jointRear="12.645" length="13.095" motionAnim="" partWOutPassFront="2" partWOutPassRear="0" scale="1" shaftLen="3.48" width="2.65" yawAngle="0">
+					<doors>
+						<door pos="5.753638348624504" side="LEFT" usage="BOTH" width="0.75500049954633042" yOffset="1.2517819794034946" zOffset="0.61000001430511475"/>
+						<door pos="5.7536391126080852" side="RIGHT" usage="BOTH" width="0.7550004995164814" yOffset="1.2517839119301315" zOffset="0.61000001430511475"/>
+						<door pos="6.508638820722898" side="LEFT" usage="BOTH" width="0.75500085714453569" yOffset="1.2517822734118114" zOffset="0.61000001430511475"/>
+						<door pos="6.5086400615139741" side="RIGHT" usage="BOTH" width="0.75500085717401344" yOffset="1.2517836179217741" zOffset="0.61000001430511475"/>
+						<door pos="9.3736428833456049" side="LEFT" usage="BOTH" width="0.75500061875561997" yOffset="1.2517833890867738" zOffset="0.61000001430511475"/>
+						<door pos="9.3736438857477644" side="RIGHT" usage="BOTH" width="0.75500061872577184" yOffset="1.2517825022467093" zOffset="0.61000001430511475"/>
+						<door pos="10.128643951490446" side="LEFT" usage="BOTH" width="0.75500061872595658" yOffset="1.2517836830953226" zOffset="0.61000001430511475"/>
+						<door pos="10.128644477025784" side="RIGHT" usage="BOTH" width="0.75500061875543523" yOffset="1.2517822082386301" zOffset="0.61000001430511475"/>
+					</doors>
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+				<model2D3DSegment axleFront="2.9" axleRear="9.95" file3D="#3dmodels#Vehicles\Rail\TramTrain - Stadler Citylink DS\TramTrain - Stadler Citylink DS fixColor mid.u3dm" height="5.9" jointFront="0.45" jointRear="12.3" length="12.75" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="2.65" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+				<model2D3DSegment axleFront="9.16" axleRear="9.16" file3D="#3dmodels#Vehicles\Rail\TramTrain - Stadler Citylink DS\TramTrain - Stadler Citylink DS fixColor rear.u3dm" height="3.9" jointFront="0.45" jointRear="11.755" length="13.095" motionAnim="" partWOutPassFront="0" partWOutPassRear="2" scale="1" shaftLen="0" width="2.65" yawAngle="0">
+					<doors>
+						<door pos="2.2114977455592886" side="LEFT" usage="BOTH" width="0.75499918824414536" yOffset="1.2517806000445424" zOffset="0.61000001430511475"/>
+						<door pos="2.211498747961449" side="RIGHT" usage="BOTH" width="0.75499918821429635" yOffset="1.2517852912894976" zOffset="0.61000001430511475"/>
+						<door pos="2.966496906355494" side="LEFT" usage="BOTH" width="0.75500109556311479" yOffset="1.2517808940523485" zOffset="0.61000001430511475"/>
+						<door pos="2.9664979087279897" side="RIGHT" usage="BOTH" width="0.75500109559259299" yOffset="1.2517849972812327" zOffset="0.61000001430511475"/>
+						<door pos="5.8315004921410445" side="LEFT" usage="BOTH" width="0.75500109559277817" yOffset="1.2517820097241319" zOffset="0.61000001430511475"/>
+						<door pos="5.8315014945432058" side="RIGHT" usage="BOTH" width="0.75500109556292916" yOffset="1.2517838816091691" zOffset="0.61000001430511475"/>
+						<door pos="6.5865015602858836" side="LEFT" usage="BOTH" width="0.75500109556311479" yOffset="1.2517823037326807" zOffset="0.61000001430511475"/>
+						<door pos="6.5865025626583833" side="RIGHT" usage="BOTH" width="0.75500109559259254" yOffset="1.2517835876009118" zOffset="0.61000001430511475"/>
+					</doors>
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="Bike - Cycle Man" no="61">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="0.32" axleRear="1.44" file3D="#3dmodels#Vehicles\Road\Bike - Cycle Man 02.fbx" height="1.7389223501086235" jointFront="0" jointRear="1.775" length="1.7747000455856323" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="0.6274850070476532" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="Bike - Cycle Woman" no="62">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="0.32" axleRear="1.44" file3D="#3dmodels#Vehicles\Road\Bike - Cycle Woman.fbx" height="1.8089635372161865" jointFront="0" jointRear="1.766" length="1.7662999629974365" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="0.65575799345970154" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="Bike - Pedelec Man" no="63">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="0.32" axleRear="1.44" file3D="#3dmodels#Vehicles\Road\Bike - E-Bike Man.fbx" height="1.7389223501086235" jointFront="0" jointRear="1.775" length="1.7747000455856323" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="0.6274850070476532" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="Bike - Pedelec Woman" no="64">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="0.32" axleRear="1.44" file3D="#3dmodels#Vehicles\Road\Bike - E-Bike Woman.fbx" height="1.8089635372161865" jointFront="0" jointRear="1.766" length="1.7662999629974365" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="0.65575799345970154" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="Ped - Man 21" no="111">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="-0.05" axleRear="0.05" file3D="#3dmodels#Pedestrians\Gen 2\Man 21.u3dm" height="1.7539727209368721" jointFront="-0.156" jointRear="0.154" length="0.31037706136703491" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="0.57846707105636597" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="Ped - Man Biz 22" no="121">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="-0.05" axleRear="0.05" file3D="#3dmodels#Pedestrians\Gen 2\Man Biz 22.u3dm" height="1.7522492650896311" jointFront="-0.142" jointRear="0.217" length="0.35906834900379181" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="0.60983669757843018" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="Ped - Man 23" no="131">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="-0.05" axleRear="0.05" file3D="#3dmodels#Pedestrians\Gen 2\Man 23.u3dm" height="1.7" jointFront="-0.155" jointRear="0.181" length="0.33626498281955719" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="0.60693365335464478" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="Ped - Woman 21" no="211">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="-0.05" axleRear="0.05" file3D="#3dmodels#Pedestrians\Gen 2\Woman 21.u3dm" height="1.7137542864074931" jointFront="-0.15" jointRear="0.139" length="0.28964677453041077" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="0.49536371231079102" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="Ped - Woman 21 (fix textures)" no="212">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="-0.05" axleRear="0.05" file3D="#3dmodels#Pedestrians\Gen 2\Woman 21 (fix textures).u3dm" height="1.7137542864074931" jointFront="-0.15" jointRear="0.139" length="0.28964677453041077" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="0.49536371231079102" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="Ped - Woman 22" no="221">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="-0.05" axleRear="0.05" file3D="#3dmodels#Pedestrians\Gen 2\Woman 22.u3dm" height="1.7133094657910988" jointFront="-0.185" jointRear="0.154" length="0.33847063779830933" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="0.5315169095993042" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="Ped - Woman 22 (fix textures)" no="222">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="-0.05" axleRear="0.05" file3D="#3dmodels#Pedestrians\Gen 2\Woman 22 (fix textures).u3dm" height="1.7133094657910988" jointFront="-0.185" jointRear="0.154" length="0.33847063779830933" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="0.5315169095993042" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="Ped - Woman 23" no="231">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="-0.05" axleRear="0.05" file3D="#3dmodels#Pedestrians\Gen 2\Woman 23.u3dm" height="1.6557248164899647" jointFront="-0.143" jointRear="0.138" length="0.28187128901481628" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="0.50856292247772217" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="Ped - Woman 23 (fix textures)" no="232">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="-0.05" axleRear="0.05" file3D="#3dmodels#Pedestrians\Gen 2\Woman 23 (fix textures).u3dm" height="1.6557248164899647" jointFront="-0.143" jointRear="0.138" length="0.28187128901481628" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="0.50856292247772217" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+		<model2D3D name="Ped - Wheelchair" no="301">
+			<model2D3DSegs>
+				<model2D3DSegment axleFront="-0.115" axleRear="0.31" file3D="#3dmodels#Pedestrians\Gen 1\Ped - Wheelchair 01.fbx" height="1.5442261949647218" jointFront="-0.567" jointRear="0.636" length="1.2032510042190552" motionAnim="" partWOutPassFront="0" partWOutPassRear="0" scale="1" shaftLen="0" width="0.70485392212867737" yawAngle="0">
+					<posRel xOffset="0" yOffset="0" zOffset="0"/>
+				</model2D3DSegment>
+			</model2D3DSegs>
+		</model2D3D>
+	</models2D3D>
+	<netPara concatMaxLen="255" concatSeparator="," drivSimActive="false" linkGradBas="ATTRIBUTEGRADIENT" northDir="0" pedDefCellSize="0.15" pedDefObstDist="0.5" pedDirChgAngle="4" pedDirChgClip="true" pedNbhSearGridSize="5" pedQueueOrder="0.7" pedQueueStraight="0.6" powWghtRatioMax="30" powWghtRatioMin="7" radExper="2" sigHead3DArrowColorRedAmb="BLACKARROWONCOLOR" speedLimCurves="true" trafReg="LEFTHANDTRAFFIC" underScenMngm="false" unitAccel="METERSPERSQUARESECOND" unitJerk="METERSPERCUBICSECOND" unitLenLong="KILOMETERS" unitLenShort="METERS" unitLenVeryShort="MILLIMETERS" unitSpeed="KILOMETERSPERHOUR" unitSpeedSmall="METERSPERSECOND">
+		<defRefsElevator areaBehavTypAlight="2" areaBehavTypInCab="1" displTypCabCeil="45" displTypCabFloor="44" displTypCabWall="43" displTypDoor="42" displTypShaft="41"/>
+		<defRefsParkingLot dirChgDurDist="9"/>
+	</netPara>
+	<occupancyDistributions>
+		<occupancyDistribution mean="1" name="Single Occupancy" no="1" stdDev="0" type="NORMAL"/>
+	</occupancyDistributions>
+	<pedestrianClasses>
+		<pedestrianClass color="ff000000" name="Man, Woman" no="10" usePedTypeColor="true">
+			<pedTypes>
+				<intObjectRef key="100"/>
+				<intObjectRef key="200"/>
+			</pedTypes>
+		</pedestrianClass>
+		<pedestrianClass color="ff000000" name="Wheelchair User" no="30" usePedTypeColor="true">
+			<pedTypes>
+				<intObjectRef key="300"/>
+			</pedTypes>
+		</pedestrianClass>
+	</pedestrianClasses>
+	<pedestrianCompositions>
+		<pedestrianComposition name="Pedestrian" no="1">
+			<pedCompRelFlows>
+				<pedestrianCompositionRelativeFlow desSpeedDistr="1022" pedType="100" relFlow="1"/>
+				<pedestrianCompositionRelativeFlow desSpeedDistr="1023" pedType="200" relFlow="1"/>
+			</pedCompRelFlows>
+		</pedestrianComposition>
+		<pedestrianComposition name="Commuters at a station" no="11">
+			<pedCompRelFlows>
+				<pedestrianCompositionRelativeFlow desSpeedDistr="1002" pedType="100" relFlow="10"/>
+				<pedestrianCompositionRelativeFlow desSpeedDistr="1008" pedType="100" relFlow="4"/>
+				<pedestrianCompositionRelativeFlow desSpeedDistr="1010" pedType="100" relFlow="30"/>
+				<pedestrianCompositionRelativeFlow desSpeedDistr="1002" pedType="200" relFlow="10"/>
+				<pedestrianCompositionRelativeFlow desSpeedDistr="1008" pedType="200" relFlow="4"/>
+				<pedestrianCompositionRelativeFlow desSpeedDistr="1010" pedType="200" relFlow="30"/>
+				<pedestrianCompositionRelativeFlow desSpeedDistr="1001" pedType="300" relFlow="2"/>
+			</pedCompRelFlows>
+		</pedestrianComposition>
+		<pedestrianComposition name="International Maritime Organization MSC/Circ. 1238" no="21">
+			<pedCompRelFlows>
+				<pedestrianCompositionRelativeFlow desSpeedDistr="1020" pedType="100" relFlow="7"/>
+				<pedestrianCompositionRelativeFlow desSpeedDistr="1022" pedType="100" relFlow="7"/>
+				<pedestrianCompositionRelativeFlow desSpeedDistr="1024" pedType="100" relFlow="16"/>
+				<pedestrianCompositionRelativeFlow desSpeedDistr="1026" pedType="100" relFlow="10"/>
+				<pedestrianCompositionRelativeFlow desSpeedDistr="1028" pedType="100" relFlow="10"/>
+				<pedestrianCompositionRelativeFlow desSpeedDistr="1021" pedType="200" relFlow="7"/>
+				<pedestrianCompositionRelativeFlow desSpeedDistr="1023" pedType="200" relFlow="7"/>
+				<pedestrianCompositionRelativeFlow desSpeedDistr="1025" pedType="200" relFlow="16"/>
+				<pedestrianCompositionRelativeFlow desSpeedDistr="1027" pedType="200" relFlow="10"/>
+				<pedestrianCompositionRelativeFlow desSpeedDistr="1029" pedType="200" relFlow="10"/>
+			</pedCompRelFlows>
+		</pedestrianComposition>
+	</pedestrianCompositions>
+	<pedestrianTypes>
+		<pedestrianType hairColorDistr="102" hgtVar="0.15" lenVar="0.1" model2D3DDistr="100" name="Man" no="100" shirtColorDistr="101" shoesColorDistr="104" trousersColorDistr="103" walkBehav="1" widVar="0.1"/>
+		<pedestrianType hairColorDistr="202" hgtVar="0.15" lenVar="0.1" model2D3DDistr="200" name="Woman" no="200" shirtColorDistr="201" shoesColorDistr="204" trousersColorDistr="203" walkBehav="1" widVar="0.1"/>
+		<pedestrianType hairColorDistr="102" hgtVar="0.1" lenVar="0.1" model2D3DDistr="300" name="Wheelchair User" no="300" shirtColorDistr="101" shoesColorDistr="104" trousersColorDistr="103" walkBehav="1" widVar="0.1"/>
+	</pedestrianTypes>
+	<powerDistributions>
+		<powerDistribution name="" no="1">
+			<distrDataPts>
+				<distributionDataPoint fx="0" x="55"/>
+				<distributionDataPoint fx="1" x="160"/>
+			</distrDataPts>
+		</powerDistribution>
+		<powerDistribution name="" no="2">
+			<distrDataPts>
+				<distributionDataPoint fx="0" x="150"/>
+				<distributionDataPoint fx="1" x="400"/>
+			</distrDataPts>
+		</powerDistribution>
+		<powerDistribution name="" no="3">
+			<distrDataPts>
+				<distributionDataPoint fx="0" x="150"/>
+				<distributionDataPoint fx="1" x="300"/>
+			</distrDataPts>
+		</powerDistribution>
+		<powerDistribution name="" no="4">
+			<distrDataPts>
+				<distributionDataPoint fx="0" x="300"/>
+				<distributionDataPoint fx="1" x="600"/>
+			</distrDataPts>
+		</powerDistribution>
+		<powerDistribution name="" no="5">
+			<distrDataPts>
+				<distributionDataPoint fx="0" x="0.5"/>
+				<distributionDataPoint fx="1" x="0.7"/>
+			</distrDataPts>
+		</powerDistribution>
+		<powerDistribution name="" no="6">
+			<distrDataPts>
+				<distributionDataPoint fx="0" x="0.5"/>
+				<distributionDataPoint fx="1" x="0.7"/>
+			</distrDataPts>
+		</powerDistribution>
+	</powerDistributions>
+	<simulation comment="" numCores="1" numRuns="1" randSeed="42" randSeedIncr="1" retroSync="false" simMode="MICRO" simPeriod="3600" simRes="10" simSpeed="10" startTm="0" useAllCores="true" useMaxSimSpeed="true" volumeIncrDynAssign="0"/>
+	<speedDistributions>
+		<speedDistribution name="5 km/h" no="5">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="4"/>
+				<speedDistributionDataPoint fx="1" x="6"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="12 km/h" no="12">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="12"/>
+				<speedDistributionDataPoint fx="1" x="15"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="15 km/h" no="15">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="15"/>
+				<speedDistributionDataPoint fx="1" x="20"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="20 km/h" no="20">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="20"/>
+				<speedDistributionDataPoint fx="1" x="25"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="25 km/h" no="25">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="25"/>
+				<speedDistributionDataPoint fx="1" x="30"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="30 km/h" no="30">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="30"/>
+				<speedDistributionDataPoint fx="1" x="35"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="40 km/h" no="40">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="40"/>
+				<speedDistributionDataPoint fx="1" x="45"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="50 km/h" no="50">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="48"/>
+				<speedDistributionDataPoint fx="1" x="58"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="60 km/h" no="60">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="58"/>
+				<speedDistributionDataPoint fx="1" x="68"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="70 km/h" no="70">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="68"/>
+				<speedDistributionDataPoint fx="1" x="78"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="80 km/h" no="80">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="75"/>
+				<speedDistributionDataPoint fx="0.05" x="80"/>
+				<speedDistributionDataPoint fx="0.8" x="90"/>
+				<speedDistributionDataPoint fx="0.95" x="100"/>
+				<speedDistributionDataPoint fx="1" x="110"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="85 km/h" no="85">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="84"/>
+				<speedDistributionDataPoint fx="1" x="88"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="90 km/h" no="90">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="85"/>
+				<speedDistributionDataPoint fx="0.05" x="90"/>
+				<speedDistributionDataPoint fx="0.8" x="100"/>
+				<speedDistributionDataPoint fx="0.95" x="110"/>
+				<speedDistributionDataPoint fx="1" x="120"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="100 km/h" no="100">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="88"/>
+				<speedDistributionDataPoint fx="0.03" x="95"/>
+				<speedDistributionDataPoint fx="0.1" x="100"/>
+				<speedDistributionDataPoint fx="0.7" x="110"/>
+				<speedDistributionDataPoint fx="0.91" x="120"/>
+				<speedDistributionDataPoint fx="1" x="130"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="120 km/h" no="120">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="85"/>
+				<speedDistributionDataPoint fx="0.03" x="105"/>
+				<speedDistributionDataPoint fx="0.1" x="110"/>
+				<speedDistributionDataPoint fx="0.68" x="125"/>
+				<speedDistributionDataPoint fx="0.91" x="140"/>
+				<speedDistributionDataPoint fx="1" x="155"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="130 km/h" no="130">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="80"/>
+				<speedDistributionDataPoint fx="0.03" x="98"/>
+				<speedDistributionDataPoint fx="0.1" x="110"/>
+				<speedDistributionDataPoint fx="0.68" x="130"/>
+				<speedDistributionDataPoint fx="0.72" x="135"/>
+				<speedDistributionDataPoint fx="0.91" x="143"/>
+				<speedDistributionDataPoint fx="0.97" x="155"/>
+				<speedDistributionDataPoint fx="1" x="170"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="140 km/h" no="140">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="80"/>
+				<speedDistributionDataPoint fx="0.03" x="99"/>
+				<speedDistributionDataPoint fx="0.1" x="109"/>
+				<speedDistributionDataPoint fx="0.26" x="121"/>
+				<speedDistributionDataPoint fx="0.47" x="131"/>
+				<speedDistributionDataPoint fx="0.8" x="149"/>
+				<speedDistributionDataPoint fx="0.93" x="165"/>
+				<speedDistributionDataPoint fx="0.99" x="185"/>
+				<speedDistributionDataPoint fx="1" x="205"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="2.09 km/h (0.58 m/s)" no="1001">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="2.08"/>
+				<speedDistributionDataPoint fx="0.0001" x="2.0879"/>
+				<speedDistributionDataPoint fx="0.9999" x="2.0881"/>
+				<speedDistributionDataPoint fx="1" x="2.09"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="2.88 km/h (0.80 m/s)" no="1002">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="2.87"/>
+				<speedDistributionDataPoint fx="0.0001" x="2.8799"/>
+				<speedDistributionDataPoint fx="0.9999" x="2.8801"/>
+				<speedDistributionDataPoint fx="1" x="2.89"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="3.24 km/h (0.90 m/s) ±" no="1003">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="2.74"/>
+				<speedDistributionDataPoint fx="0.15" x="2.99"/>
+				<speedDistributionDataPoint fx="0.85" x="3.49"/>
+				<speedDistributionDataPoint fx="1" x="3.74"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="3.60 km/h (1.00 m/s) ±" no="1004">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="3.1"/>
+				<speedDistributionDataPoint fx="0.15" x="3.35"/>
+				<speedDistributionDataPoint fx="0.85" x="3.85"/>
+				<speedDistributionDataPoint fx="1" x="4.1"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="3.96 km/h (1.10 m/s) ±" no="1005">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="3.46"/>
+				<speedDistributionDataPoint fx="0.15" x="3.71"/>
+				<speedDistributionDataPoint fx="0.85" x="4.21"/>
+				<speedDistributionDataPoint fx="1" x="4.46"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="4.32 km/h (1.20 m/s) ±" no="1007">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="3.82"/>
+				<speedDistributionDataPoint fx="0.15" x="4.07"/>
+				<speedDistributionDataPoint fx="0.85" x="4.57"/>
+				<speedDistributionDataPoint fx="1" x="4.82"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="4.75 km/h (1.32 m/s) ±" no="1008">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="3.354"/>
+				<speedDistributionDataPoint fx="0.05" x="3.665"/>
+				<speedDistributionDataPoint fx="0.13" x="3.976"/>
+				<speedDistributionDataPoint fx="0.25" x="4.286"/>
+				<speedDistributionDataPoint fx="0.41" x="4.597"/>
+				<speedDistributionDataPoint fx="0.59" x="4.907"/>
+				<speedDistributionDataPoint fx="0.75" x="5.222"/>
+				<speedDistributionDataPoint fx="0.87" x="5.528"/>
+				<speedDistributionDataPoint fx="0.95" x="5.839"/>
+				<speedDistributionDataPoint fx="1" x="6.15"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="4.93 km/h (1.37 m/s) ±" no="1009">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="3.481"/>
+				<speedDistributionDataPoint fx="0.05" x="3.804"/>
+				<speedDistributionDataPoint fx="0.13" x="4.126"/>
+				<speedDistributionDataPoint fx="0.25" x="4.448"/>
+				<speedDistributionDataPoint fx="0.41" x="4.771"/>
+				<speedDistributionDataPoint fx="0.59" x="5.093"/>
+				<speedDistributionDataPoint fx="0.75" x="5.416"/>
+				<speedDistributionDataPoint fx="0.87" x="5.738"/>
+				<speedDistributionDataPoint fx="0.95" x="6.06"/>
+				<speedDistributionDataPoint fx="1" x="6.383"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="5.51 km/h (1.53 m/s) ±" no="1010">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="3.888"/>
+				<speedDistributionDataPoint fx="0.05" x="4.248"/>
+				<speedDistributionDataPoint fx="0.13" x="4.608"/>
+				<speedDistributionDataPoint fx="0.25" x="4.968"/>
+				<speedDistributionDataPoint fx="0.41" x="5.328"/>
+				<speedDistributionDataPoint fx="0.59" x="5.688"/>
+				<speedDistributionDataPoint fx="0.75" x="6.048"/>
+				<speedDistributionDataPoint fx="0.87" x="6.408"/>
+				<speedDistributionDataPoint fx="0.95" x="6.768"/>
+				<speedDistributionDataPoint fx="1" x="7.128"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="IMO-M &lt;30" no="1020">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="3.996"/>
+				<speedDistributionDataPoint fx="1" x="6.66"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="IMO-F &lt;30" no="1021">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="3.348"/>
+				<speedDistributionDataPoint fx="1" x="5.58"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="IMO-M 30-50" no="1022">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="3.49"/>
+				<speedDistributionDataPoint fx="1" x="5.83"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="IMO-F 30-50" no="1023">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="2.56"/>
+				<speedDistributionDataPoint fx="1" x="4.28"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="IMO-M &gt;50" no="1024">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="3.024"/>
+				<speedDistributionDataPoint fx="1" x="5.04"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="IMO-F &gt;50" no="1025">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="2.016"/>
+				<speedDistributionDataPoint fx="1" x="3.384"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="IMO-M MI1" no="1026">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="2.304"/>
+				<speedDistributionDataPoint fx="1" x="3.816"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="IMO-F MI1" no="1027">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="1.548"/>
+				<speedDistributionDataPoint fx="1" x="2.556"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="IMO-M MI2" no="1028">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="1.98"/>
+				<speedDistributionDataPoint fx="1" x="3.276"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="IMO-F MI2" no="1029">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="1.332"/>
+				<speedDistributionDataPoint fx="1" x="2.196"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="Fruin 1" no="1040">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="2.11"/>
+				<speedDistributionDataPoint fx="0.013" x="2.56"/>
+				<speedDistributionDataPoint fx="0.071" x="3.01"/>
+				<speedDistributionDataPoint fx="0.175" x="3.45"/>
+				<speedDistributionDataPoint fx="0.406" x="3.9"/>
+				<speedDistributionDataPoint fx="0.685" x="4.35"/>
+				<speedDistributionDataPoint fx="0.88" x="4.84"/>
+				<speedDistributionDataPoint fx="0.961" x="5.28"/>
+				<speedDistributionDataPoint fx="0.981" x="5.73"/>
+				<speedDistributionDataPoint fx="0.994" x="6.18"/>
+				<speedDistributionDataPoint fx="1" x="6.62"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="Fruin 2" no="1041">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="2.11"/>
+				<speedDistributionDataPoint fx="0.006" x="2.56"/>
+				<speedDistributionDataPoint fx="0.032" x="3.01"/>
+				<speedDistributionDataPoint fx="0.119" x="3.45"/>
+				<speedDistributionDataPoint fx="0.304" x="3.9"/>
+				<speedDistributionDataPoint fx="0.516" x="4.35"/>
+				<speedDistributionDataPoint fx="0.744" x="4.84"/>
+				<speedDistributionDataPoint fx="0.891" x="5.28"/>
+				<speedDistributionDataPoint fx="0.968" x="5.73"/>
+				<speedDistributionDataPoint fx="0.987" x="6.18"/>
+				<speedDistributionDataPoint fx="1" x="6.62"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="Predt-Milinski" no="1042">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="0"/>
+				<speedDistributionDataPoint fx="0.011" x="0.3"/>
+				<speedDistributionDataPoint fx="0.052" x="0.9"/>
+				<speedDistributionDataPoint fx="0.138" x="1.5"/>
+				<speedDistributionDataPoint fx="0.32" x="2.1"/>
+				<speedDistributionDataPoint fx="0.553" x="2.7"/>
+				<speedDistributionDataPoint fx="0.713" x="3.3"/>
+				<speedDistributionDataPoint fx="0.79" x="3.9"/>
+				<speedDistributionDataPoint fx="0.85" x="4.5"/>
+				<speedDistributionDataPoint fx="0.893" x="5.1"/>
+				<speedDistributionDataPoint fx="0.927" x="5.7"/>
+				<speedDistributionDataPoint fx="0.953" x="6.3"/>
+				<speedDistributionDataPoint fx="0.976" x="6.9"/>
+				<speedDistributionDataPoint fx="0.993" x="7.5"/>
+				<speedDistributionDataPoint fx="1" x="8.1"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="Stairs Kretz 1" no="1043">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="0.72"/>
+				<speedDistributionDataPoint fx="0.055" x="1.08"/>
+				<speedDistributionDataPoint fx="0.452" x="1.44"/>
+				<speedDistributionDataPoint fx="0.877" x="1.8"/>
+				<speedDistributionDataPoint fx="0.945" x="2.16"/>
+				<speedDistributionDataPoint fx="0.973" x="2.52"/>
+				<speedDistributionDataPoint fx="0.986" x="2.88"/>
+				<speedDistributionDataPoint fx="1" x="4.68"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="Stairs Kretz 2" no="1044">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="0.36"/>
+				<speedDistributionDataPoint fx="0.003" x="0.54"/>
+				<speedDistributionDataPoint fx="0.008" x="0.72"/>
+				<speedDistributionDataPoint fx="0.069" x="1.08"/>
+				<speedDistributionDataPoint fx="0.296" x="1.26"/>
+				<speedDistributionDataPoint fx="0.689" x="1.44"/>
+				<speedDistributionDataPoint fx="0.887" x="1.62"/>
+				<speedDistributionDataPoint fx="0.967" x="1.8"/>
+				<speedDistributionDataPoint fx="0.985" x="1.98"/>
+				<speedDistributionDataPoint fx="0.987" x="2.16"/>
+				<speedDistributionDataPoint fx="0.992" x="2.34"/>
+				<speedDistributionDataPoint fx="0.995" x="2.52"/>
+				<speedDistributionDataPoint fx="0.997" x="2.7"/>
+				<speedDistributionDataPoint fx="1" x="4.14"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="At Airports - S.B. Young" no="1045">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="3.3"/>
+				<speedDistributionDataPoint fx="0.015034" x="3.336462"/>
+				<speedDistributionDataPoint fx="0.053041" x="3.59081"/>
+				<speedDistributionDataPoint fx="0.103666" x="3.773071"/>
+				<speedDistributionDataPoint fx="0.255365" x="4.040716"/>
+				<speedDistributionDataPoint fx="0.449933" x="4.256679"/>
+				<speedDistributionDataPoint fx="0.542538" x="4.41048"/>
+				<speedDistributionDataPoint fx="0.582693" x="4.516479"/>
+				<speedDistributionDataPoint fx="0.624137" x="4.682254"/>
+				<speedDistributionDataPoint fx="0.686649" x="5.026911"/>
+				<speedDistributionDataPoint fx="0.72318" x="5.337051"/>
+				<speedDistributionDataPoint fx="0.774515" x="5.613145"/>
+				<speedDistributionDataPoint fx="0.877368" x="6.020304"/>
+				<speedDistributionDataPoint fx="0.912392" x="6.271403"/>
+				<speedDistributionDataPoint fx="0.943356" x="6.634187"/>
+				<speedDistributionDataPoint fx="0.964368" x="7.168421"/>
+				<speedDistributionDataPoint fx="0.987865" x="7.508381"/>
+				<speedDistributionDataPoint fx="0.997839" x="7.80813"/>
+				<speedDistributionDataPoint fx="1" x="8.2296"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+		<speedDistribution name="On Moving Walkways - S.B. Young" no="1046">
+			<speedDistrDatPts>
+				<speedDistributionDataPoint fx="0" x="0"/>
+				<speedDistributionDataPoint fx="0.0001" x="0.765462"/>
+				<speedDistributionDataPoint fx="0.254852" x="0.765562"/>
+				<speedDistributionDataPoint fx="0.28627" x="1.304489"/>
+				<speedDistributionDataPoint fx="0.302666" x="1.656738"/>
+				<speedDistributionDataPoint fx="0.325205" x="2.407758"/>
+				<speedDistributionDataPoint fx="0.351299" x="2.953785"/>
+				<speedDistributionDataPoint fx="0.362231" x="3.124574"/>
+				<speedDistributionDataPoint fx="0.382169" x="3.300298"/>
+				<speedDistributionDataPoint fx="0.406531" x="3.463337"/>
+				<speedDistributionDataPoint fx="0.45902" x="3.700048"/>
+				<speedDistributionDataPoint fx="0.589058" x="4.121024"/>
+				<speedDistributionDataPoint fx="0.67566" x="4.407455"/>
+				<speedDistributionDataPoint fx="0.751254" x="4.774043"/>
+				<speedDistributionDataPoint fx="0.866077" x="5.51479"/>
+				<speedDistributionDataPoint fx="0.924504" x="5.961132"/>
+				<speedDistributionDataPoint fx="0.947342" x="6.237696"/>
+				<speedDistributionDataPoint fx="0.971817" x="6.615232"/>
+				<speedDistributionDataPoint fx="0.985613" x="7.152273"/>
+				<speedDistributionDataPoint fx="1" x="8.2296"/>
+			</speedDistrDatPts>
+		</speedDistribution>
+	</speedDistributions>
+	<timeDistributions>
+		<timeDistribution mean="0.5" name="0.5 s" no="1" stdDev="0" type="NORMAL"/>
+		<timeDistribution mean="0.6" name="0.6 s" no="2" stdDev="0" type="NORMAL"/>
+		<timeDistribution mean="0.9" name="0.9 s" no="3" stdDev="0" type="NORMAL"/>
+		<timeDistribution mean="1.5" name="1.5 s" no="5" stdDev="0" type="NORMAL"/>
+		<timeDistribution mean="2" name="2.0 s" no="6" stdDev="0" type="NORMAL"/>
+		<timeDistribution mean="3" name="2-4 s" no="7" stdDev="0.5" type="EMPIRICAL">
+			<durDistrDataPts>
+				<durationDistributionDataPoint fx="0" x="2"/>
+				<durationDistributionDataPoint fx="1" x="4"/>
+			</durDistrDataPts>
+		</timeDistribution>
+		<timeDistribution mean="3.6" name="3.6 s" no="8" stdDev="0" type="NORMAL"/>
+		<timeDistribution mean="5" name="5 s ±" no="9" stdDev="1" type="NORMAL"/>
+		<timeDistribution mean="15" name="15 s ±" no="15" stdDev="1.5" type="NORMAL"/>
+		<timeDistribution mean="20" name="20 s ±" no="20" stdDev="2" type="NORMAL"/>
+		<timeDistribution mean="30" name="30 s ±" no="30" stdDev="10" type="NORMAL"/>
+	</timeDistributions>
+	<timeIntervalSets>
+		<timeIntervalSet no="VEHICLEINPUT">
+			<timeInts>
+				<timeInterval start="0"/>
+			</timeInts>
+		</timeIntervalSet>
+		<timeIntervalSet no="VEHICLEROUTESTATIC">
+			<timeInts>
+				<timeInterval start="0"/>
+			</timeInts>
+		</timeIntervalSet>
+		<timeIntervalSet no="VEHICLEROUTEPARTIAL">
+			<timeInts>
+				<timeInterval start="0"/>
+			</timeInts>
+		</timeIntervalSet>
+		<timeIntervalSet no="VEHICLEROUTEPARKING">
+			<timeInts>
+				<timeInterval start="0"/>
+			</timeInts>
+		</timeIntervalSet>
+		<timeIntervalSet no="PEDESTRIANINPUT">
+			<timeInts>
+				<timeInterval start="0"/>
+			</timeInts>
+		</timeIntervalSet>
+		<timeIntervalSet no="PEDESTRIANROUTEPARTIAL">
+			<timeInts>
+				<timeInterval start="0"/>
+			</timeInts>
+		</timeIntervalSet>
+		<timeIntervalSet no="VEHICLEROUTEPARTIALPT">
+			<timeInts>
+				<timeInterval start="0"/>
+			</timeInts>
+		</timeIntervalSet>
+		<timeIntervalSet no="AREABEHAVIORTYPE">
+			<timeInts>
+				<timeInterval start="0"/>
+			</timeInts>
+		</timeIntervalSet>
+		<timeIntervalSet no="MANAGEDLANESFACILITY">
+			<timeInts>
+				<timeInterval start="0"/>
+			</timeInts>
+		</timeIntervalSet>
+		<timeIntervalSet no="PEDESTRIANROUTESTATIC">
+			<timeInts>
+				<timeInterval start="0"/>
+			</timeInts>
+		</timeIntervalSet>
+	</timeIntervalSets>
+	<vehicleClasses>
+		<vehicleClass anmid="" color="ff000000" name="Car" no="10" useVehTypeColor="true">
+			<vehTypes>
+				<intObjectRef key="100"/>
+			</vehTypes>
+		</vehicleClass>
+		<vehicleClass anmid="" color="ff000000" name="LGV" no="19" useVehTypeColor="true">
+			<vehTypes>
+				<intObjectRef key="190"/>
+			</vehTypes>
+		</vehicleClass>
+		<vehicleClass anmid="" color="ff000000" name="HGV" no="20" useVehTypeColor="true">
+			<vehTypes>
+				<intObjectRef key="200"/>
+			</vehTypes>
+		</vehicleClass>
+		<vehicleClass anmid="" color="ff000000" name="Bus" no="30" useVehTypeColor="true">
+			<vehTypes>
+				<intObjectRef key="300"/>
+			</vehTypes>
+		</vehicleClass>
+		<vehicleClass anmid="" color="ff000000" name="Tram" no="40" useVehTypeColor="true">
+			<vehTypes>
+				<intObjectRef key="400"/>
+			</vehTypes>
+		</vehicleClass>
+		<vehicleClass anmid="" color="ff000000" name="Pedestrian" no="50" useVehTypeColor="true">
+			<vehTypes>
+				<intObjectRef key="510"/>
+				<intObjectRef key="520"/>
+			</vehTypes>
+		</vehicleClass>
+		<vehicleClass anmid="" color="ff000000" name="Bike" no="60" useVehTypeColor="true">
+			<vehTypes>
+				<intObjectRef key="610"/>
+				<intObjectRef key="620"/>
+			</vehTypes>
+		</vehicleClass>
+		<vehicleClass anmid="" color="ff000000" name="Pedelec" no="61" useVehTypeColor="true">
+			<vehTypes>
+				<intObjectRef key="630"/>
+				<intObjectRef key="640"/>
+			</vehTypes>
+		</vehicleClass>
+	</vehicleClasses>
+	<vehicleCompositions>
+		<vehicleComposition name="Car, LGV, HGV (50 km/h)" no="1">
+			<vehCompRelFlows>
+				<vehicleCompositionRelativeFlow desSpeedDistr="50" relFlow="0.93" vehType="100"/>
+				<vehicleCompositionRelativeFlow desSpeedDistr="50" relFlow="0.05" vehType="190"/>
+				<vehicleCompositionRelativeFlow desSpeedDistr="50" relFlow="0.02" vehType="200"/>
+			</vehCompRelFlows>
+		</vehicleComposition>
+		<vehicleComposition name="Car only (50 km/h)" no="2">
+			<vehCompRelFlows>
+				<vehicleCompositionRelativeFlow desSpeedDistr="50" relFlow="1" vehType="100"/>
+			</vehCompRelFlows>
+		</vehicleComposition>
+		<vehicleComposition name="Bike only (15 km/h)" no="3">
+			<vehCompRelFlows>
+				<vehicleCompositionRelativeFlow desSpeedDistr="15" relFlow="1" vehType="610"/>
+				<vehicleCompositionRelativeFlow desSpeedDistr="15" relFlow="1" vehType="620"/>
+			</vehCompRelFlows>
+		</vehicleComposition>
+		<vehicleComposition name="Car, LGV, HGV (50 km/h), Bike (15 km/h)" no="4">
+			<vehCompRelFlows>
+				<vehicleCompositionRelativeFlow desSpeedDistr="50" relFlow="0.83" vehType="100"/>
+				<vehicleCompositionRelativeFlow desSpeedDistr="50" relFlow="0.05" vehType="190"/>
+				<vehicleCompositionRelativeFlow desSpeedDistr="50" relFlow="0.02" vehType="200"/>
+				<vehicleCompositionRelativeFlow desSpeedDistr="15" relFlow="0.05" vehType="610"/>
+				<vehicleCompositionRelativeFlow desSpeedDistr="15" relFlow="0.05" vehType="620"/>
+			</vehCompRelFlows>
+		</vehicleComposition>
+		<vehicleComposition name="Bike (15 km/h), Pedelecs (25 km/h max)" no="5">
+			<vehCompRelFlows>
+				<vehicleCompositionRelativeFlow desSpeedDistr="15" relFlow="0.33" vehType="610"/>
+				<vehicleCompositionRelativeFlow desSpeedDistr="15" relFlow="0.33" vehType="620"/>
+				<vehicleCompositionRelativeFlow desSpeedDistr="20" relFlow="0.17" vehType="630"/>
+				<vehicleCompositionRelativeFlow desSpeedDistr="20" relFlow="0.17" vehType="640"/>
+			</vehCompRelFlows>
+		</vehicleComposition>
+		<vehicleComposition name="Car, LGV, HGV (50 km/h), Bike (15 km/h), Pedelecs (25 km/h max)" no="6">
+			<vehCompRelFlows>
+				<vehicleCompositionRelativeFlow desSpeedDistr="50" relFlow="0.73" vehType="100"/>
+				<vehicleCompositionRelativeFlow desSpeedDistr="50" relFlow="0.05" vehType="190"/>
+				<vehicleCompositionRelativeFlow desSpeedDistr="50" relFlow="0.02" vehType="200"/>
+				<vehicleCompositionRelativeFlow desSpeedDistr="15" relFlow="0.05" vehType="610"/>
+				<vehicleCompositionRelativeFlow desSpeedDistr="15" relFlow="0.05" vehType="620"/>
+				<vehicleCompositionRelativeFlow desSpeedDistr="20" relFlow="0.05" vehType="630"/>
+				<vehicleCompositionRelativeFlow desSpeedDistr="20" relFlow="0.05" vehType="640"/>
+			</vehCompRelFlows>
+		</vehicleComposition>
+	</vehicleCompositions>
+	<vehicleTypes>
+		<vehicleType alightTm="0" anmFlag="false" boardTm="0" capExact="false" capacity="5" category="CAR" clearTmPT="0" colorDistr1="1" colorDistr2="2" desAccelFunc="1" desCurveSpeedFunc="1" desDecelFunc="1" distCoeffPerMeter="0" doorClosDur="2" dwellTmIsAdd="true" equip="" extDriver="false" extDriverDLLFile="" extDriverParFile="" extEmissionDLLFile="" linkCostCoeff="1" maxAccelFunc="1" maxDecelFunc="1" model2D3DDistr="10" name="Car" no="100" occupDistr="1" travTmCoeff="1">
+			<parkLotSelPars>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="DEPARTUREFROMPARKINGLOT" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="DYNAMICROUTINGDECISION" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="ROUTEGUIDANCETACTIC1" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="ROUTEGUIDANCETACTIC2" distFromDestM="0" genCost="0" parkFee="0"/>
+			</parkLotSelPars>
+		</vehicleType>
+		<vehicleType alightTm="0" anmFlag="false" boardTm="0" capExact="false" capacity="2" category="CAR" clearTmPT="0" colorDistr1="1" desAccelFunc="1" desCurveSpeedFunc="1" desDecelFunc="1" distCoeffPerMeter="0" doorClosDur="2" dwellTmIsAdd="true" equip="" extDriver="false" extDriverDLLFile="" extDriverParFile="" extEmissionDLLFile="" linkCostCoeff="1" maxAccelFunc="1" maxDecelFunc="1" model2D3DDistr="19" name="LGV" no="190" occupDistr="1" travTmCoeff="1">
+			<parkLotSelPars>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="DEPARTUREFROMPARKINGLOT" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="DYNAMICROUTINGDECISION" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="ROUTEGUIDANCETACTIC1" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="ROUTEGUIDANCETACTIC2" distFromDestM="0" genCost="0" parkFee="0"/>
+			</parkLotSelPars>
+		</vehicleType>
+		<vehicleType alightTm="0" anmFlag="false" boardTm="0" capExact="false" capacity="2" category="HGV" clearTmPT="0" colorDistr1="1" desAccelFunc="2" desCurveSpeedFunc="11" desDecelFunc="2" distCoeffPerMeter="0" doorClosDur="2" dwellTmIsAdd="true" equip="" extDriver="false" extDriverDLLFile="" extDriverParFile="" extEmissionDLLFile="" linkCostCoeff="1" maxAccelFunc="2" maxDecelFunc="2" model2D3DDistr="20" name="HGV" no="200" powerDistr="2" travTmCoeff="1" weightDistr="2">
+			<parkLotSelPars>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="DEPARTUREFROMPARKINGLOT" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="DYNAMICROUTINGDECISION" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="ROUTEGUIDANCETACTIC1" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="ROUTEGUIDANCETACTIC2" distFromDestM="0" genCost="0" parkFee="0"/>
+			</parkLotSelPars>
+		</vehicleType>
+		<vehicleType alightTm="1" anmFlag="false" boardTm="2" capExact="false" capacity="110" category="BUS" clearTmPT="8" colorDistr1="1" desAccelFunc="3" desCurveSpeedFunc="11" desDecelFunc="3" distCoeffPerMeter="0" doorClosDur="2" dwellTmIsAdd="true" equip="" extDriver="false" extDriverDLLFile="" extDriverParFile="" extEmissionDLLFile="" linkCostCoeff="1" maxAccelFunc="3" maxDecelFunc="3" model2D3DDistr="30" name="Bus" no="300" occupDistr="1" travTmCoeff="1">
+			<parkLotSelPars>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="DEPARTUREFROMPARKINGLOT" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="DYNAMICROUTINGDECISION" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="ROUTEGUIDANCETACTIC1" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="ROUTEGUIDANCETACTIC2" distFromDestM="0" genCost="0" parkFee="0"/>
+			</parkLotSelPars>
+		</vehicleType>
+		<vehicleType alightTm="0.5" anmFlag="false" boardTm="0.5" capExact="false" capacity="215" category="TRAM" clearTmPT="12" colorDistr1="1" desAccelFunc="4" desCurveSpeedFunc="31" desDecelFunc="4" distCoeffPerMeter="0" doorClosDur="2" dwellTmIsAdd="true" equip="" extDriver="false" extDriverDLLFile="" extDriverParFile="" extEmissionDLLFile="" linkCostCoeff="1" maxAccelFunc="4" maxDecelFunc="4" model2D3DDistr="40" name="Tram" no="400" occupDistr="1" travTmCoeff="1">
+			<parkLotSelPars>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="DEPARTUREFROMPARKINGLOT" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="DYNAMICROUTINGDECISION" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="ROUTEGUIDANCETACTIC1" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="ROUTEGUIDANCETACTIC2" distFromDestM="0" genCost="0" parkFee="0"/>
+			</parkLotSelPars>
+		</vehicleType>
+		<vehicleType alightTm="0" anmFlag="false" boardTm="0" capExact="false" capacity="0" category="PEDESTRIAN" clearTmPT="0" colorDistr1="101" colorDistr2="102" colorDistr3="103" colorDistr4="104" desAccelFunc="5" desDecelFunc="5" distCoeffPerMeter="0" doorClosDur="2" dwellTmIsAdd="true" equip="" extDriver="false" extDriverDLLFile="" extDriverParFile="" extEmissionDLLFile="" linkCostCoeff="1" maxAccelFunc="5" maxDecelFunc="5" model2D3DDistr="100" name="Man" no="510" travTmCoeff="1">
+			<parkLotSelPars>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="DEPARTUREFROMPARKINGLOT" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="DYNAMICROUTINGDECISION" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="ROUTEGUIDANCETACTIC1" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="ROUTEGUIDANCETACTIC2" distFromDestM="0" genCost="0" parkFee="0"/>
+			</parkLotSelPars>
+		</vehicleType>
+		<vehicleType alightTm="0" anmFlag="false" boardTm="0" capExact="false" capacity="0" category="PEDESTRIAN" clearTmPT="0" colorDistr1="201" colorDistr2="202" colorDistr3="203" colorDistr4="204" desAccelFunc="5" desDecelFunc="5" distCoeffPerMeter="0" doorClosDur="2" dwellTmIsAdd="true" equip="" extDriver="false" extDriverDLLFile="" extDriverParFile="" extEmissionDLLFile="" linkCostCoeff="1" maxAccelFunc="5" maxDecelFunc="5" model2D3DDistr="200" name="Woman" no="520" travTmCoeff="1">
+			<parkLotSelPars>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="DEPARTUREFROMPARKINGLOT" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="DYNAMICROUTINGDECISION" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="ROUTEGUIDANCETACTIC1" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="ROUTEGUIDANCETACTIC2" distFromDestM="0" genCost="0" parkFee="0"/>
+			</parkLotSelPars>
+		</vehicleType>
+		<vehicleType alightTm="0" anmFlag="false" boardTm="0" capExact="false" capacity="0" category="BIKE" clearTmPT="0" colorDistr1="101" colorDistr2="102" colorDistr3="103" colorDistr4="60" desAccelFunc="6" desCurveSpeedFunc="21" desDecelFunc="6" distCoeffPerMeter="0" doorClosDur="2" dwellTmIsAdd="true" equip="" extDriver="false" extDriverDLLFile="" extDriverParFile="" extEmissionDLLFile="" linkCostCoeff="1" maxAccelFunc="6" maxDecelFunc="6" model2D3DDistr="61" name="Bike Man" no="610" travTmCoeff="1">
+			<parkLotSelPars>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="DEPARTUREFROMPARKINGLOT" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="DYNAMICROUTINGDECISION" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="ROUTEGUIDANCETACTIC1" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="ROUTEGUIDANCETACTIC2" distFromDestM="0" genCost="0" parkFee="0"/>
+			</parkLotSelPars>
+		</vehicleType>
+		<vehicleType alightTm="0" anmFlag="false" boardTm="0" capExact="false" capacity="0" category="BIKE" clearTmPT="0" colorDistr1="201" colorDistr2="202" colorDistr3="203" colorDistr4="60" desAccelFunc="6" desCurveSpeedFunc="21" desDecelFunc="6" distCoeffPerMeter="0" doorClosDur="2" dwellTmIsAdd="true" equip="" extDriver="false" extDriverDLLFile="" extDriverParFile="" extEmissionDLLFile="" linkCostCoeff="1" maxAccelFunc="6" maxDecelFunc="6" model2D3DDistr="62" name="Bike Woman" no="620" travTmCoeff="1">
+			<parkLotSelPars>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="DEPARTUREFROMPARKINGLOT" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="DYNAMICROUTINGDECISION" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="ROUTEGUIDANCETACTIC1" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="ROUTEGUIDANCETACTIC2" distFromDestM="0" genCost="0" parkFee="0"/>
+			</parkLotSelPars>
+		</vehicleType>
+		<vehicleType alightTm="0" anmFlag="false" boardTm="0" capExact="false" capacity="0" category="BIKE" clearTmPT="0" colorDistr1="101" colorDistr2="102" colorDistr3="103" colorDistr4="60" desAccelFunc="7" desCurveSpeedFunc="21" desDecelFunc="6" distCoeffPerMeter="0" doorClosDur="2" dwellTmIsAdd="true" equip="" extDriver="false" extDriverDLLFile="" extDriverParFile="" extEmissionDLLFile="" linkCostCoeff="1" maxAccelFunc="8" maxDecelFunc="6" model2D3DDistr="63" name="Pedelec Man" no="630" travTmCoeff="1">
+			<parkLotSelPars>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="DEPARTUREFROMPARKINGLOT" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="DYNAMICROUTINGDECISION" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="ROUTEGUIDANCETACTIC1" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="ROUTEGUIDANCETACTIC2" distFromDestM="0" genCost="0" parkFee="0"/>
+			</parkLotSelPars>
+		</vehicleType>
+		<vehicleType alightTm="0" anmFlag="false" boardTm="0" capExact="false" capacity="0" category="BIKE" clearTmPT="0" colorDistr1="201" colorDistr2="202" colorDistr3="203" colorDistr4="60" desAccelFunc="7" desCurveSpeedFunc="21" desDecelFunc="6" distCoeffPerMeter="0" doorClosDur="2" dwellTmIsAdd="true" equip="" extDriver="false" extDriverDLLFile="" extDriverParFile="" extEmissionDLLFile="" linkCostCoeff="1" maxAccelFunc="8" maxDecelFunc="6" model2D3DDistr="64" name="Pedelec Woman" no="640" travTmCoeff="1">
+			<parkLotSelPars>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="DEPARTUREFROMPARKINGLOT" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="DYNAMICROUTINGDECISION" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="ROUTEGUIDANCETACTIC1" distFromDestM="0" genCost="0" parkFee="0"/>
+				<parkingLotSelectionParameters attrac="0" avail="0" decSituation="ROUTEGUIDANCETACTIC2" distFromDestM="0" genCost="0" parkFee="0"/>
+			</parkLotSelPars>
+		</vehicleType>
+	</vehicleTypes>
+	<walkingBehaviors>
+		<walkingBehavior aSocIso="2.72" aSocMean="0.4" bSocIso="0.2" bSocMean="2.8" lambda="0.176" name="Default" no="1" noise="1.2" reactToN="8" sidePref="NONE" tau="0.4" vd="3"/>
+		<walkingBehavior aSocIso="2.72" aSocMean="0.4" bSocIso="0.2" bSocMean="2.8" lambda="0.176" name="Elevator (In Cab)" no="2" noise="0.3" reactToN="8" sidePref="NONE" tau="0.4" vd="3"/>
+		<walkingBehavior aSocIso="2.04" aSocMean="0.4" bSocIso="0.3" bSocMean="2.8" lambda="0.176" name="Elevator (Alighting)" no="3" noise="1.2" reactToN="8" sidePref="NONE" tau="0.2" vd="3"/>
+	</walkingBehaviors>
+	<weightDistributions>
+		<weightDistribution name="Car" no="1">
+			<distrDataPts>
+				<distributionDataPoint fx="0" x="800"/>
+				<distributionDataPoint fx="1" x="2000"/>
+			</distrDataPts>
+		</weightDistribution>
+		<weightDistribution name="HGV" no="2">
+			<distrDataPts>
+				<distributionDataPoint fx="0" x="2800"/>
+				<distributionDataPoint fx="1" x="40000"/>
+			</distrDataPts>
+		</weightDistribution>
+		<weightDistribution name="Bus" no="3">
+			<distrDataPts>
+				<distributionDataPoint fx="0" x="4000"/>
+				<distributionDataPoint fx="1" x="12000"/>
+			</distrDataPts>
+		</weightDistribution>
+		<weightDistribution name="Tram" no="4">
+			<distrDataPts>
+				<distributionDataPoint fx="0" x="23000"/>
+				<distributionDataPoint fx="1" x="58000"/>
+			</distrDataPts>
+		</weightDistribution>
+		<weightDistribution name="Pedestrian" no="5">
+			<distrDataPts>
+				<distributionDataPoint fx="0" x="30"/>
+				<distributionDataPoint fx="1" x="120"/>
+			</distrDataPts>
+		</weightDistribution>
+		<weightDistribution name="Bike" no="6">
+			<distrDataPts>
+				<distributionDataPoint fx="0" x="40"/>
+				<distributionDataPoint fx="1" x="130"/>
+			</distrDataPts>
+		</weightDistribution>
+		<weightDistribution name="Dreyfuss M" no="7">
+			<distrDataPts>
+				<distributionDataPoint fx="0" x="73.7"/>
+				<distributionDataPoint fx="1" x="83.1"/>
+			</distrDataPts>
+		</weightDistribution>
+		<weightDistribution name="Dreyfuss F" no="8">
+			<distrDataPts>
+				<distributionDataPoint fx="0" x="53.4"/>
+				<distributionDataPoint fx="0.5" x="62.5"/>
+				<distributionDataPoint fx="1" x="78.8"/>
+			</distrDataPts>
+		</weightDistribution>
+	</weightDistributions>
+</network>

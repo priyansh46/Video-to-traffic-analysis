@@ -1,0 +1,4 @@
+lane_id,vehicle_count,duration_s,flow_vph
+right_carriageway_lane1,4,10.0,1440.0
+right_carriageway_lane2,8,10.0,2880.0
+right_carriageway_lane3,9,10.0,3240.0

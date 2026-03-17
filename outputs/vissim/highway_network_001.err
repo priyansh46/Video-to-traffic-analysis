@@ -1,0 +1,5 @@
+﻿                  Warning	Vehicle input 1: right_carriageway_lane1 could not be finished completely (remain: 6 vehicles).	Network object type: Vehicle Input	Network object keys: 1
+                  Warning	Vehicle input 2: right_carriageway_lane2 could not be finished completely (remain: 36 vehicles).	Network object type: Vehicle Input	Network object keys: 2
+                  Warning	Vehicle input 3: right_carriageway_lane3 could not be finished completely (remain: 78 vehicles).	Network object type: Vehicle Input	Network object keys: 3
+                  Warning	Vehicle input 5: left_carriageway_lane2 could not be finished completely (remain: 30 vehicles).	Network object type: Vehicle Input	Network object keys: 5
+                  Warning	Vehicle input 6: left_carriageway_lane3 could not be finished completely (remain: 74 vehicles).	Network object type: Vehicle Input	Network object keys: 6

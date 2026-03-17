@@ -1,0 +1,52 @@
+video:
+  path: data/videos/highway.mp4
+  fps: 30.0
+  resolution:
+  - 1280
+  - 720
+  total_frames: 300
+  duration: 10.0
+road_type: motorway_3lane
+calibration:
+  reference_points:
+  - pixel:
+    - 764
+    - 595
+    real:
+    - 0.0
+    - 0.0
+  - pixel:
+    - 1201
+    - 590
+    real:
+    - 11.0
+    - 0.0
+  - pixel:
+    - 877
+    - 349
+    real:
+    - 11.0
+    - 20.0
+  - pixel:
+    - 681
+    - 342
+    real:
+    - 0.0
+    - 20.0
+detection:
+  yolo_model: yolov8n.pt
+  confidence_threshold: 0.45
+  classes:
+  - car
+  - truck
+  - bus
+  - motorcycle
+lanes:
+  count: auto
+  carriageway: right
+vissim:
+  version: 10
+  simulation_duration: 3600
+  wiedemann_model: 99
+  central_barrier_width_m: 1.0
+  create_both_carriageways: true

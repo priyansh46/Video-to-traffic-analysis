@@ -1,0 +1,4 @@
+lane_id,total_vehicles,car,pct_car,truck,pct_truck,bus,pct_bus,motorcycle,pct_motorcycle
+right_carriageway_lane1,5,4,0.8,1,0.2,0,0.0,0,0.0
+right_carriageway_lane2,8,8,1.0,0,0.0,0,0.0,0,0.0
+right_carriageway_lane3,11,4,0.364,3,0.273,4,0.364,0,0.0
