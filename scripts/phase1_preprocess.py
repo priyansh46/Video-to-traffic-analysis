@@ -48,7 +48,13 @@ def inspect_video(path):
 
 # ── Step 2: Extract reference frames ────────────────────────────────
 def extract_frames(path, output_dir):
-    Path(output_dir).mkdir(parents=True, exist_ok=True)
+    import shutil
+    # Clear old frames before extracting new ones
+    out = Path(output_dir)
+    if out.exists():
+        shutil.rmtree(out)
+        print(f"  Cleared old frames from {output_dir}")
+    out.mkdir(parents=True, exist_ok=True)
     cap          = cv2.VideoCapture(path)
     total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
