@@ -724,16 +724,19 @@
 		<vehInpData writeFile="false"/>
 		<vehInps collectData="false" fromTime="0" interval="99999" toTime="99999"/>
 		<vehNetPerf collectData="false" fromTime="0" incidDetAct="false" interval="99999" toTime="99999"/>
-		<vehRec filterType="ALL" fromTime="0" inclParkVehs="false" resolution="1" toTime="99999" writeDatabase="false" writeFile="false">
-			<selectedAttributes>
-				<attributeSelection attributeID="SIMSEC" decimals="2" format="SECONDS" showUnits="false"/>
-				<attributeSelection attributeID="NO" decimals="0" format="DEFAULT" showUnits="false"/>
-				<attributeSelection attributeID="LANE\LINK\NO" decimals="0" format="DEFAULT" showUnits="false"/>
-				<attributeSelection attributeID="LANE\INDEX" decimals="0" format="DEFAULT" showUnits="false"/>
-				<attributeSelection attributeID="POS" decimals="2" format="DEFAULT" showUnits="false"/>
-				<attributeSelection attributeID="POSLAT" decimals="2" format="DEFAULT" showUnits="false"/>
-			</selectedAttributes>
-		</vehRec>
+		<vehRec filterType="ALL" fromTime="0" resolution="1" toTime="99999" writeDatabase="false" writeFile="true">
+                          
+           <selectedAttributes>
+            <attributeSelection attributeID="SIMSEC"/>
+            <attributeSelection attributeID="NO"/>
+            <attributeSelection attributeID="LANE\LINK\NO"/>
+            <attributeSelection attributeID="LANE\INDEX"/>
+            <attributeSelection attributeID="POS"/>
+            <attributeSelection attributeID="POSLAT"/>
+            <attributeSelection attributeID="SPEED"/>      
+            <attributeSelection attributeID="VEHTYPE"/>    
+           </selectedAttributes>
+        </vehRec>
 		<vehTravTmRawData fromTime="0" toTime="99999" writeDatabase="false" writeFile="false"/>
 		<vehTravTms aggrBySect="DESTINATION" collectData="false" fromTime="0" interval="99999" toTime="99999"/>
 	</evaluation>

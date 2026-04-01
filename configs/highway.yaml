@@ -10,26 +10,26 @@ road_type: motorway_3lane
 calibration:
   reference_points:
   - pixel:
-    - 764
-    - 595
+    - 798
+    - 708
     real:
     - 0.0
     - 0.0
   - pixel:
-    - 1201
-    - 590
+    - 1270
+    - 687
     real:
     - 11.0
     - 0.0
   - pixel:
-    - 877
-    - 349
+    - 940
+    - 376
     real:
     - 11.0
     - 20.0
   - pixel:
-    - 681
-    - 342
+    - 692
+    - 390
     real:
     - 0.0
     - 20.0
