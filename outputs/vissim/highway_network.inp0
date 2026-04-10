@@ -2088,28 +2088,28 @@
 		<speedDistribution no="2001" name="SpeedDist_right_carriageway_lane1">
 			<speedDistrDatPts>
 				<speedDistributionDataPoint x="20.0" fx="0.0"/>
-				<speedDistributionDataPoint x="36.5" fx="0.15"/>
-				<speedDistributionDataPoint x="56.2" fx="0.5"/>
-				<speedDistributionDataPoint x="75.9" fx="0.85"/>
-				<speedDistributionDataPoint x="95.7" fx="1.0"/>
+				<speedDistributionDataPoint x="31.5" fx="0.15"/>
+				<speedDistributionDataPoint x="49.6" fx="0.5"/>
+				<speedDistributionDataPoint x="67.8" fx="0.85"/>
+				<speedDistributionDataPoint x="85.9" fx="1.0"/>
 			</speedDistrDatPts>
 		</speedDistribution>
 		<speedDistribution no="2002" name="SpeedDist_right_carriageway_lane2">
 			<speedDistrDatPts>
 				<speedDistributionDataPoint x="20.0" fx="0.0"/>
-				<speedDistributionDataPoint x="26.6" fx="0.15"/>
-				<speedDistributionDataPoint x="48.5" fx="0.5"/>
-				<speedDistributionDataPoint x="70.3" fx="0.85"/>
-				<speedDistributionDataPoint x="92.2" fx="1.0"/>
+				<speedDistributionDataPoint x="23.8" fx="0.15"/>
+				<speedDistributionDataPoint x="41.9" fx="0.5"/>
+				<speedDistributionDataPoint x="60.0" fx="0.85"/>
+				<speedDistributionDataPoint x="78.1" fx="1.0"/>
 			</speedDistrDatPts>
 		</speedDistribution>
 		<speedDistribution no="2003" name="SpeedDist_right_carriageway_lane3">
 			<speedDistrDatPts>
 				<speedDistributionDataPoint x="20.0" fx="0.0"/>
-				<speedDistributionDataPoint x="31.7" fx="0.15"/>
-				<speedDistributionDataPoint x="48.7" fx="0.5"/>
-				<speedDistributionDataPoint x="65.6" fx="0.85"/>
-				<speedDistributionDataPoint x="82.6" fx="1.0"/>
+				<speedDistributionDataPoint x="27.3" fx="0.15"/>
+				<speedDistributionDataPoint x="43.9" fx="0.5"/>
+				<speedDistributionDataPoint x="60.5" fx="0.85"/>
+				<speedDistributionDataPoint x="77.2" fx="1.0"/>
 			</speedDistrDatPts>
 		</speedDistribution>
 	</speedDistributions>
@@ -2277,13 +2277,14 @@
 		</vehicleComposition>
 		<vehicleComposition no="101" name="Comp_right_carriageway_lane1">
 			<vehCompRelFlows>
-				<vehicleCompositionRelativeFlow vehType="100" desSpeedDistr="2001" relFlow="0.833"/>
-				<vehicleCompositionRelativeFlow vehType="200" desSpeedDistr="2001" relFlow="0.167"/>
+				<vehicleCompositionRelativeFlow vehType="100" desSpeedDistr="2001" relFlow="0.8"/>
+				<vehicleCompositionRelativeFlow vehType="200" desSpeedDistr="2001" relFlow="0.2"/>
 			</vehCompRelFlows>
 		</vehicleComposition>
 		<vehicleComposition no="102" name="Comp_right_carriageway_lane2">
 			<vehCompRelFlows>
-				<vehicleCompositionRelativeFlow vehType="100" desSpeedDistr="2002" relFlow="1.0"/>
+				<vehicleCompositionRelativeFlow vehType="100" desSpeedDistr="2002" relFlow="0.9"/>
+				<vehicleCompositionRelativeFlow vehType="200" desSpeedDistr="2002" relFlow="0.1"/>
 			</vehCompRelFlows>
 		</vehicleComposition>
 		<vehicleComposition no="103" name="Comp_right_carriageway_lane3">
@@ -2295,13 +2296,14 @@
 		</vehicleComposition>
 		<vehicleComposition no="104" name="Comp_left_carriageway_lane1">
 			<vehCompRelFlows>
-				<vehicleCompositionRelativeFlow vehType="100" desSpeedDistr="2001" relFlow="0.833"/>
-				<vehicleCompositionRelativeFlow vehType="200" desSpeedDistr="2001" relFlow="0.167"/>
+				<vehicleCompositionRelativeFlow vehType="100" desSpeedDistr="2001" relFlow="0.8"/>
+				<vehicleCompositionRelativeFlow vehType="200" desSpeedDistr="2001" relFlow="0.2"/>
 			</vehCompRelFlows>
 		</vehicleComposition>
 		<vehicleComposition no="105" name="Comp_left_carriageway_lane2">
 			<vehCompRelFlows>
-				<vehicleCompositionRelativeFlow vehType="100" desSpeedDistr="2002" relFlow="1.0"/>
+				<vehicleCompositionRelativeFlow vehType="100" desSpeedDistr="2002" relFlow="0.9"/>
+				<vehicleCompositionRelativeFlow vehType="200" desSpeedDistr="2002" relFlow="0.1"/>
 			</vehCompRelFlows>
 		</vehicleComposition>
 		<vehicleComposition no="106" name="Comp_left_carriageway_lane3">
@@ -2531,12 +2533,12 @@
 	<vehicleInputs>
 		<vehicleInput anmFlag="false" link="1" name="right_carriageway_lane1" no="1">
 			<timeIntVehVols>
-				<timeIntervalVehVolume cont="false" timeInt="1 0" vehComp="101" volType="STOCHASTIC" volume="1800"/>
+				<timeIntervalVehVolume cont="false" timeInt="1 0" vehComp="101" volType="STOCHASTIC" volume="1440"/>
 			</timeIntVehVols>
 		</vehicleInput>
 		<vehicleInput anmFlag="false" link="2" name="right_carriageway_lane2" no="2">
 			<timeIntVehVols>
-				<timeIntervalVehVolume cont="false" timeInt="1 0" vehComp="102" volType="STOCHASTIC" volume="2520"/>
+				<timeIntervalVehVolume cont="false" timeInt="1 0" vehComp="102" volType="STOCHASTIC" volume="3600"/>
 			</timeIntVehVols>
 		</vehicleInput>
 		<vehicleInput anmFlag="false" link="3" name="right_carriageway_lane3" no="3">
@@ -2546,12 +2548,12 @@
 		</vehicleInput>
 		<vehicleInput anmFlag="false" link="4" name="left_carriageway_lane1" no="4">
 			<timeIntVehVols>
-				<timeIntervalVehVolume cont="false" timeInt="1 0" vehComp="104" volType="STOCHASTIC" volume="1800"/>
+				<timeIntervalVehVolume cont="false" timeInt="1 0" vehComp="104" volType="STOCHASTIC" volume="1440"/>
 			</timeIntVehVols>
 		</vehicleInput>
 		<vehicleInput anmFlag="false" link="5" name="left_carriageway_lane2" no="5">
 			<timeIntVehVols>
-				<timeIntervalVehVolume cont="false" timeInt="1 0" vehComp="105" volType="STOCHASTIC" volume="2520"/>
+				<timeIntervalVehVolume cont="false" timeInt="1 0" vehComp="105" volType="STOCHASTIC" volume="3600"/>
 			</timeIntVehVols>
 		</vehicleInput>
 		<vehicleInput anmFlag="false" link="6" name="left_carriageway_lane3" no="6">

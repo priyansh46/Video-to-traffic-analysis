@@ -114,7 +114,7 @@ def pick_reference_points(frame_path, road_width):
             else:
                 print(f"\n  All 4 points selected! Press Q to close.")
             cv2.imshow("Pick 4 Reference Points — Press Q when done", img)
-
+    cv2.namedWindow("Pick 4 Reference Points — Press Q when done", cv2.WINDOW_NORMAL)
     cv2.imshow("Pick 4 Reference Points — Press Q when done", img)
     cv2.setMouseCallback(
         "Pick 4 Reference Points — Press Q when done", on_click)
