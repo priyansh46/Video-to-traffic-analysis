@@ -1,3 +1,5 @@
+# To be run in linux environment or WSL with SUMO installed and in PATH.
+
 import pandas as pd
 import subprocess
 import os
