@@ -146,9 +146,9 @@ def generate_config(video_info, ref_points, road_type,
                 {"pixel": list(ref_points[1]),
                  "real":  [road_width, 0.0 ]},   # ← auto from road_type
                 {"pixel": list(ref_points[2]),
-                 "real":  [road_width, 20.0]},   # ← auto from road_type
+                 "real":  [road_width, 100.0]},   # ← auto from road_type
                 {"pixel": list(ref_points[3]),
-                 "real":  [0.0,        20.0]},
+                 "real":  [0.0,        100.0]},
             ]
         },
         "detection": {
@@ -179,7 +179,7 @@ def generate_config(video_info, ref_points, road_type,
     for i, (px, rx) in enumerate(zip(
         ref_points,
         [[0.0, 0.0], [road_width, 0.0],
-         [road_width, 20.0], [0.0, 20.0]]
+         [road_width, 200.0], [0.0, 200.0]]
     )):
         print(f"    P{i+1}: pixel={list(px)}  real={rx}")
 

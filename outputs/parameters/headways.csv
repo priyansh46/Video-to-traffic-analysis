@@ -1,4 +1,4 @@
 lane_id,mean_headway_s,min_headway_s,max_headway_s
 right_carriageway_lane1,0.933,0.3,1.567
-right_carriageway_lane2,1.2,0.233,3.133
-right_carriageway_lane3,0.578,0.033,1.2
+right_carriageway_lane2,2.4,0.233,7.633
+right_carriageway_lane3,0.84,0.3,1.6

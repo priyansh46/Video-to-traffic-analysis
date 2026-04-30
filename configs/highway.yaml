@@ -10,29 +10,29 @@ road_type: motorway_3lane
 calibration:
   reference_points:
   - pixel:
-    - 793
-    - 707
+    - 801
+    - 712
     real:
     - 0.0
     - 0.0
   - pixel:
-    - 1275
-    - 674
+    - 1272
+    - 663
     real:
     - 11.0
     - 0.0
   - pixel:
-    - 906
-    - 356
+    - 741
+    - 285
     real:
     - 11.0
-    - 20.0
+    - 100.0
   - pixel:
-    - 682
-    - 366
+    - 660
+    - 287
     real:
     - 0.0
-    - 20.0
+    - 100.0
 detection:
   yolo_model: yolov8n.pt
   confidence_threshold: 0.45

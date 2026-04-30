@@ -5,18 +5,18 @@
     "lane_index": 1,
     "direction": "toward_camera",
     "left_boundary": {
-      "x_bottom": 787,
-      "y_bottom": 688,
-      "x_top": 655,
-      "y_top": 283
+      "x_bottom": 796,
+      "y_bottom": 698,
+      "x_top": 661,
+      "y_top": 290
     },
     "right_boundary": {
-      "x_bottom": 946,
-      "y_bottom": 678,
-      "x_top": 708,
-      "y_top": 281
+      "x_bottom": 959,
+      "y_bottom": 682,
+      "x_top": 689,
+      "y_top": 289
     },
-    "width_px": 159,
+    "width_px": 163,
     "width_m": 3.67
   },
   {
@@ -25,18 +25,18 @@
     "lane_index": 2,
     "direction": "toward_camera",
     "left_boundary": {
-      "x_bottom": 946,
-      "y_bottom": 678,
-      "x_top": 708,
-      "y_top": 281
+      "x_bottom": 959,
+      "y_bottom": 682,
+      "x_top": 689,
+      "y_top": 289
     },
     "right_boundary": {
-      "x_bottom": 1102,
-      "y_bottom": 667,
-      "x_top": 762,
-      "y_top": 279
+      "x_bottom": 1112,
+      "y_bottom": 666,
+      "x_top": 717,
+      "y_top": 289
     },
-    "width_px": 156,
+    "width_px": 153,
     "width_m": 3.67
   },
   {
@@ -45,18 +45,18 @@
     "lane_index": 3,
     "direction": "toward_camera",
     "left_boundary": {
-      "x_bottom": 1102,
-      "y_bottom": 667,
-      "x_top": 762,
-      "y_top": 279
+      "x_bottom": 1112,
+      "y_bottom": 666,
+      "x_top": 717,
+      "y_top": 289
     },
     "right_boundary": {
-      "x_bottom": 1255,
-      "y_bottom": 657,
-      "x_top": 815,
-      "y_top": 277
+      "x_bottom": 1256,
+      "y_bottom": 651,
+      "x_top": 745,
+      "y_top": 288
     },
-    "width_px": 153,
+    "width_px": 144,
     "width_m": 3.67
   }
 ]

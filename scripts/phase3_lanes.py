@@ -112,7 +112,7 @@ def build_lanes_from_calibration(cfg, H_inv, num_lanes):
     total_width = get_carriageway_width(cfg)   # ← auto from calibration
     lane_width  = total_width / num_lanes
     y_near      = 0.5
-    y_far       = 35.0
+    y_far       = 95.0
 
     right_x_positions = [i * lane_width for i in range(num_lanes + 1)]
 
